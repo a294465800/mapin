@@ -13,6 +13,14 @@ view {
   min-height: 100%;
 }
 
+.tips {
+  color: #888;
+  text-align: center;
+  width: 100%;
+  font-size: 11pt;
+  padding: 20rpx 0;
+}
+
 /* flex 通用 */
 
 .flex-row {
@@ -28,4 +36,31 @@ view {
 .flex-center {
   align-items: center;
   justify-content: center;
+}
+
+/* 轮播 */
+
+.swiper-img-wrap {
+  width: 100%;
+  height: 200px;
+}
+
+.swiper-img-wrap image {
+  width: 100%;
+  height: 200px;
+}
+
+/* icon */
+
+.people-icon {
+  width: 16px;
+  height: 20px;
+}
+
+/* 文字溢出 */
+
+.text-flow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

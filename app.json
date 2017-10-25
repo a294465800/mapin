@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/activity/activity",
     "pages/index/index"
   ],
   "window": {
@@ -17,7 +18,7 @@
         "selectedIconPath": "/images/tab/scan_selected.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/activity/activity",
         "text": "活动中心",
         "iconPath": "/images/tab/activity.png",
         "selectedIconPath": "/images/tab/activity_selected.png"

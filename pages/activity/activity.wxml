@@ -1,0 +1,50 @@
+<!--pages/activity/activity.wxml-->
+<view class='container'>
+  <!--轮播  -->
+  <swiper indicator-dots autoplay interval="5000" duration="1000" indicator-color='#fff' indicator-active-color='#f9be0a' class='swiper-img-wrap'>
+    <swiper-item wx:for="{{imgUrls}}">
+      <image mode='aspectFill' src="{{item}}" class="slide-image" width="355" height="150" />
+    </swiper-item>
+  </swiper>
+  <!--/轮播  -->
+
+  <!--制作按钮  -->
+  <view class='activity-btns flex-row'>
+    <view class='activity-btn-example'>查看示例</view>
+    <view class='activity-btn-make' hover-class='activity-list-item-btn-hover' hover-stay-time='150'>制作活动</view>
+  </view>
+  <!--/制作按钮  -->
+
+  <!--最新拼团列表  -->
+  <view class='activity-list'>
+    <block wx:if="{{lists.length}}">
+      <view class='tips'>---- 最新拼团 ----</view>
+      <view class='activity-list-item' wx:for="{{lists}}" wx:for-item="listItem" wx:key="id">
+        <view class='activity-list-item-wrap flex-row'>
+          <image class='activity-list-item-img' mode='aspectFit' src='{{listItem.url}}'></image>
+          <view class='activity-list-item-content'>
+            <view class='activity-list-item-title text-flow'>{{listItem.title}}</view>
+            <view class='activity-list-item-info flex-row'>
+              <view class='activity-list-item-tuan flex-row flex-center'>
+                <image class='people-icon' mode='aspectFit' src='/images/icon/people.png'></image> 2人●3人
+              </view>
+              <view class='activity-list-item-sell'>已团：{{listItem.sell}}</view>
+            </view>
+            <view class='activity-list-item-buy flex-row'>
+              <view class='activity-list-item-price flex-row'>
+                <view class='activity-list-item-origin-price'>￥{{listItem.price}}起</view>
+                <view class='activity-list-item-old-price'>￥{{listItem.old_price}}</view>
+              </view>
+              <view class='activity-list-item-btn' bindtap='goToBuy' hover-class='activity-list-item-btn-hover' hover-stay-time='150'>去拼团</view>
+            </view>
+          </view>
+        </view>
+        <view class='activity-list-item-timeRange'>{{listItem.time_range}}</view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class='tips'>暂无活动</view>
+    </block>
+  </view>
+  <!--/最新拼团列表  -->
+</view>
