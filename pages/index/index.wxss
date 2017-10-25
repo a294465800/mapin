@@ -1,0 +1,24 @@
+/**index.wxss**/
+
+.container {
+  height: 100%;
+  padding: 30rpx;
+}
+
+.qr-btn {
+  width: 100%;
+  background-color: #f9be0a;
+  color: #fff;
+  font-size: 16pt;
+  margin-top: 100rpx;
+}
+
+.qr-hover {
+  background-color: #e8b20d;
+}
+
+.qr-text {
+  color: #666;
+  font-size: 11pt;
+  margin-top: 20rpx;
+}

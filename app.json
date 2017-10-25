@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "蚂拼小程序",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "扫一扫",
+        "iconPath": "/images/tab/scan.png",
+        "selectedIconPath": "/images/tab/scan_selected.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "活动中心",
+        "iconPath": "/images/tab/activity.png",
+        "selectedIconPath": "/images/tab/activity_selected.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "个人中心",
+        "iconPath": "/images/tab/mine.png",
+        "selectedIconPath": "/images/tab/mine_selected.png"
+      }
+    ],
+    "color": "#999",
+    "selectedColor": "#f18202"
+  }
+}
