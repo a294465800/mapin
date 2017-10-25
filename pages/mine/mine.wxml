@@ -1,0 +1,49 @@
+<!--pages/mine/mine.wxml-->
+<view class='container'>
+
+  <!--登录  -->
+  <view class='login-wrap flex-row' hover-class='hover-class' catchtap='{{userInfo?"":"login"}}'>
+    <block wx:if="{{userInfo}}">
+      <image class='login-avatar-img' mode='aspectFit' src='{{userInfo.avatarUrl}}'></image>
+      <view class='login-avatar-name'>{{userInfo.nickName}}</view>
+    </block>
+    <block wx:else>
+      <view class='login-btn'>请登录</view>
+    </block>
+  </view>
+  <!--/登录  -->
+  <!--会员期限  -->
+  <view wx:if="{{true}}" class='memeber-time-wrap flex-row' hover-class='hover-class' hover-stay-time='150'>
+    <view>帐号到期时间
+      <text class='memeber-time'>：2017-10-24 23:59</text>
+    </view>
+    <view class='member-btn'>续费</view>
+  </view>
+
+  <view wx:else class='memeber-time-wrap member-in' hover-class='hover-class' hover-stay-time='150'>会员充值</view>
+  <!--/会员期限  -->
+
+  <!--操作列表  -->
+  <block wx:for="{{operations}}" wx:for-item="operationItem" wx:key="id">
+    <block wx:if="{{operationItem.id == 7}}">
+      <button class='operation-part flex-row' hover-class='hover-class' hover-stay-time='150' open-type='contact'>
+        <view class='operation-content flex-row'>
+          <image class='operation-icon' src='/images/icon/kefu.png' mode='aspectFit'></image>
+          <view>咨询客服</view>
+        </view>
+        <image class='arrow-icon' src='/images/icon/arrow.png' mode='aspectFit'></image>
+      </button>
+    </block>
+    <block wx:else>
+      <view class='operation-part flex-row' hover-class='hover-class' hover-stay-time='150' catchtap='{{operationItem.fnc}}'>
+        <view class='operation-content flex-row'>
+          <image class='operation-icon' src='{{operationItem.url}}' mode='aspectFit'></image>
+          <view>{{operationItem.name}}</view>
+        </view>
+        <image class='arrow-icon' src='/images/icon/arrow.png' mode='aspectFit'></image>
+      </view>
+    </block>
+  </block>
+  <!--/操作列表  -->
+
+</view>

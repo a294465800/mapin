@@ -23,8 +23,8 @@
 
 view.activity-btn-example {
   margin-right: 20rpx;
-  color: #ef8203;
-  border-color: #ef8203;
+  color: #f18202;
+  border-color: #f18202;
 }
 
 .activity-btn-make {

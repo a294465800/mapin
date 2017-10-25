@@ -17,7 +17,7 @@ Page({
         sell: 1201,
         price: 200,
         old_price: 365,
-        url: 'http://img.ltn.com.tw/Upload/style/page/2016/05/13/160513-3464-4-OV84b.jpg',
+        url: 'http://www.duoweifushi.com/images/goods/shopfw/main/thumb/2017/06/28/thumbnail_5653406852ba49e0a5618fd3c4671e2b.jpg',
         time_range: '2017.10.21 - 2017.10.24'
       },
       {
@@ -26,7 +26,7 @@ Page({
         sell: 35,
         price: 68,
         old_price: 188,
-        url: 'http://img.ltn.com.tw/Upload/style/page/2016/05/13/160513-3464-4-OV84b.jpg',
+        url: 'http://www.duoweifushi.com/images/goods/shopfw/main/thumb/2017/06/28/thumbnail_5653406852ba49e0a5618fd3c4671e2b.jpg',
         time_range: '2017.10.21 - 2017.10.24'
       }
     ]

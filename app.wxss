@@ -21,6 +21,10 @@ view {
   padding: 20rpx 0;
 }
 
+.hover-class {
+  background-color: #ddd !important;
+}
+
 /* flex 通用 */
 
 .flex-row {
@@ -55,6 +59,11 @@ view {
 .people-icon {
   width: 16px;
   height: 20px;
+}
+
+.arrow-icon {
+  width: 9px;
+  height: 13px;
 }
 
 /* 文字溢出 */

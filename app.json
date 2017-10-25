@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/mine/mine",
     "pages/activity/activity",
     "pages/index/index"
   ],
@@ -24,7 +25,7 @@
         "selectedIconPath": "/images/tab/activity_selected.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/mine/mine",
         "text": "个人中心",
         "iconPath": "/images/tab/mine.png",
         "selectedIconPath": "/images/tab/mine_selected.png"
