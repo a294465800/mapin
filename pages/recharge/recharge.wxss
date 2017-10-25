@@ -1,0 +1,83 @@
+/* pages/recharge/recharge.wxss */
+
+.container {
+  height: 100%;
+  justify-content: space-between;
+  background-color: #eee;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}
+
+/* 充值内容 */
+
+.recharge-mode {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.recharge-mode-item {
+  background-color: #fff;
+  border-radius: 5px;
+  width: 45%;
+  padding: 20rpx;
+  text-align: center;
+  margin-bottom: 40rpx;
+  border: 1px solid #fff;
+}
+
+.recharge-mode-item.active {
+  border-color: #f9be0a;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.recharge-mode-item:nth-of-type(2n+1) {
+  margin-right: 40rpx;
+}
+
+.recharge-mode-item-title {
+  font-size: 16px;
+}
+
+.recharge-mode-item-subtitle {
+  font-size: 12px;
+  color: #999;
+  margin: 20rpx 0;
+}
+
+.recharge-mode-item-price {
+  color: #f2533f;
+  font-size: 24px;
+}
+
+.coupon {
+  background-color: #fff;
+  padding: 20rpx 30rpx;
+}
+
+.coupon input {
+  text-align: right;
+}
+
+.recharge-tips {
+  font-size: 13px;
+  color: #999;
+  padding: 30rpx;
+}
+
+.recharge-tips>text {
+  color: #f9be0a;
+}
+
+/* 充值按钮 */
+
+.recharge-btn {
+  width: 92%;
+  background-color: #f9be0a;
+  color: #fff;
+  font-size: 16pt;
+  margin-top: 100rpx;
+}
+
+.recharge-hover {
+  background-color: #e8b20d;
+}

@@ -13,14 +13,14 @@
   </view>
   <!--/登录  -->
   <!--会员期限  -->
-  <view wx:if="{{true}}" class='memeber-time-wrap flex-row' hover-class='hover-class' hover-stay-time='150'>
+  <view wx:if="{{true}}" class='memeber-time-wrap flex-row' hover-class='hover-class' hover-stay-time='150' catchtap='goToChargeMode'>
     <view>帐号到期时间
       <text class='memeber-time'>：2017-10-24 23:59</text>
     </view>
     <view class='member-btn'>续费</view>
   </view>
 
-  <view wx:else class='memeber-time-wrap member-in' hover-class='hover-class' hover-stay-time='150'>会员充值</view>
+  <view wx:else class='memeber-time-wrap member-in' hover-class='hover-class' hover-stay-time='150' catchtap='goToChargeMode'>会员充值</view>
   <!--/会员期限  -->
 
   <!--操作列表  -->

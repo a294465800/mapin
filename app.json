@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/mine/mine",
+    "pages/recharge/recharge",
     "pages/activity/activity",
     "pages/index/index"
   ],

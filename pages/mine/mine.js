@@ -59,6 +59,13 @@ Page({
         userInfo
       })
     })
+  },
+
+  //跳转充值
+  goToChargeMode() {
+    wx.navigateTo({
+      url: '/pages/recharge/recharge'
+    })
   }
 
 })
