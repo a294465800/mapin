@@ -1,6 +1,8 @@
 {
   "pages": [
+    "pages/costrecord/costrecord",
     "pages/mine/mine",
+    "pages/activityrecord/activityrecord",
     "pages/cashrecord/cashrecord",
     "pages/cash/cash",
     "pages/contact/contact",

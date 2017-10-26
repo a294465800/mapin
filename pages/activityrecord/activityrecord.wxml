@@ -1,0 +1,31 @@
+<!--pages/activityrecord/activityrecord.wxml-->
+<view class='container'>
+  <block wx:if="{{lists.length}}">
+    <view class='activity-list-item' wx:for="{{lists}}" wx:for-item="listItem" wx:key="id">
+    <view class='activity-list-item-id'>活动编号： {{listItem.activity_id}}</view>
+      <view class='activity-list-item-wrap flex-row'>
+        <image class='activity-list-item-img' mode='aspectFit' src='{{listItem.url}}'></image>
+        <view class='activity-list-item-content'>
+          <view class='activity-list-item-title text-flow'>{{listItem.title}}</view>
+          <view class='activity-list-item-info flex-row'>
+            <view class='activity-list-item-tuan flex-row flex-center'>
+              <image class='people-icon' mode='aspectFit' src='/images/icon/people.png'></image> 2人●3人
+            </view>
+            <view class='activity-list-item-sell'>已团：{{listItem.sell}}</view>
+          </view>
+          <view class='activity-list-item-buy flex-row'>
+            <view class='activity-list-item-price flex-row'>
+              <view class='activity-list-item-origin-price'>￥{{listItem.price}}起</view>
+              <view class='activity-list-item-old-price'>￥{{listItem.old_price}}</view>
+            </view>
+            <view class='activity-list-item-btn' bindtap='goToCheck' hover-class='activity-list-item-btn-hover' hover-stay-time='150'>查看活动</view>
+          </view>
+        </view>
+      </view>
+      <view class='activity-list-item-timeRange'>{{listItem.time_range}}</view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='tips'>还没有创建过活动</view>
+  </block>
+</view>

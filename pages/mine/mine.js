@@ -121,6 +121,18 @@ Page({
     wx.navigateTo({
       url: '/pages/cash/cash',
     })
+  },
+
+  //活动管理
+  geToActivityControl() {
+    // this.isLogin(() => {
+    //   wx.navigateTo({
+    //     url: '/pages/activityrecord/activityrecord',
+    //   })
+    // })
+    wx.navigateTo({
+      url: '/pages/activityrecord/activityrecord',
+    })
   }
 
 })
