@@ -2,10 +2,12 @@
 Page({
 
   data: {
-  
+
   },
 
-  goToCashRecord(){
-
+  goToCashRecord() {
+    wx.navigateTo({
+      url: '/pages/cashrecord/cashrecord',
+    })
   }
 })

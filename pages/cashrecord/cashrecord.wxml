@@ -1,0 +1,13 @@
+<!--pages/cashrecord/cashrecord.wxml-->
+<view class='container'>
+  <view class='record-item' wx:for="{{records}}" wx:for-item="recordItem" wx:key="recordItem.id">
+    <view class='flex-row'>
+      <view class='record-item-title'>{{recordItem.title}}</view>
+      <view class='{{tipsClass[recordItem.status]}}'>{{tipsText[recordItem.status]}}</view>
+    </view>
+    <view class='flex-row'>
+      <view class='record-item-time'>{{recordItem.time}}</view>
+      <view class='record-item-money'>￥{{recordItem.money}}</view>
+    </view>
+  </view>
+</view>

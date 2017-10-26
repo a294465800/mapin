@@ -1,0 +1,45 @@
+/* pages/cashrecord/cashrecord.wxss */
+
+.container {
+  background-color: #eee;
+}
+
+.record-item {
+  background-color: #fff;
+  border-top: 1px solid #eee;
+}
+
+.record-item {
+  padding: 20rpx 30rpx;
+}
+
+.record-item>.flex-row {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.record-item-title {
+  font-size: 16px;
+  color: #333;
+}
+
+.record-item-ok, .record-item-no {
+  font-size: 14px;
+}
+
+.record-item-ok {
+  color: #fabf0b;
+}
+
+.record-item-no {
+  color: #2ad98a;
+}
+
+.record-item-time {
+  font-size: 12px;
+  color: #666;
+}
+
+.record-item-money {
+  font-size: 20px;
+}
