@@ -124,3 +124,34 @@ view {
 .label-control>input {
   flex: 1;
 }
+
+.label-beautify {
+  width: 100%;
+  font-size: 18px;
+  display: flex;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+}
+
+.label-beautify>view:first-child {
+  line-height: 1.5;
+  min-width: 100px;
+}
+
+.label-beautify>input, .label-beautify>picker, .label-beautify>.switch {
+  flex: 1;
+  font-size: 16px;
+}
+
+.label-beautify>.switch {
+  text-align: right;
+}
+
+.label-beautify>.simulate-input {
+  flex: 1;
+  font-size: 16px;
+  color: #999;
+  max-width: 490rpx;
+}

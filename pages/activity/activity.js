@@ -56,6 +56,13 @@ Page({
     this.setData({
       currentSort: id
     })
+  },
+
+  //创建活动
+  createActivity() {
+    wx.navigateTo({
+      url: '/pages/rules/rules',
+    })
   }
 
 

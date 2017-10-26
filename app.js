@@ -29,4 +29,23 @@ App({
     })
   },
 
+  //获取地址
+  getAddress(callback) {
+    const that = this
+    wx.chooseAddress({
+      success(res) {
+        typeof callback === 'function' && callback(res)
+      },
+      fail(error) {
+        wx.openSetting({
+          success(res) {
+            if (res.authSetting['scope.address']) {
+              that.getAddress(callback)
+            }
+          }
+        })
+      }
+    })
+  }
+
 })

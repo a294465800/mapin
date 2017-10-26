@@ -11,7 +11,7 @@
   <!--制作按钮  -->
   <view class='activity-btns flex-row'>
     <view class='activity-btn-example'>查看示例</view>
-    <view class='activity-btn-make' hover-class='activity-list-item-btn-hover' hover-stay-time='150'>制作活动</view>
+    <view class='activity-btn-make' hover-class='activity-list-item-btn-hover' hover-stay-time='150' catchtap='createActivity'>制作活动</view>
   </view>
   <!--/制作按钮  -->
 

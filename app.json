@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/rules/rules",
+    "pages/createactivity/createactivity",
     "pages/activity/activity",
+    "pages/rules/rules",
     "pages/mine/mine",
     "pages/costrecord/costrecord",
     "pages/activityrecord/activityrecord",

@@ -1,0 +1,135 @@
+<!--pages/createactivity/createactivity.wxml-->
+<view class='container'>
+  <form report-submit bindsubmit='createSubmit'>
+    <view class='form-item'>
+      <view class='form-title'>基本设置</view>
+      <view class='form-group'>
+        <label class='label-beautify'>
+          <view>活动标题</view>
+          <input name="title" maxlength='30' placeholder='不超过30个字'></input>
+        </label>
+        <label class='label-beautify'>
+          <view>活动开始</view>
+          <picker mode="date" value="{{submitForm.startTime}}" start="{{submitForm.startTime}}" end="2027-01-01" bindchange="getStartTime">
+            <view class="picker"> {{submitForm.startTime}}
+            </view>
+          </picker>
+        </label>
+        <label class='label-beautify'>
+          <view>活动结束</view>
+          <picker mode="date" value="{{submitForm.endTime}}" start="{{submitForm.startTime}}" end="2027-01-01" bindchange="getEndTime">
+            <view class="picker"> {{submitForm.endTime || submitForm.startTime}}
+            </view>
+          </picker>
+        </label>
+        <label class='label-beautify'>
+          <view>同店活动</view>
+          <view class='switch'>
+            <switch checked bindchange="sameAsShop" />
+          </view>
+        </label>
+      </view>
+    </view>
+
+    <view class='form-item'>
+      <view class='form-title'>拼团设置</view>
+      <view class='form-group'>
+        <label class='label-beautify'>
+          <view>商品原价</view>
+          <input name="origin_price" type='digit' placeholder='商品原价（元）'></input>
+        </label>
+        <label class='label-beautify'>
+          <view>全额支付</view>
+          <view class='switch'>
+            <switch bindchange="payAll" />
+          </view>
+        </label>
+        <label class='label-beautify'>
+          <view>团长优惠</view>
+          <input name="prime_count" type='digit' placeholder='不填默认为零（元）'></input>
+        </label>
+        <label class='label-beautify'>
+          <view>人数</view>
+          <input name="group1_count" type='number' placeholder='1号团人数设定'></input>
+        </label>
+        <label class='label-beautify'>
+          <view>商品价格</view>
+          <input name="group1_price" type='digit' placeholder='每件商品价格（元）'></input>
+        </label>
+        <label class='label-beautify'>
+          <view>人数</view>
+          <input name="group2_count" type='number' placeholder='2号团人数设定'></input>
+        </label>
+        <label class='label-beautify'>
+          <view>商品价格</view>
+          <input name="group2_price" type='digit' placeholder='每件商品价格（元）'></input>
+        </label>
+        <label class='label-beautify'>
+          <view>人数</view>
+          <input name="group3_count" type='number' placeholder='3号团人数设定'></input>
+        </label>
+        <label class='label-beautify'>
+          <view>商品价格</view>
+          <input name="group3_price" type='digit' placeholder='每件商品价格（元）'></input>
+        </label>
+      </view>
+      <view class='form-tips'>三种类型，价格应梯度降低,人数应梯度增加</view>
+    </view>
+
+    <view class='form-item'>
+      <view class='form-title'>兑换信息</view>
+      <view class='form-group'>
+        <label class='label-beautify' catchtap='getShopAddress'>
+          <view>商家地址</view>
+          <view class='simulate-input text-flow'>{{submitForm.address || '商家地址'}}</view>
+        </label>
+        <label class='label-beautify'>
+          <view>服务电话</view>
+          <input name="phone" type='number' placeholder='商家服务电话'></input>
+        </label>
+      </view>
+    </view>
+
+    <view class='form-item'>
+      <view class='form-title'>活动描述</view>
+      <view class='form-group'>
+        <label class='label-beautify' catchtap='getShopAddress'>
+          <view>商品数量</view>
+          <input name="item_number" type='number' placeholder='请合理设置勿超卖'></input>
+        </label>
+        <label class='label-beautify'>
+          <view>活动介绍</view>
+          <view class='simulate-input text-flow' catchtap='goToTextarea'>商品介绍最多800字</view>
+        </label>
+      </view>
+    </view>
+
+    <view class='form-item'>
+      <view class='form-title'>活动图片</view>
+      <view class='form-group'>
+        <view class='form-imgs flex-row'>
+          <block wx:if="{{tempImgs.length}}">
+            <block wx:for="{{tempImgs}}" wx:key="*this" wx:for-item="img">
+              <image class='form-pre-img' mode='aspectFit' src='{{img}}'>
+                <icon class='close-btn' type='clear' size='20' color='#f9be0a' data-img='{{img}}' catchtap='deleteImg'></icon>
+              </image>
+            </block>
+          </block>
+          <block wx:if="{{tempImgs.length >= 9}}">
+          </block>
+          <block wx:else>
+            <image class='plus-icon' mode='aspectFit' src='/images/icon/plus.png' catchtap='chooseImg'></image>
+          </block>
+        </view>
+      </view>
+    </view>
+
+    <view class='form-item'>
+      <view class='form-title'>活动规则</view>
+      <view class='form-group'>
+        <view class='form-rule'>活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则</view>
+      </view>
+    </view>
+    <button form-type='submit' type='button' class='submit-btn' hover-class='submit-hover' bindtap='scan'>确认创建</button>
+  </form>
+</view>
