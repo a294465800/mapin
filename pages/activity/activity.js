@@ -9,6 +9,19 @@ Page({
       'http://img.zcool.cn/community/03320dd554c75c700000158fce17209.jpg'
     ],
 
+    currentSort: 1,
+
+    //排序
+    sorts: [
+      {
+        id: 1,
+        name: '时间排序'
+      }, {
+        id: 2,
+        name: '地理排序'
+      }
+    ],
+
     //模拟数据
     lists: [
       {
@@ -35,6 +48,14 @@ Page({
   //购买
   goToBuy() {
 
+  },
+
+  //排序
+  sortFnc(e) {
+    const id = e.currentTarget.dataset.id
+    this.setData({
+      currentSort: id
+    })
   }
 
 

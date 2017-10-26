@@ -33,6 +33,40 @@ view.activity-btn-example {
   color: #fff;
 }
 
+.activity-sort {
+  background-color: #fff;
+}
+
+.activity-sort>view {
+  flex: 1;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  text-align: center;
+  position: relative;
+  font-size: 14px;
+}
+
+.activity-sort>view.active {
+  color: #f9be0a;
+}
+
+.activity-sort>view::after {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-width: 10rpx;
+  border-style: solid;
+  border-color: #000 transparent transparent transparent;
+  right: 25%;
+  top: 50%;
+  transform: translateY(-40%);
+}
+
+.activity-sort>view.active::after {
+  border-color: #f9be0a transparent transparent transparent;
+}
+
 /* 活动列表 */
 
 .activity-list-item {
@@ -40,6 +74,7 @@ view.activity-btn-example {
   padding: 20rpx 30rpx;
   width: 100%;
   margin-bottom: 30rpx;
+  border-top: 1px solid #eee;
 }
 
 .activity-list-item:last-of-type {

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/activity/activity",
     "pages/mine/mine",
     "pages/costrecord/costrecord",
     "pages/activityrecord/activityrecord",
@@ -10,7 +11,6 @@
     "pages/help/help",
     "pages/subaccount/subaccount",
     "pages/recharge/recharge",
-    "pages/activity/activity",
     "pages/index/index"
   ],
   "window": {

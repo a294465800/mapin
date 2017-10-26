@@ -19,6 +19,9 @@
   <view class='activity-list'>
     <block wx:if="{{lists.length}}">
       <view class='tips'>---- 最新拼团 ----</view>
+      <view class='activity-sort flex-row'>
+        <view class='{{currentSort == sort.id?"active":""}}' wx:for="{{sorts}}" wx:for-item="sort" wx:key="id" catchtap='sortFnc' data-id='{{sort.id}}'>{{sort.name}}</view>
+      </view>
       <view class='activity-list-item' wx:for="{{lists}}" wx:for-item="listItem" wx:key="id">
         <view class='activity-list-item-wrap flex-row'>
           <image class='activity-list-item-img' mode='aspectFit' src='{{listItem.url}}'></image>
