@@ -1,0 +1,16 @@
+<!--pages/rules/rules.wxml-->
+<view class='container flex-column'>
+
+  <!--细则  -->
+  <view class='rules-wrap'>
+    <view class='flex-bug'>
+      <scroll-view class='scroll' scroll-y>
+        <rich-text nodes="{{nodes}}"></rich-text>
+      </scroll-view>
+    </view>
+  </view>
+  <!--/细则  -->
+
+  <button type='button' class='rules-btn' hover-class='rules-hover' bindtap='agree'>同意细则，创建活动</button>
+
+</view>

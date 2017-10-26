@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/rules/rules",
     "pages/activity/activity",
     "pages/mine/mine",
     "pages/costrecord/costrecord",

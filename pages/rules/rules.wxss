@@ -1,0 +1,33 @@
+/* pages/rules/rules.wxss */
+
+.container {
+  height: 100%;
+  padding-bottom: 30rpx;
+  background-color: #fff;
+  justify-content: space-between;
+}
+
+/* 富文本 */
+
+.rules-wrap {
+  flex: 1;
+  position: relative;
+}
+
+.scroll {
+  height: 100%;
+}
+
+/* 按钮 */
+
+.rules-btn {
+  width: 94%;
+  background-color: #f9be0a;
+  color: #fff;
+  font-size: 16pt;
+  margin-top: 30rpx;
+}
+
+.rules-hover {
+  background-color: #e8b20d;
+}

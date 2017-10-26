@@ -42,6 +42,12 @@ view {
   justify-content: center;
 }
 
+.flex-bug {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
 /* 轮播 */
 
 .swiper-img-wrap {
