@@ -99,13 +99,15 @@ Page({
 
   //帮助跳转
   geToHelpControl() {
-    // this.isLogin(() => {
-    //   wx.navigateTo({
-    //     url: '/pages/help/help',
-    //   })
-    // })
     wx.navigateTo({
       url: '/pages/help/help',
+    })
+  },
+
+  //联系跳转
+  geToContactControl() {
+    wx.navigateTo({
+      url: '/pages/contact/contact',
     })
   }
 

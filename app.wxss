@@ -66,6 +66,21 @@ view {
   height: 13px;
 }
 
+.tel-icon {
+  width: 18px;
+  height: 16px;
+}
+
+.located-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.arrow-down-icon {
+  width: 13px;
+  height: 8px;
+}
+
 /* 文字溢出 */
 
 .text-flow {
