@@ -133,6 +133,18 @@ Page({
     wx.navigateTo({
       url: '/pages/activityrecord/activityrecord',
     })
+  },
+
+  //消费记录
+  geToRecordControl() {
+    // this.isLogin(() => {
+    //   wx.navigateTo({
+    //     url: '/pages/costrecord/costrecord',
+    //   })
+    // })
+    wx.navigateTo({
+      url: '/pages/costrecord/costrecord',
+    })
   }
 
 })

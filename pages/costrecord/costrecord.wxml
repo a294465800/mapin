@@ -1,2 +1,70 @@
 <!--pages/costrecord/costrecord.wxml-->
-<text>pages/costrecord/costrecord.wxml</text>
+<view class='container'>
+  <!--导航  -->
+  <view class='nav-bar flex-row'>
+    <view class='nav-item {{nav.id == currentNav?"active":""}}' catchtap='switchNav' data-id='{{nav.id}}' wx:for="{{navs}}" wx:for-item="nav" wx:key="id">{{nav.name}}</view>
+  </view>
+  <!--/导航  -->
+
+  <!--拼团成功  -->
+  <view class='record-list-wrap' wx:if="{{currentNav == navs[0].id}}">
+    <view class='record-item' wx:for="{{successLists}}" wx:for-item="listItem" wx:key="id">
+      <view class='record-item-head flex-row'>
+        <view class='flex-row'>
+          <image class='shop-icon' mode='aspectFit' src='/images/icon/shop.png'></image>
+          <view class='record-item-head-shop'>{{listItem.shop}}</view>
+        </view>
+        <view class='record-item-head-info'>拼团成功</view>
+      </view>
+      <view class='record-item-content flex-row'>
+        <image class='record-item-content-img' mode='aspectFit' src='{{listItem.url}}'></image>
+        <view class='flex-column'>
+          <view class='record-item-content-title multi-two-text-flow'>{{listItem.title}}</view>
+          <view class='record-item-content-info flex-row'>
+            <view class='record-item-content-type flex-row'>
+              <image class='people-icon' mode='aspectFit' src='/images/icon/people.png'></image>
+              <view class='record-item-content-type-text'>3人</view>
+            </view>
+            <view class='record-item-content-price'>￥{{listItem.price}}</view>
+          </view>
+        </view>
+      </view>
+      <view class='record-item-foot flex-row'>
+        <view class='record-item-foot-time'>{{listItem.time}}</view>
+        <view class='record-item-foot-btn success' hover-class='record-item-foot-btn-hover-success' hover-stay-time='150'>查看订单</view>
+      </view>
+    </view>
+  </view>
+  <!--/拼团成功  -->
+
+  <!--拼团中  -->
+  <view class='record-list-wrap' wx:else>
+    <view class='record-item' wx:for="{{ingLists}}" wx:for-item="listItem" wx:key="id">
+      <view class='record-item-head flex-row'>
+        <view class='flex-row'>
+          <image class='shop-icon' mode='aspectFit' src='/images/icon/shop.png'></image>
+          <view class='record-item-head-shop'>{{listItem.shop}}</view>
+        </view>
+        <view class='record-item-head-info'>拼团中</view>
+      </view>
+      <view class='record-item-content flex-row'>
+        <image class='record-item-content-img' mode='aspectFit' src='{{listItem.url}}'></image>
+        <view class='flex-column'>
+          <view class='record-item-content-title multi-two-text-flow'>{{listItem.title}}</view>
+          <view class='record-item-content-info flex-row'>
+            <view class='record-item-content-type flex-row'>
+              <image class='people-icon' mode='aspectFit' src='/images/icon/people.png'></image>
+              <view class='record-item-content-type-text'>3人</view>
+            </view>
+            <view class='record-item-content-price'>￥{{listItem.price}}</view>
+          </view>
+        </view>
+      </view>
+      <view class='record-item-foot flex-row'>
+        <view class='record-item-foot-time'>{{listItem.time}}</view>
+        <view class='record-item-foot-btn' hover-class='record-item-foot-btn-hover' hover-stay-time='150'>取消订单</view>
+      </view>
+    </view>
+  </view>
+  <!--/拼团中  -->
+</view>

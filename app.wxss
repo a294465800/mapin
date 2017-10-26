@@ -81,12 +81,26 @@ view {
   height: 8px;
 }
 
+.shop-icon {
+  width: 15px;
+  height: 15px;
+}
+
 /* 文字溢出 */
 
 .text-flow {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.multi-two-text-flow {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
 }
 
 /* 表单 */
