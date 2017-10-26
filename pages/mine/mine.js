@@ -109,6 +109,18 @@ Page({
     wx.navigateTo({
       url: '/pages/contact/contact',
     })
+  },
+
+  //资金提现
+  geToMoneyControl() {
+    // this.isLogin(() => {
+    //   wx.navigateTo({
+    //     url: '/pages/cash/cash',
+    //   })
+    // })
+    wx.navigateTo({
+      url: '/pages/cash/cash',
+    })
   }
 
 })

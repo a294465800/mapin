@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/mine/mine",
+    "pages/cash/cash",
     "pages/contact/contact",
     "pages/helptext/helptext",
     "pages/help/help",

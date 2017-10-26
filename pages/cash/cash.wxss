@@ -1,0 +1,64 @@
+/* pages/cash/cash.wxss */
+
+.container {
+  background-color: #eee;
+  justify-content: space-between;
+  padding-bottom: 30rpx;
+}
+
+.cash-wrap {
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+}
+
+.cash-item {
+  flex: 1;
+  background-color: #fff;
+  padding: 40rpx 0 20rpx;
+  text-align: center;
+}
+
+.cash-item:first-child {
+  margin-right: 5rpx;
+}
+
+.cash-item-money {
+  color: #f2533f;
+}
+
+.cash-item-pre-money {
+  color: #999;
+}
+
+.cash-item-desc {
+  font-size: 16px;
+  padding-top: 20rpx;
+}
+
+.cash-item-tips {
+  font-size: 13px;
+  color: #999;
+}
+
+.cash-record {
+  background-color: #fff;
+  margin-top: 30rpx;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  padding: 30rpx;
+}
+
+/* 提现按钮 */
+
+.cash-btn {
+  width: 94%;
+  background-color: #f9be0a;
+  color: #fff;
+  font-size: 16pt;
+  margin-top: 100rpx;
+}
+
+.cash-hover {
+  background-color: #e8b20d;
+}
