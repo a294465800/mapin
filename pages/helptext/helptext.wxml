@@ -1,0 +1,4 @@
+<!--pages/helptext/helptext.wxml-->
+<view class='container'>
+  <rich-text nodes="{{nodes}}"></rich-text>
+</view>

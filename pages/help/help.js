@@ -25,9 +25,9 @@ Page({
   goToHelp(e) {
     const id = e.currentTarget.dataset.id
     console.log(id)
-    // wx.navigateTo({
-    //   url: '/pages/',
-    // })
+    wx.navigateTo({
+      url: '/pages/helptext/helptext',
+    })
   }
 
 })
