@@ -1,0 +1,14 @@
+/* pages/help/help.wxss */
+
+.container {
+  background-color: #eee;
+}
+
+.help-item {
+  background-color: #fff;
+  padding: 30rpx;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  border-top: 1px solid #eee;
+}

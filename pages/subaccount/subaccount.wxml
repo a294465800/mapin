@@ -1,0 +1,15 @@
+<!--pages/subaccount/subaccount.wxml-->
+<view class='container flex-column'>
+  <view class='sub-account-wrap'>
+    <view class='sub-account-item-title'>添加子帐号</view>
+    <view class='sub-account-item-message'>扫描二维码添加子帐号，添加后子帐号将共享您的帐号权限，如活动创建、数据查询和付款提现，提现收款帐号为主帐号。</view>
+    <button type='button' class='sub-account-btn' hover-class='sub-account-hover' bindtap='scan'>扫一扫</button>
+  </view>
+  <view class='sub-account-wrap'>
+    <view class='sub-account-item-title'>成为子帐号</view>
+    <view class='sub-account-item-message'>将二维码展示给主帐号扫描成为子帐号。</view>
+    <view class="qrcode">
+      <canvas canvas-id="qrcode" />
+    </view>
+  </view>
+</view>

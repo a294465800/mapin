@@ -61,10 +61,51 @@ Page({
     })
   },
 
+  //登录验证
+  isLogin(callback) {
+    if (this.userInfo) {
+      typeof callback === 'function' && callback()
+    }
+    wx.showToast({
+      title: '请先登录',
+    })
+    return false
+  },
+
   //跳转充值
   goToChargeMode() {
+    // this.isLogin(() => {
+    //   wx.navigateTo({
+    //     url: '/pages/recharge/recharge'
+    //   })
+    // })
     wx.navigateTo({
       url: '/pages/recharge/recharge'
+    })
+  },
+
+
+  //子帐号跳转
+  geToSubControl() {
+    // this.isLogin(() => {
+    //   wx.navigateTo({
+    //     url: '/pages/subaccount/subaccount',
+    //   })
+    // })
+    wx.navigateTo({
+      url: '/pages/subaccount/subaccount',
+    })
+  },
+
+  //帮助跳转
+  geToHelpControl() {
+    // this.isLogin(() => {
+    //   wx.navigateTo({
+    //     url: '/pages/help/help',
+    //   })
+    // })
+    wx.navigateTo({
+      url: '/pages/help/help',
     })
   }
 

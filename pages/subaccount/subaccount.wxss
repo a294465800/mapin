@@ -1,0 +1,57 @@
+/* pages/subaccount/subaccount.wxss */
+
+.container {
+  background-color: #eee;
+  height: 100%;
+}
+
+.sub-account-wrap {
+  border-top: 1px solid #eee;
+  background-color: #fff;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.sub-account-wrap:last-child {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.sub-account-item-title {
+  font-size: 16px;
+  color: #333;
+  border-bottom: 1px dashed #666;
+  padding-bottom: 30rpx;
+}
+
+.sub-account-item-message {
+  font-size: 14px;
+  color: #999;
+  padding: 20rpx 0;
+}
+
+.sub-account-btn {
+  width: 100%;
+  background-color: #f9be0a;
+  color: #fff;
+  font-size: 16pt;
+}
+
+.sub-account-hover {
+  background-color: #e8b20d;
+}
+
+/* 二维码 */
+
+.qrcode {
+  /* height: 600rpx; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.qrcode > canvas {
+  width: 550rpx;
+  height: 550rpx;
+}
