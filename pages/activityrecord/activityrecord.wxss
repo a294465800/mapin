@@ -94,3 +94,35 @@
   color: #f9be0a;
   margin-top: 20rpx;
 }
+
+/* 还没创建活动 */
+
+.activity-none-wrap {
+  height: 100%;
+  align-items: center;
+  padding-bottom: 30rpx;
+}
+
+.activity-none-content {
+  flex: 1;
+}
+
+.activity-none-img {
+  width: 532rpx;
+  height: 477rpx;
+}
+
+.activity-none-content>.tips {
+  margin-top: 50rpx;
+}
+
+.activity-none-btn {
+  width: 94%;
+  background-color: #f9be0a;
+  color: #fff;
+  font-size: 16pt;
+}
+
+.activity-none-btn-hover {
+  background-color: #e8b20d;
+}

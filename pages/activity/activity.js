@@ -47,7 +47,9 @@ Page({
 
   //购买
   goToBuy() {
-
+    wx.navigateTo({
+      url: '/pages/commodity/commodity',
+    })
   },
 
   //排序

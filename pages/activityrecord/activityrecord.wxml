@@ -1,8 +1,8 @@
 <!--pages/activityrecord/activityrecord.wxml-->
-<view class='container'>
-  <block wx:if="{{lists.length}}">
+<block wx:if="{{lists.length}}">
+  <view class='container'>
     <view class='activity-list-item' wx:for="{{lists}}" wx:for-item="listItem" wx:key="id">
-    <view class='activity-list-item-id'>活动编号： {{listItem.activity_id}}</view>
+      <view class='activity-list-item-id'>活动编号： {{listItem.activity_id}}</view>
       <view class='activity-list-item-wrap flex-row'>
         <image class='activity-list-item-img' mode='aspectFit' src='{{listItem.url}}'></image>
         <view class='activity-list-item-content'>
@@ -24,8 +24,14 @@
       </view>
       <view class='activity-list-item-timeRange'>{{listItem.time_range}}</view>
     </view>
-  </block>
-  <block wx:else>
-    <view class='tips'>还没有创建过活动</view>
-  </block>
-</view>
+  </view>
+</block>
+<block wx:else>
+  <view class='activity-none-wrap flex-column'>
+    <view class='activity-none-content flex-column flex-center'>
+      <image class='activity-none-img' mode='aspectFit' src='/images/icon/create.png'></image>
+      <view class='tips'>还没有创建过活动</view>
+    </view>
+    <button type='button' class='.activity-none-btn' hover-class='activity-none-btn-hover' bindtap='scan'>立即创建</button>
+  </view>
+</block>

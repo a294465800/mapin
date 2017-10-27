@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/commodity/commodity",
+    "pages/activityrecord/activityrecord",
     "pages/activity/activity",
+    "pages/commodity/commodity",
     "pages/createactivity/createactivity",
     "pages/rules/rules",
     "pages/mine/mine",
     "pages/costrecord/costrecord",
-    "pages/activityrecord/activityrecord",
     "pages/cashrecord/cashrecord",
     "pages/cash/cash",
     "pages/contact/contact",
