@@ -1,0 +1,237 @@
+/* pages/commodity/commodity.wxss */
+
+.container {
+  background-color: #eee;
+  padding-bottom: 200rpx;
+}
+
+.commodity-item-title {
+  padding: 20rpx 30rpx;
+  font-size: 16px;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.commodity-item-title>image {
+  margin-right: 20rpx;
+}
+
+.commodity-detail-info, .commodity-open-group, .commodity-ing-wrap,
+.commodity-exchange-wrap, .commodity-detail-wrap {
+  margin-bottom: 30rpx;
+  background-color: #fff;
+}
+
+/* 商品主要信息 */
+
+.commodity-detail-info {
+  padding: 20rpx 30rpx;
+  font-size: 16px;
+}
+
+.commodity-detail-info>view {
+  justify-content: space-between;
+}
+
+.commodity-detail-info>view:first-child {
+  margin-bottom: 20rpx;
+}
+
+.commodity-detail-info-sell {
+  color: #f9be0a;
+  font-size: 14px;
+}
+
+.commodity-detail-indo-price {
+  align-items: flex-end;
+}
+
+.commodity-detail-info-discount-price {
+  font-size: 17px;
+  color: #f72548;
+  text-shadow: 0 0 1px #ccc;
+  margin-right: 10rpx;
+}
+
+.commodity-detail-info-origin-price {
+  font-size: 13px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.commodity-detail-group-number {
+  font-size: 14px;
+  color: #999;
+}
+
+.commodity-open-types-item-number {
+  align-items: center;
+}
+
+.commodity-open-types-item-number>icon {
+  margin-right: 20rpx;
+}
+
+/* 开团 */
+
+.commodity-open-types {
+  padding: 20rpx 30rpx;
+}
+
+.commodity-open-types-item {
+  padding: 20rpx 30rpx;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 20rpx;
+}
+
+.commodity-open-types-item:last-child {
+  margin-bottom: 0;
+}
+
+.commodity-open-types-item.active {
+  border-color: #f28300;
+}
+
+.commodity-open-types-item-price {
+  color: #f72548;
+}
+
+/* 正在开团 */
+
+.commodity-ing-lists {
+  padding: 0 30rpx;
+}
+
+.commodity-ing-item {
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 0 20rpx;
+  border-bottom: 1px dashed #ddd;
+}
+
+.commodity-ing-item:last-child {
+  border-bottom: 0;
+}
+
+.commodity-ing-item-info {
+  align-items: center;
+}
+
+.commodity-ing-item-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: relative;
+  z-index: 3;
+}
+
+.commodity-ing-item-avatar:nth-of-type(2) {
+  transform: translateX(-40%);
+  z-index: 2;
+}
+
+.commodity-ing-item-avatar:nth-of-type(3) {
+  transform: translateX(-90%);
+  z-index: 1;
+}
+
+.commodity-ing-item-left {
+  font-size: 12px;
+  color: #555;
+}
+
+.commodity-ing-item-btn {
+  font-size: 16px;
+  padding: 20rpx 30rpx;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #f9be0a;
+  box-shadow: 1px 1px 0 #ccc, 1px 1px 5px #ccc;
+}
+
+.commodity-ing-item-btn-hover {
+  background-color: #e8b20d;
+}
+
+.commodity-ing-btn {
+  padding: 20rpx 30rpx;
+  border-top: 1px dashed #ddd;
+  text-align: right;
+  font-size: 14px;
+  color: #999;
+}
+
+/* 兑换信息 */
+
+.commodity-exchange-info {
+  padding: 20rpx 30rpx;
+  font-size: 15px;
+}
+
+.commodity-exchange-info-item {
+  margin-bottom: 20rpx;
+}
+
+.commodity-exchange-info-item:last-child {
+  margin-bottom: 0;
+}
+
+/* 商品详情 */
+
+.commodity-detail-content-title {
+  padding: 20rpx 30rpx;
+  font-size: 15px;
+  line-height: 1.5em;
+}
+
+.commodity-detail-content-img {
+  width: 100%;
+  height: 480rpx;
+  margin-bottom: 20rpx;
+}
+
+.commodity-detail-content-img:last-child {
+  margin-bottom: 0;
+}
+
+/* 购买按钮 */
+
+.commodity-buy-wrap {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: #fff;
+  width: 100%;
+  border-top: 1px solid #ddd;
+}
+
+.commodity-buy-info {
+  flex: 1;
+  padding: 20rpx 30rpx;
+}
+
+.commodity-buy-price {
+  font-size: 17px;
+}
+
+.commodity-buy-price>text {
+  color: #f72548;
+  text-shadow: 0 0 1px #ccc;
+}
+
+.commodity-buy-tips {
+  font-size: 13px;
+  color: #999;
+  margin-top: 10rpx;
+}
+
+.commodity-buy-btn {
+  width: 300rpx;
+  background-color: #f8726f;
+  font-size: 16pt;
+  color: #fff;
+}

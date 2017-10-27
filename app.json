@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/commodity/commodity",
     "pages/activity/activity",
     "pages/createactivity/createactivity",
     "pages/rules/rules",
