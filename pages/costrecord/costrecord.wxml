@@ -31,7 +31,7 @@
       </view>
       <view class='record-item-foot flex-row'>
         <view class='record-item-foot-time'>{{listItem.time}}</view>
-        <view class='record-item-foot-btn success' hover-class='record-item-foot-btn-hover-success' hover-stay-time='150'>查看订单</view>
+        <view class='record-item-foot-btn success' hover-class='record-item-foot-btn-hover-success' hover-stay-time='150' catchtap='checkCostDetail'>查看订单</view>
       </view>
     </view>
   </view>

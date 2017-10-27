@@ -1,11 +1,13 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/costdetail/costdetail",
     "pages/activityrecord/activityrecord",
     "pages/activity/activity",
     "pages/commodity/commodity",
     "pages/createactivity/createactivity",
     "pages/rules/rules",
-    "pages/mine/mine",
     "pages/costrecord/costrecord",
     "pages/cashrecord/cashrecord",
     "pages/cash/cash",
@@ -13,8 +15,7 @@
     "pages/helptext/helptext",
     "pages/help/help",
     "pages/subaccount/subaccount",
-    "pages/recharge/recharge",
-    "pages/index/index"
+    "pages/recharge/recharge"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -56,6 +56,7 @@ Page({
     ]
   },
 
+  //切换导航
   switchNav(e) {
     const id = e.currentTarget.dataset.id
     if (id === this.data.currentNav) {
@@ -63,6 +64,13 @@ Page({
     }
     this.setData({
       currentNav: id
+    })
+  },
+
+  //查看订单
+  checkCostDetail() {
+    wx.navigateTo({
+      url: '/pages/costdetail/costdetail',
     })
   }
 

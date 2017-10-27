@@ -1,0 +1,48 @@
+<!--pages/costdetail/costdetail.wxml-->
+<view class='container'>
+
+  <!--订单信息  -->
+  <view class='cost-detail-wrap'>
+    <view class='cost-detail-content flex-row'>
+      <image class='cost-detail-content-img' mode='aspectFit' src='http://www.duoweifushi.com/images/goods/shopfw/main/thumb/2017/06/28/thumbnail_5653406852ba49e0a5618fd3c4671e2b.jpg'></image>
+      <view class='cost-detail-info flex-column'>
+        <view class='cost-detail-info-title multi-two-text-flow'>这是一件大衣</view>
+        <view class='cost-detail-info-middle flex-row'>
+          <view class='cost-detail-info-middle-num flex-row'>
+            <image class='people-icon' mode='aspectFit' src='/images/icon/people.png'></image>
+            <view>3人•5人•8人</view>
+          </view>
+          <view>已团：124次</view>
+        </view>
+        <view class='cost-detail-info-foot flex-row'>
+          <view class='cost-detail-info-price'>￥293</view>
+          <view class='cost-detail-info-group-num'>3人团</view>
+        </view>
+      </view>
+    </view>
+    <view class='cost-detail-time'>------ 还差1人，剩余 21:15:35 ------</view>
+    <view class='cost-detail-imgs flex-row'>
+      <image class='cost-detail-img' mode='aspectFit' src='http://img.171u.com/image/1605/1608552241288.jpeg'></image>
+      <image class='cost-detail-img' mode='aspectFit' src='http://img.171u.com/image/1605/1608552241288.jpeg'></image>
+    </view>
+  </view>
+  <!--/订单信息  -->
+
+  <!--活动规则  -->
+  <view class='commodity-exchange-wrap'>
+    <view class='commodity-item-title flex-row'>
+      <image class='group-icons' mode='aspectFit' src='/images/icon/group_rules.png'></image>
+      <view>活动规则</view>
+    </view>
+    <view class='commodity-exchange-info'>
+      <view class='commodity-exchange-info-item' wx:for="{{rules}}" wx:for-item="rule">{{index + 1 + '. ' + rule}}</view>
+    </view>
+  </view>
+  <!--/活动规则  -->
+
+  <button open-type='share' type='button' class='cost-detail-btn flex-row flex-center' hover-class='cost-detail-btn-hover'>
+    <image class='share-icon' mode='aspectFit' src='/images/icon/share.png'></image>
+    <view>分享给朋友</view>
+  </button>
+
+</view>

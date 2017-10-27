@@ -31,6 +31,8 @@ Page({
 
   //查看活动
   goToCheck() {
-
+    wx.navigateTo({
+      url: '/pages/commodity/commodity',
+    })
   }
 })

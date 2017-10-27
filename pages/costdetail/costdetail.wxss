@@ -1,0 +1,137 @@
+/* pages/costdetail/costdetail.wxss */
+
+.container {
+  background-color: #eee;
+  padding-bottom: 180rpx;
+}
+
+/* 开头信息部分 */
+
+.cost-detail-wrap {
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+  padding-bottom: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.cost-detail-content-img {
+  width: 200rpx;
+  height: 200rpx;
+  margin-right: 20rpx;
+}
+
+.cost-detail-info {
+  flex: 1;
+  justify-content: space-between;
+}
+
+.cost-detail-content {
+  padding: 20rpx 30rpx;
+  border-bottom: 1px solid #eee;
+}
+
+.cost-detail-info-title {
+  font-size: 16px;
+  color: #333;
+  max-width: 460rpx;
+}
+
+.cost-detail-info-middle {
+  justify-content: space-between;
+  font-size: 13px;
+  color: #999;
+}
+
+.cost-detail-info-middle-num {
+  align-items: center;
+}
+
+.cost-detail-info-middle-num>image {
+  margin-right: 10rpx;
+}
+
+.cost-detail-info-foot {
+  justify-content: space-between;
+}
+
+.cost-detail-info-price {
+  font-size: 17px;
+  color: #f72548;
+  text-shadow: 0 0 1px #ccc;
+}
+
+.cost-detail-info-group-num {
+  font-size: 13px;
+  color: #f9be0a;
+}
+
+.cost-detail-time {
+  font-size: 13px;
+  color: #999;
+  text-align: center;
+  padding-top: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.cost-detail-imgs {
+  justify-content: center;
+}
+
+.cost-detail-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 0 10rpx;
+}
+
+/* 规则 */
+
+.commodity-exchange-wrap {
+  background-color: #fff;
+}
+
+.commodity-item-title {
+  padding: 20rpx 30rpx;
+  font-size: 16px;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.commodity-item-title>image {
+  margin-right: 20rpx;
+}
+
+.commodity-exchange-info {
+  padding: 20rpx 30rpx;
+  font-size: 15px;
+}
+
+.commodity-exchange-info-item {
+  margin-bottom: 20rpx;
+}
+
+.commodity-exchange-info-item:last-child {
+  margin-bottom: 0;
+}
+
+/* 分享按钮 */
+
+.cost-detail-btn {
+  width: 94%;
+  background-color: #f9be0a;
+  color: #fff;
+  font-size: 16pt;
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 30rpx;
+}
+
+.cost-detail-btn>image {
+  margin-right: 20rpx;
+}
+
+.cost-detail-btn-hover {
+  background-color: #e8b20d;
+}

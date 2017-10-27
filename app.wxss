@@ -97,6 +97,11 @@ view {
   height: 20px;
 }
 
+.share-icon {
+  width: 18px;
+  height: 18px;
+}
+
 /* 文字溢出 */
 
 .text-flow {
