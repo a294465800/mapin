@@ -1,0 +1,39 @@
+/* pages/material/material.wxss */
+
+.container {
+  background-color: #eee;
+  padding-top: 30rpx;
+}
+
+.form-part {
+  padding: 0 30rpx;
+  background-color: #fff;
+}
+
+.sms-btn {
+  font-size: 12px;
+  background-color: #f9be0a;
+  color: #fff;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.qr-btn {
+  width: 94%;
+  background-color: #f9be0a;
+  color: #fff;
+  font-size: 16pt;
+  margin-top: 100rpx;
+}
+
+.qr-hover {
+  background-color: #e8b20d;
+}
+
+.tips {
+  font-size: 12px;
+}
+
+.tips>text {
+  color: #f9be0a;
+}

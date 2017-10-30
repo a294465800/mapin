@@ -101,5 +101,8 @@ Page({
     const formObj = e.detail.value
     let subObj = Object.assign(this.data.submitForm, formObj)
     console.log(subObj)
+    wx.navigateTo({
+      url: '/pages/material/material',
+    })
   }
 })

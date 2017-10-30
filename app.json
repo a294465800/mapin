@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/material/material",
     "pages/mine/mine",
     "pages/costdetail/costdetail",
     "pages/activityrecord/activityrecord",

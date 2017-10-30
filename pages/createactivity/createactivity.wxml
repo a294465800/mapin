@@ -93,7 +93,7 @@
     <view class='form-item'>
       <view class='form-title'>活动描述</view>
       <view class='form-group'>
-        <label class='label-beautify' catchtap='getShopAddress'>
+        <label class='label-beautify'>
           <view>商品数量</view>
           <input name="item_number" type='number' placeholder='请合理设置勿超卖'></input>
         </label>
