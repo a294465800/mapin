@@ -58,7 +58,7 @@
           <view class='activity-list-item-plus-btn' hover-class='activity-list-item-plus-btn-hover' hover-stay-time='150'>编辑</view>
           <view class='activity-list-item-plus-btn' hover-class='activity-list-item-plus-btn-hover' hover-stay-time='150'>下线</view>
           <view class='activity-list-item-plus-btn' hover-class='activity-list-item-plus-btn-hover' hover-stay-time='150'>删除</view>
-          <view class='activity-list-item-plus-btn' hover-class='activity-list-item-plus-btn-hover' hover-stay-time='150'>名单</view>
+          <view class='activity-list-item-plus-btn' hover-class='activity-list-item-plus-btn-hover' hover-stay-time='150' catchtap='getJoinRecord' data-id='{{listItem.id}}'>名单</view>
         </view>
       </view>
     </view>

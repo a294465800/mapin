@@ -1,0 +1,39 @@
+<!--pages/joinrecord/joinrecord.wxml-->
+<view class='container flex-column'>
+  <label class='label-beautify'>
+    <view>手机号</view>
+    <input type='number' maxlength='11' placeholder='请输入手机号'></input>
+    <view class='search-btn' hover-class='search-btn-hover' hover-stay-time='150'>查询</view>
+  </label>
+
+  <view class='join-list'>
+    <view class='flex-bug'>
+      <scroll-view class='scroll' scroll-y>
+        <block wx:if="{{lists.length}}">
+          <view class='join-item' wx:for="{{lists}}" wx:for-item="listItem" wx:key="id">
+            <view class='join-item-title flex-row'>
+              <view class='join-item-title-name'>{{listItem.name}}</view>
+              <view class='join-item-title-status'>{{statuText[listItem.status]}}</view>
+              <image class='tel-icon-big' mode='aspectFit' src='/images/icon/tel_big.png'></image>
+            </view>
+            <view class='join-item-content flex-row'>
+              <view class='join-item-content-info flex-column'>
+                <view class='join-item-content-info-text'>联系电话：{{listItem.tel}}</view>
+                <view class='join-item-content-info-text'>报名序号：{{listItem.order}}</view>
+              </view>
+              <view class='join-item-content-btn flex-row' hover-class='join-item-content-btn-hover' hover-stay-time='150'>
+                <view>查看详情</view>
+                <image class='arrow-icon' mode='aspectFit' src='/images/icon/arrow_yellow.png'></image>
+              </view>
+            </view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class='tips'>暂无数据</view>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+
+  <button type='button' class='qr-btn' hover-class='qr-hover' bindtap='export'>名单导出</button>
+</view>

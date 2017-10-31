@@ -48,5 +48,13 @@ Page({
         currentActivity: index
       })
     }
+  },
+
+  //名单跳转
+  getJoinRecord(e) {
+    const id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/joinrecord/joinrecord',
+    })
   }
 })

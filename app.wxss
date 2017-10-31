@@ -46,6 +46,7 @@ view {
   position: absolute;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 /* 轮播 */
@@ -75,6 +76,11 @@ view {
 .tel-icon {
   width: 18px;
   height: 16px;
+}
+
+.tel-icon-big {
+  width: 30px;
+  height: 28px;
 }
 
 .located-icon {
