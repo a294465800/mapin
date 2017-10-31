@@ -89,5 +89,13 @@ Page({
   },
 
   //查看所有拼团
-  goForAllGroups() { }
+  goForAllGroups() { },
+
+  preImg(e) {
+    const current = e.currentTarget.dataset.img
+    wx.previewImage({
+      current,
+      urls: this.data.imgUrls,
+    })
+  }
 })

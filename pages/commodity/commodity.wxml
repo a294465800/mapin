@@ -4,7 +4,7 @@
   <!--轮播  -->
   <swiper indicator-dots autoplay interval="5000" duration="1000" indicator-color='#fff' indicator-active-color='#f9be0a' class='swiper-img-wrap'>
     <swiper-item wx:for="{{imgUrls}}">
-      <image mode='aspectFill' src="{{item}}" class="slide-image" width="355" height="150" />
+      <image catchtap='preImg' data-img='{{item}}' mode='aspectFill' src="{{item}}" class="slide-image" width="355" height="150" />
     </swiper-item>
   </swiper>
   <!--/轮播  -->

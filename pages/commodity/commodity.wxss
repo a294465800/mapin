@@ -198,6 +198,7 @@
   width: 100%;
   height: 480rpx;
   margin-bottom: 20rpx;
+  vertical-align: top;
 }
 
 .commodity-detail-content-img:last-child {
