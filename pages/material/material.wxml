@@ -22,12 +22,12 @@
       </label>
       <label class='label-beautify'>
         <view>手机号码</view>
-        <input type='number' name="phone" placeholder='请输入手机号码' bindinput="phoneNumber"></input>
+        <input type='number' maxlength='11' name="phone" placeholder='请输入手机号码' bindinput="phoneNumber"></input>
         <button class='sms-btn' size='small' disabled='{{!smsOk}}' catchtap='getSms'>{{smsText}}</button>
       </label>
       <label class='label-beautify'>
         <view>验证码</view>
-        <input type='number' name="sms" placeholder='请输入验证码'></input>
+        <input type='number' maxlength='6' name="sms" placeholder='请输入验证码'></input>
       </label>
     </view>
     <button form-type='submit' type='button' class='qr-btn' hover-class='qr-hover'>保存</button>
