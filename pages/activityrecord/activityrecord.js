@@ -3,6 +3,10 @@ const app = getApp()
 Page({
 
   data: {
+    currentActivity: null,
+
+    statusText: ['出售中', '已下线'],
+
     //模拟数据
     lists: [
       {
@@ -13,7 +17,8 @@ Page({
         price: 200,
         old_price: 365,
         url: 'http://www.duoweifushi.com/images/goods/shopfw/main/thumb/2017/06/28/thumbnail_5653406852ba49e0a5618fd3c4671e2b.jpg',
-        time_range: '2017.10.21 - 2017.10.24'
+        time_range: '2017.10.21 - 2017.10.24',
+        status: 0,
       },
       {
         id: 2,
@@ -23,16 +28,25 @@ Page({
         price: 68,
         old_price: 188,
         url: 'http://www.duoweifushi.com/images/goods/shopfw/main/thumb/2017/06/28/thumbnail_5653406852ba49e0a5618fd3c4671e2b.jpg',
-        time_range: '2017.10.21 - 2017.10.24'
+        time_range: '2017.10.21 - 2017.10.24',
+        status: 1,
       }
     ]
   },
 
 
   //查看活动
-  goToCheck() {
-    wx.navigateTo({
-      url: '/pages/commodity/commodity',
-    })
+  goToCheck(e) {
+    const index = e.currentTarget.dataset.index
+    const currentActivity = this.data.currentActivity
+    if (index === currentActivity) {
+      this.setData({
+        currentActivity: null
+      })
+    } else {
+      this.setData({
+        currentActivity: index
+      })
+    }
   }
 })

@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/activityrecord/activityrecord",
     "pages/material/material",
     "pages/mine/mine",
     "pages/costdetail/costdetail",
-    "pages/activityrecord/activityrecord",
     "pages/activity/activity",
     "pages/commodity/commodity",
     "pages/createactivity/createactivity",

@@ -29,7 +29,7 @@
             <view class='activity-list-item-title text-flow'>{{listItem.title}}</view>
             <view class='activity-list-item-info flex-row'>
               <view class='activity-list-item-tuan flex-row flex-center'>
-                <image class='people-icon' mode='aspectFit' src='/images/icon/people.png'></image> 2人●3人
+                <image class='people-icon' mode='aspectFit' src='/images/icon/people.png'></image> 2人•3人
               </view>
               <view class='activity-list-item-sell'>已团：{{listItem.sell}}</view>
             </view>

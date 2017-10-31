@@ -2,6 +2,7 @@
 
 .container {
   background-color: #eee;
+  padding-bottom: 60rpx;
 }
 
 /* 列表 */
@@ -14,12 +15,20 @@
   border-top: 1px solid #eee;
 }
 
+.activity-list-item-title-wrap {
+  justify-content: space-between;
+  border-bottom: 1px dashed #999;
+  padding-bottom: 10rpx;
+  margin-bottom: 20rpx;
+}
+
 .activity-list-item-id {
   color: #666;
   font-size: 13px;
-  padding-bottom: 10rpx;
-  margin-bottom: 20rpx;
-  border-bottom: 1px dashed #999;
+}
+
+.activity-list-item-status {
+  font-size: 13px;
 }
 
 .activity-list-item:last-of-type {
@@ -130,4 +139,74 @@
 
 .activity-none-btn-hover {
   background-color: #e8b20d;
+}
+
+/* 新增功能 */
+
+.activity-list-item-plus {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: height 0.5s, opacity 0.3s;
+}
+
+.activity-list-item-plus.active {
+  opacity: 1;
+  height: 320rpx;
+  justify-content: space-around;
+  transition: height 0.5s, opacity 0.5s;
+}
+
+.activity-list-item-plus-post {
+  font-size: 14px;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dashed #ddd;
+  border-bottom: 1px dashed #ddd;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  margin-top: 20rpx;
+}
+
+.activity-list-item-plus-post-check {
+  color: #3ba6de;
+}
+
+.activity-list-item-plus-post .activity-list-item-btn {
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+
+.activity-list-item-plus-data {
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1px dashed #ddd;
+}
+
+.activity-list-item-plus-data-item {
+  flex: 1;
+  font-size: 14px;
+  text-align: center;
+}
+
+.activity-list-item-plus-data-num {
+  color: #f9be0a;
+}
+
+.activity-list-item-plus-btns {
+  justify-content: flex-end;
+  font-size: 14px;
+  padding-top: 20rpx;
+}
+
+.activity-list-item-plus-btn {
+  border: 1px solid #333;
+  padding: 10rpx 30rpx;
+  border-radius: 4px;
+  margin-left: 30rpx;
+}
+
+.activity-list-item-plus-btn-hover {
+  background-color: #333;
+  color: #fff;
 }

@@ -92,6 +92,10 @@ view {
   height: 10px;
 }
 
+.arrow-down-white-icon.active {
+  transform: rotate(180deg);
+}
+
 .shop-icon {
   width: 15px;
   height: 15px;

@@ -2,14 +2,17 @@
 <block wx:if="{{lists.length}}">
   <view class='container'>
     <view class='activity-list-item' wx:for="{{lists}}" wx:for-item="listItem" wx:key="id">
-      <view class='activity-list-item-id'>活动编号： {{listItem.activity_id}}</view>
+      <view class='activity-list-item-title-wrap flex-row'>
+        <view class='activity-list-item-id'>活动编号： {{listItem.activity_id}}</view>
+        <view class='activity-list-item-status'>{{statusText[listItem.status]}}</view>
+      </view>
       <view class='activity-list-item-wrap flex-row'>
         <image class='activity-list-item-img' mode='aspectFit' src='{{listItem.url}}'></image>
         <view class='activity-list-item-content'>
           <view class='activity-list-item-title text-flow'>{{listItem.title}}</view>
           <view class='activity-list-item-info flex-row'>
             <view class='activity-list-item-tuan flex-row flex-center'>
-              <image class='people-icon' mode='aspectFit' src='/images/icon/people.png'></image> 2人●3人
+              <image class='people-icon' mode='aspectFit' src='/images/icon/people.png'></image> 2人•3人
             </view>
             <view class='activity-list-item-sell'>已团：{{listItem.sell}}</view>
           </view>
@@ -18,14 +21,46 @@
               <view class='activity-list-item-origin-price'>￥{{listItem.price}}起</view>
               <view class='activity-list-item-old-price'>￥{{listItem.old_price}}</view>
             </view>
-            <view class='activity-list-item-btn flex-row' bindtap='goToCheck' hover-class='activity-list-item-btn-hover' hover-stay-time='150'>
+            <view class='activity-list-item-btn flex-row' bindtap='goToCheck' data-index='{{index}}' hover-class='activity-list-item-btn-hover' hover-stay-time='150'>
               <view>查看活动</view>
-              <image class='arrow-down-white-icon' mode='aspectFit' src='/images/icon/arrow_down_white.png'></image>
+              <image class='arrow-down-white-icon {{currentActivity == index?"active":""}}' mode='aspectFit' src='/images/icon/arrow_down_white.png'></image>
             </view>
           </view>
         </view>
       </view>
       <view class='activity-list-item-timeRange'>{{listItem.time_range}}</view>
+      <view class='activity-list-item-plus flex-column {{currentActivity == index?"active":""}}'>
+        <view class='activity-list-item-plus-post flex-row'>
+          <view>活动海报：
+            <text class='activity-list-item-plus-post-check'>点击查看</text>
+          </view>
+          <view class='activity-list-item-btn' hover-class='activity-list-item-btn-hover'>保存</view>
+        </view>
+        <view class='activity-list-item-plus-data flex-row'>
+          <view class='activity-list-item-plus-data-item'>
+            <view>浏览次数</view>
+            <view class='activity-list-item-plus-data-num'>135</view>
+          </view>
+          <view class='activity-list-item-plus-data-item'>
+            <view>分享次数</view>
+            <view class='activity-list-item-plus-data-num'>1235</view>
+          </view>
+          <view class='activity-list-item-plus-data-item'>
+            <view>报名人数</view>
+            <view class='activity-list-item-plus-data-num'>132</view>
+          </view>
+          <view class='activity-list-item-plus-data-item'>
+            <view>成功人数</view>
+            <view class='activity-list-item-plus-data-num'>1235</view>
+          </view>
+        </view>
+        <view class='activity-list-item-plus-btns flex-row'>
+          <view class='activity-list-item-plus-btn' hover-class='activity-list-item-plus-btn-hover' hover-stay-time='150'>编辑</view>
+          <view class='activity-list-item-plus-btn' hover-class='activity-list-item-plus-btn-hover' hover-stay-time='150'>下线</view>
+          <view class='activity-list-item-plus-btn' hover-class='activity-list-item-plus-btn-hover' hover-stay-time='150'>删除</view>
+          <view class='activity-list-item-plus-btn' hover-class='activity-list-item-plus-btn-hover' hover-stay-time='150'>名单</view>
+        </view>
+      </view>
     </view>
   </view>
 </block>
