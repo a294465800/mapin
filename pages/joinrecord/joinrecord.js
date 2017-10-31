@@ -4,7 +4,9 @@ Page({
 
   data: {
 
-    statuText: ['已核销','已成团'],
+    statuText: ['已核销', '已成团'],
+    showBox: false,
+    email: '',
 
     //模拟数据
     lists: [
@@ -38,4 +40,38 @@ Page({
       }
     ]
   },
+
+  //查看详情
+  getMore() {
+    wx.navigateTo({
+      url: '/pages/joinsinglerecord/joinsinglerecord',
+    })
+  },
+
+  //隐藏弹出框
+  hideBox() {
+    this.setData({
+      showBox: false
+    })
+  },
+
+  //显示弹出框
+  showBox() {
+    this.setData({
+      showBox: true
+    })
+  },
+
+  //获取输入
+  getInput(e) {
+    const input = e.detail.value
+    this.setData({
+      email: input
+    })
+  },
+
+  //导出
+  exportList() {
+    console.log(this.data.email)
+  }
 })

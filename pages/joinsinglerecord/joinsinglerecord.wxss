@@ -1,0 +1,41 @@
+/* pages/joinsinglerecord/joinsinglerecord.wxss */
+
+.container {
+  background-color: #eee;
+  padding-top: 30rpx;
+}
+
+.yellow {
+  color: #f9be0a !important;
+}
+
+/* 项 */
+
+.join-info-wrap {
+  background-color: #fff;
+  padding: 0 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.join-info-title {
+  font-size: 20px;
+  border-bottom: 2px solid #eee;
+  padding: 20rpx 0;
+  align-items: center;
+}
+
+.join-info-title>image {
+  margin-right: 20rpx;
+}
+
+.join-info-content-item {
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  color: #999;
+  margin: 20rpx 0;
+}
+
+.join-info-content-item-value {
+  color: #333;
+}

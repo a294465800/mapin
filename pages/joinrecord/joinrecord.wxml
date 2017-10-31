@@ -21,7 +21,7 @@
                 <view class='join-item-content-info-text'>联系电话：{{listItem.tel}}</view>
                 <view class='join-item-content-info-text'>报名序号：{{listItem.order}}</view>
               </view>
-              <view class='join-item-content-btn flex-row' hover-class='join-item-content-btn-hover' hover-stay-time='150'>
+              <view class='join-item-content-btn flex-row' hover-class='join-item-content-btn-hover' hover-stay-time='150' catchtap='getMore'>
                 <view>查看详情</view>
                 <image class='arrow-icon' mode='aspectFit' src='/images/icon/arrow_yellow.png'></image>
               </view>
@@ -35,5 +35,20 @@
     </view>
   </view>
 
-  <button type='button' class='qr-btn' hover-class='qr-hover' bindtap='export'>名单导出</button>
+  <button type='button' class='qr-btn' hover-class='qr-hover' bindtap='showBox'>名单导出</button>
 </view>
+
+<!--名单导出  -->
+<view class='export-wrap' catchtap='hideBox' hidden='{{!showBox}}'>
+  <view class='export-item flex-column' catchtap='showBox'>
+    <view class='export-item-content flex-column'>
+      <view class='export-item-title'>请输入接收数据的邮箱</view>
+      <input focus class='export-input' placeholder='请输入正确的邮箱' bindinput='getInput'></input>
+    </view>
+    <view class='export-item-btns flex-row'>
+      <view class='success' hover-class='success-hover' hover-stay-time='150' catchtap='exportList'>确认</view>
+      <view hover-class='hover-class' hover-stay-time='150' catchtap='hideBox'>取消</view>
+    </view>
+  </view>
+</view>
+<!--/名单导出  -->

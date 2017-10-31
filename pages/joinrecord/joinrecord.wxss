@@ -103,3 +103,68 @@
 .qr-hover {
   background-color: #e8b20d;
 }
+
+/* 名单导出 */
+
+.export-wrap {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.export-item {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 80%;
+  height: 350rpx;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.export-item-content {
+  padding: 30rpx;
+  flex: 1;
+  justify-content: space-around;
+}
+
+.export-item-title {
+  text-align: center;
+  font-size: 15pt;
+}
+
+.export-input {
+  border-bottom: 1px solid #ddd;
+  padding: 10rpx 20rpx;
+  font-size: 15px;
+}
+
+.export-item-btns {
+  border-top: 1px solid #ddd;
+}
+
+.export-item-btns>view {
+  flex: 1;
+  padding: 20rpx 0;
+  text-align: center;
+}
+
+.export-item-btns>view:first-child {
+  border-right: 1px solid #ddd;
+}
+
+.success {
+  color: #f9be0a;
+  border-bottom-left-radius: 5px;
+}
+
+.success-hover {
+  background-color: #f9be0a;
+  color: #fff;
+}
