@@ -37,9 +37,15 @@
   margin-bottom: 20rpx;
 }
 
+.commodity-detail-info-title {
+  flex: 1;
+}
+
 .commodity-detail-info-sell {
   color: #f9be0a;
-  font-size: 14px;
+  font-size: 28rpx;
+  align-self: center;
+  margin-left: 10rpx;
 }
 
 .commodity-detail-indo-price {
@@ -54,7 +60,7 @@
 }
 
 .commodity-detail-info-origin-price {
-  font-size: 13px;
+  font-size: 26rpx;
   color: #999;
   text-decoration: line-through;
 }
@@ -140,12 +146,12 @@
 }
 
 .commodity-ing-item-left {
-  font-size: 12px;
+  font-size: 24rpx;
   color: #555;
 }
 
 .commodity-ing-item-btn {
-  font-size: 16px;
+  font-size: 32rpx;
   padding: 20rpx 30rpx;
   border-radius: 5px;
   color: #fff;
@@ -168,7 +174,7 @@
 /* 兑换信息 */
 
 .commodity-exchange-info {
-  padding: 20rpx 30rpx;
+  padding: 30rpx;
   font-size: 15px;
 }
 

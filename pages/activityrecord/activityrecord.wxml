@@ -18,7 +18,10 @@
               <view class='activity-list-item-origin-price'>￥{{listItem.price}}起</view>
               <view class='activity-list-item-old-price'>￥{{listItem.old_price}}</view>
             </view>
-            <view class='activity-list-item-btn' bindtap='goToCheck' hover-class='activity-list-item-btn-hover' hover-stay-time='150'>查看活动</view>
+            <view class='activity-list-item-btn flex-row' bindtap='goToCheck' hover-class='activity-list-item-btn-hover' hover-stay-time='150'>
+              <view>查看活动</view>
+              <image class='arrow-down-white-icon' mode='aspectFit' src='/images/icon/arrow_down_white.png'></image>
+            </view>
           </view>
         </view>
       </view>

@@ -11,11 +11,11 @@
 }
 
 .sms-btn {
-  font-size: 12px;
+  font-size: 24rpx;
   background-color: #f9be0a;
   color: #fff;
-  padding-left: 6px;
-  padding-right: 6px;
+  padding-left: 6rpx;
+  padding-right: 6rpx;
 }
 
 .qr-btn {

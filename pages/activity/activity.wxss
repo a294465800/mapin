@@ -122,17 +122,17 @@ view.activity-btn-example {
 .activity-list-item-origin-price {
   margin-right: 10rpx;
   color: #f2533f;
-  font-size: 14pt;
+  font-size: 34rpx;
 }
 
 .activity-list-item-old-price {
-  font-size: 13px;
+  font-size: 26rpx;
   color: #999;
   text-decoration: line-through;
 }
 
 .activity-list-item-btn {
-  font-size: 16px;
+  font-size: 32rpx;
   color: #fff;
   background-color: #f9be0a;
   padding: 14rpx 40rpx;

@@ -60,29 +60,34 @@
 }
 
 .activity-list-item-price {
-  font-size: 17px;
+  /* font-size: 17px; */
   align-items: center;
 }
 
 .activity-list-item-origin-price {
   margin-right: 10rpx;
   color: #f2533f;
-  font-size: 14pt;
+  font-size: 36rpx;
 }
 
 .activity-list-item-old-price {
-  font-size: 13px;
+  font-size: 26rpx;
   color: #999;
   text-decoration: line-through;
 }
 
 .activity-list-item-btn {
-  font-size: 16px;
+  font-size: 30rpx;
   color: #fff;
   background-color: #f9be0a;
-  padding: 14rpx 40rpx;
+  padding: 14rpx 20rpx;
   border-radius: 3px;
   box-shadow: 0 1px #ccc, 2px 2px 10px #ccc;
+  align-items: center;
+}
+
+.activity-list-item-btn>view:first-child {
+  margin-right: 10rpx;
 }
 
 .activity-list-item-btn-hover {
