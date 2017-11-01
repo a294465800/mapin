@@ -1,0 +1,22 @@
+/* pages/myinfo/myinfo.wxss */
+
+.container {
+  background-color: #eee;
+}
+
+/* 表单 */
+
+.form-title {
+  font-size: 14px;
+  padding: 20rpx 30rpx;
+  color: #999;
+}
+
+.form-group {
+  padding: 0 30rpx;
+  background-color: #fff;
+}
+
+button {
+  margin-top: 100rpx;
+}

@@ -2,7 +2,7 @@
 <view class='container'>
 
   <!--登录  -->
-  <view class='login-wrap flex-row' hover-class='hover-class' catchtap='{{userInfo?"":"login"}}'>
+  <view class='login-wrap flex-row' hover-class='hover-class' catchtap='{{userInfo?"goToMyInfo":"login"}}'>
     <block wx:if="{{userInfo}}">
       <image class='login-avatar-img' mode='aspectFit' src='{{userInfo.avatarUrl}}'></image>
       <view class='login-avatar-name'>{{userInfo.nickName}}</view>

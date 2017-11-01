@@ -145,6 +145,13 @@ Page({
     wx.navigateTo({
       url: '/pages/costrecord/costrecord',
     })
+  },
+
+  //个人信息跳转
+  goToMyInfo() {
+    wx.navigateTo({
+      url: '/pages/myinfo/myinfo',
+    })
   }
 
 })
