@@ -1,26 +1,15 @@
 //app.js
-let _api = require('/utils/api.js')
+const _api = require('/utils/api.js')
 App({
 
   globalData: {
-    host: 'http://139.199.207.181/Web/'
+    host: 'http://139.199.207.181/Web/',
+    OpenID: wx.getStorageSync('OpenID')
   },
+  //全局 api
+  _api: _api.api,
 
-  //登录api
-  loginApi(login, userInfo) {
-    // _api.loginAPI()
-    wx.request({
-      url: this.globalData.host + 'GetOpenID.aspx',
-      data: {
-        Code: login.code,
-        iv: userInfo.iv,
-        encryptedData: userInfo.encryptedData
-      },
-      success: res => {
-        console.log(res)
-      }
-    })
-
+  onLaunch() {
   },
 
   //获取登录权限
@@ -29,30 +18,38 @@ App({
     wx.showLoading({
       title: '登录中',
     })
-    wx.login({
-      success: (login) => {
-        wx.hideLoading()
-        wx.getUserInfo({
-          withCredentials: true,
-          success: res => {
-            this.loginApi(login, res)
-            typeof callback === 'function' && callback(res.userInfo)
-          },
-          fail: (error) => {
-            wx.openSetting({
-              success(res) {
-                if (res.authSetting['scope.userInfo']) {
-                  that.getUserInfo(callback)
+    if (this.globalData.OpenID) {
+      wx.getUserInfo({
+        success: res => {
+          this._api.getUserAPI(this.globalData.OpenID, res, callback)
+        }
+      })
+      wx.hideLoading()
+    } else {
+      wx.login({
+        success: (login) => {
+          wx.hideLoading()
+          wx.getUserInfo({
+            withCredentials: true,
+            success: res => {
+              this._api.openIDApi(login, res, callback)
+            },
+            fail: (error) => {
+              wx.openSetting({
+                success(res) {
+                  if (res.authSetting['scope.userInfo']) {
+                    that.getUserInfo(callback)
+                  }
                 }
-              }
-            })
-          }
-        })
-      }
-    })
+              })
+            }
+          })
+        }
+      })
+    }
   },
 
-  //获取地址
+  //获取地址，微信地址
   getAddress(callback, flag) {
     const that = this
     if (flag) {
@@ -74,7 +71,7 @@ App({
     })
   },
 
-  //获取经纬度
+  //获取经纬度，微信地图
   getLocation(callback, flag) {
     const that = this
     if (flag) {

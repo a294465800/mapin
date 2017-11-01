@@ -52,6 +52,18 @@ Page({
     ]
   },
 
+  onLoad(){
+    const that = this
+    wx.getStorage({
+      key: 'userInfo',
+      success(res) {
+        that.setData({
+          userInfo: JSON.parse(res.data)
+        })
+      },
+    })
+  },
+
   // 登录
   login() {
     app.getUserInfo(userInfo => {

@@ -5,7 +5,7 @@
   <view class='login-wrap flex-row' hover-class='hover-class' catchtap='{{userInfo?"goToMyInfo":"login"}}'>
     <block wx:if="{{userInfo}}">
       <image class='login-avatar-img' mode='aspectFit' src='{{userInfo.avatarUrl}}'></image>
-      <view class='login-avatar-name'>{{userInfo.nickName}}</view>
+      <view class='login-avatar-name'>{{userInfo.user_Name}}</view>
     </block>
     <block wx:else>
       <view class='login-btn'>请登录</view>
