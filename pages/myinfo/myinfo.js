@@ -32,6 +32,8 @@ Page({
         'userForm.avatarUrl': userInfo.avatarUrl,
         loading: false
       })
+      app.globalData.OpenID = wx.getStorageSync('OpenID')
+      // console.log(wx.getStorageSync('OpenID'))
     } else {
       wx.getStorage({
         key: 'userInfo',
@@ -72,6 +74,7 @@ Page({
   saveUserInfo(e) {
     const formData = e.detail.value
     let postForm = Object.assign(this.data.userForm, formData, { OpenID: app.globalData.OpenID })
+    console.log(postForm)
     app._api.postUserAPI(postForm, (res) => {
       wx.showToast({
         title: '保存成功',

@@ -11,7 +11,7 @@ let api = {
   },
 
 
-  //登录接口
+  //获取 OpenID
   openIDApi: function (login, wxUserInfo, callback) {
     wx.request({
       url: host + 'GetOpenID.aspx',
@@ -71,6 +71,9 @@ let api = {
     wx.request({
       url: host + 'UserSave.aspx',
       method: 'POST',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
       data: data,
       success: res => {
         if (res.data.toLowerCase() === 'failed') {
