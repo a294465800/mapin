@@ -76,6 +76,7 @@ let api = {
       wx.showModal({
         title: '提示',
         content: err.data,
+        showCancel: false
       })
     })
   },
@@ -104,7 +105,6 @@ let api = {
 
   //提交用户信息
   postUserAPI(data, callback) {
-<<<<<<< HEAD
     _http.post(host + 'UserSave.aspx', data)
       .then(res => {
         typeof callback === 'function' && callback(res)
@@ -112,59 +112,9 @@ let api = {
         wx.showModal({
           title: '提示',
           content: err.data,
+          showCancel: false
         })
       })
-    // wx.request({
-    //   url: host + 'UserSave.aspx',
-    //   method: 'POST',
-    //   data: data,
-    //   success: res => {
-    //     if (res.data.toLowerCase() === 'failed') {
-    //       this.errorFnc()
-    //     } else {
-    //       typeof callback === 'function' && callback(res)
-    //     }
-    //   },
-    //   fail: error => {
-    //     this.errorFnc()
-    //   }
-    // })
-||||||| merged common ancestors
-    wx.request({
-      url: host + 'UserSave.aspx',
-      method: 'POST',
-      data: data,
-      success: res => {
-        if (res.data.toLowerCase() === 'failed') {
-          this.errorFnc()
-        } else {
-          typeof callback === 'function' && callback(res)
-        }
-      },
-      fail: error => {
-        this.errorFnc()
-      }
-    })
-=======
-    wx.request({
-      url: host + 'UserSave.aspx',
-      method: 'POST',
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      data: data,
-      success: res => {
-        if (res.data.toLowerCase() === 'failed') {
-          this.errorFnc()
-        } else {
-          typeof callback === 'function' && callback(res)
-        }
-      },
-      fail: error => {
-        this.errorFnc()
-      }
-    })
->>>>>>> 395e7fdb325511846f85f8ea872dd7222c48d3a1
   }
 }
 
