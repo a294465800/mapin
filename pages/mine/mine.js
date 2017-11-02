@@ -52,7 +52,7 @@ Page({
     ]
   },
 
-  onLoad(){
+  onLoad() {
     const that = this
     wx.getStorage({
       key: 'userInfo',
@@ -62,6 +62,10 @@ Page({
         })
       },
     })
+  },
+
+  onShow() {
+    console.log(app.globalData.OpenID)
   },
 
   // 登录

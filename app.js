@@ -4,7 +4,7 @@ App({
 
   globalData: {
     host: 'http://139.199.207.181/Web/',
-    OpenID: wx.getStorageSync('OpenID')
+    OpenID: wx.getStorageSync('OpenID') || ''
   },
   //全局 api
   _api: _api.api,
