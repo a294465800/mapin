@@ -12,7 +12,7 @@
             <image class='people-icon' mode='aspectFit' src='/images/icon/people.png'></image>
             <view>3人•5人•8人</view>
           </view>
-          <view>已团：124次</view>
+          <view>已团：124人</view>
         </view>
         <view class='cost-detail-info-foot flex-row'>
           <view class='cost-detail-info-price'>￥293</view>

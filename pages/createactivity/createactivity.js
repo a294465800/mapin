@@ -1,13 +1,31 @@
 // pages/createactivity/createactivity.js
 const app = getApp()
+const date = new Date()
 Page({
 
   data: {
+    payAll: true,
     submitForm: {
-      startTime: '2017-10-21',
-      endTime: '',
-      sameAsShop: true,
-      payAll: false,
+      // RecordID: '',
+      fig_Name: '',
+      fig_StartDate: date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate(),
+      fig_endDate: '',
+      fit_Price: '',
+      fig_Number1: '',
+      fig_Price1: '',
+      fig_Number2: '',
+      fig_Price2: '',
+      fig_Number3: '',
+      fig_Price3: '',
+      fig_Address: '',
+      fig_latitude: '',
+      fig_longitude: '',
+      fig_Tel: '',
+      fig_Number: '',
+      fig_IFSameAction: 'Y',
+      fig_IFAllPay: 'Y',
+      fig_prepay: '',
+      fig_ImgPath: []
     },
 
     tempImgs: []
@@ -15,26 +33,26 @@ Page({
 
   //获取开始时间
   getStartTime(e) {
-    const startTime = e.detail.value
+    const fig_StartDate = e.detail.value
     this.setData({
-      'submitForm.startTime': startTime,
-      'submitForm.endTime': startTime
+      'submitForm.fig_StartDate': fig_StartDate,
+      'submitForm.fig_endDate': fig_StartDate
     })
   },
 
   //获取结束时间
   getEndTime(e) {
-    const endTime = e.detail.value
+    const fig_endDate = e.detail.value
     this.setData({
-      'submitForm.endTime': endTime
+      'submitForm.fig_endDate': fig_endDate
     })
   },
 
   //同店活动
   sameAsShop(e) {
-    const sameAsShop = e.detail.value
+    const fig_IFSameAction = e.detail.value
     this.setData({
-      'submitForm.sameAsShop': sameAsShop
+      'submitForm.fig_IFSameAction': fig_IFSameAction ? 'Y' : 'N'
     })
   },
 
@@ -42,45 +60,45 @@ Page({
   payAll(e) {
     const payAll = e.detail.value
     this.setData({
-      'submitForm.payAll': payAll
+      payAll,
+      'submitForm.fig_IFAllPay': payAll ? 'Y' : 'N'
     })
   },
 
   //获取商家地址
   getShopAddress() {
     const that = this
-    app.getAddress((res) => {
+    app.getLocation((res) => {
       that.setData({
-        'submitForm.address': res.provinceName + res.cityName + res.countyName + res.detailInfo
+        'submitForm.fig_latitude': res.latitude,
+        'submitForm.fig_longitude': res.longitude,
+        'submitForm.fig_Address': res.address,
       })
     })
-  },
-
-  //填写介绍
-  goToTextarea() {
-    // wx.navigateTo({
-    //   url: '',
-    // })
   },
 
   //选择图片
   chooseImg() {
     const that = this
-    const oldImgs = that.data.tempImgs
+    const oldImgs = that.data.submitForm.fig_ImgPath
     wx.chooseImage({
       count: 9,
+      sizeType: 'compressed',
       success(res) {
-        let tmp = oldImgs.concat(res.tempFilePaths)
-        if (tmp.length <= 9) {
-          that.setData({
-            tempImgs: tmp
-          })
-        } else {
-          tmp.length = 9
-          that.setData({
-            tempImgs: tmp
-          })
-        }
+        app._api.uploadImg(res.tempFilePaths, 0, newimgs => {
+          // console.log(newimgs)
+          // let tmp = oldImgs.concat(newimgs)
+          if (newimgs.length <= 9) {
+            that.setData({
+              'submitForm.fig_ImgPath': newimgs
+            })
+          } else {
+            newimgs.length = 9
+            that.setData({
+              'submitForm.fig_ImgPath': newimgs
+            })
+          }
+        }, oldImgs)
       },
     })
   },
@@ -88,21 +106,37 @@ Page({
   //删除图片
   deleteImg(e) {
     const img = e.currentTarget.dataset.img
-    let imgGroups = this.data.tempImgs
+    let imgGroups = this.data.submitForm.fig_ImgPath
     const index = imgGroups.indexOf(img)
     imgGroups.splice(index, 1)
     this.setData({
-      tempImgs: imgGroups
+      'submitForm.fig_ImgPath': imgGroups
     })
   },
 
   //确认创建
   createSubmit(e) {
     const formObj = e.detail.value
-    let subObj = Object.assign(this.data.submitForm, formObj)
-    console.log(subObj)
-    wx.navigateTo({
-      url: '/pages/material/material',
+    let subObj = Object.assign(this.data.submitForm, formObj, { RecordIDShop: app.globalData.userInfo.RecordID })
+    // console.log(app.globalData.userInfo)
+    for (let it in subObj) {
+      if (it === 'fig_prepay' && subObj.fig_IFAllPay === 'Y') {
+        continue
+      } else {
+        if (!subObj[it]) {
+          wx.showModal({
+            title: '提示',
+            content: '信息不能为空',
+            showCancel: false
+          })
+          return false
+        }
+      }
+    }
+    app._api.postCreateActivity(subObj, (res) => {
+      wx.showToast({
+        title: '创建成功',
+      })
     })
   }
 })

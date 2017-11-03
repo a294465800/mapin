@@ -34,14 +34,15 @@ Page({
       })
       app.globalData.OpenID = wx.getStorageSync('OpenID')
     } else {
-      wx.getStorage({
-        key: 'userInfo',
-        success(res) {
-          that.setData({
-            userForm: JSON.parse(res.data),
-            loading: false
-          })
-        },
+      app._api.getUserAPI(app.globalData.OpenID, null, (res) => {
+        this.setData({
+          userForm: res,
+          loading: false
+        })
+        wx.setStorage({
+          key: 'userInfo',
+          data: JSON.stringify(res),
+        })
       })
     }
   },

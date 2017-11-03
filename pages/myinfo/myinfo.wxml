@@ -22,7 +22,7 @@
           </label>
           <label class='label-beautify'>
             <view>电话</view>
-            <input name="user_Tel" type='number' placeholder='请输入用户电话'></input>
+            <input name="user_Tel" value='{{userForm.user_Tel}}' type='number' placeholder='请输入用户电话'></input>
           </label>
           <block wx:if="{{userForm.user_Type && userForm.user_Type == 'B'}}">
             <label class='label-beautify'>
@@ -31,11 +31,11 @@
             </label>
             <label class='label-beautify'>
               <view>商家名称</view>
-              <input name="user_Company" placeholder='请输入商家名称'></input>
+              <input name="user_Company" value='{{userForm.user_Company}}' placeholder='请输入商家名称'></input>
             </label>
             <label class='label-beautify'>
               <view>职务</view>
-              <input name="user_Post" placeholder='请输入职务'></input>
+              <input name="user_Post" value='{{userForm.user_Post}}' placeholder='请输入职务'></input>
             </label>
           </block>
           <block wx:else>

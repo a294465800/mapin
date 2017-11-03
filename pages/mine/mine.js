@@ -10,7 +10,7 @@ Page({
       {
         id: 1,
         name: '消费记录',
-        url: '/images/icon/activity.png',
+        url: '/images/icon/cost.png',
         fnc: 'geToRecordControl'
       },
       {

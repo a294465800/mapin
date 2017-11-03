@@ -6,19 +6,19 @@
       <view class='form-group'>
         <label class='label-beautify'>
           <view>活动标题</view>
-          <input name="title" maxlength='30' placeholder='不超过30个字'></input>
+          <input name="fig_Name" value='{{submitForm.fig_Name}}' maxlength='30' placeholder='不超过30个字'></input>
         </label>
         <label class='label-beautify'>
           <view>活动开始</view>
-          <picker mode="date" value="{{submitForm.startTime}}" start="{{submitForm.startTime}}" end="2027-01-01" bindchange="getStartTime">
-            <view class="picker"> {{submitForm.startTime}}
+          <picker mode="date" value="{{submitForm.fig_StartDate}}" start="{{submitForm.fig_StartDate}}" end="2027-01-01" bindchange="getStartTime">
+            <view class="picker"> {{submitForm.fig_StartDate}}
             </view>
           </picker>
         </label>
         <label class='label-beautify'>
           <view>活动结束</view>
-          <picker mode="date" value="{{submitForm.endTime}}" start="{{submitForm.startTime}}" end="2027-01-01" bindchange="getEndTime">
-            <view class="picker"> {{submitForm.endTime || submitForm.startTime}}
+          <picker mode="date" value="{{submitForm.fig_endDate}}" start="{{submitForm.fig_StartDate}}" end="2027-01-01" bindchange="getEndTime">
+            <view class="picker"> {{submitForm.fig_endDate || submitForm.fig_StartDate}}
             </view>
           </picker>
         </label>
@@ -36,13 +36,17 @@
       <view class='form-group'>
         <label class='label-beautify'>
           <view>商品原价</view>
-          <input name="origin_price" type='digit' placeholder='商品原价（元）'></input>
+          <input name="fit_Price" value='{{submitForm.fit_Price}}' type='digit' placeholder='商品原价（元）'></input>
         </label>
         <label class='label-beautify'>
           <view>全额支付</view>
           <view class='switch'>
-            <switch bindchange="payAll" />
+            <switch checked bindchange="payAll" />
           </view>
+        </label>
+        <label wx:if="{{!payAll}}" class='label-beautify'>
+          <view>预付款</view>
+          <input name="fig_prepay" value='{{submitForm.fig_prepay}}' type='digit' placeholder='建议原价的10%以上'></input>
         </label>
         <label class='label-beautify'>
           <view>团长优惠</view>
@@ -50,27 +54,27 @@
         </label>
         <label class='label-beautify'>
           <view>人数</view>
-          <input name="group1_count" type='number' placeholder='1号团人数设定'></input>
+          <input name="fig_Number1" value='{{submitForm.fig_Number1}}' type='number' placeholder='1号团人数设定'></input>
         </label>
         <label class='label-beautify'>
           <view>商品价格</view>
-          <input name="group1_price" type='digit' placeholder='每件商品价格（元）'></input>
+          <input name="fig_Price1" value='{{submitForm.fig_Price1}}' type='digit' placeholder='每件商品价格（元）'></input>
         </label>
         <label class='label-beautify'>
           <view>人数</view>
-          <input name="group2_count" type='number' placeholder='2号团人数设定'></input>
+          <input name="fig_Number2" value='{{submitForm.fig_Number2}}' type='number' placeholder='2号团人数设定'></input>
         </label>
         <label class='label-beautify'>
           <view>商品价格</view>
-          <input name="group2_price" type='digit' placeholder='每件商品价格（元）'></input>
+          <input name="fig_Price2" value='{{submitForm.fig_Price2}}' type='digit' placeholder='每件商品价格（元）'></input>
         </label>
         <label class='label-beautify'>
           <view>人数</view>
-          <input name="group3_count" type='number' placeholder='3号团人数设定'></input>
+          <input name="fig_Number3" value='{{submitForm.fig_Number3}}' type='number' placeholder='3号团人数设定'></input>
         </label>
         <label class='label-beautify'>
           <view>商品价格</view>
-          <input name="group3_price" type='digit' placeholder='每件商品价格（元）'></input>
+          <input name="fig_Price3" value='{{submitForm.fig_Price3}}' type='digit' placeholder='每件商品价格（元）'></input>
         </label>
       </view>
       <view class='form-tips'>三种类型，价格应梯度降低,人数应梯度增加</view>
@@ -81,11 +85,11 @@
       <view class='form-group'>
         <label class='label-beautify' catchtap='getShopAddress'>
           <view>商家地址</view>
-          <view class='simulate-input text-flow'>{{submitForm.address || '商家地址'}}</view>
+          <view class='simulate-input text-flow'>{{submitForm.fig_Address || '商家地址'}}</view>
         </label>
         <label class='label-beautify'>
           <view>服务电话</view>
-          <input name="phone" type='number' placeholder='商家服务电话'></input>
+          <input name="fig_Tel" value='{{submitForm.fig_Tel}}' type='number' placeholder='商家服务电话'></input>
         </label>
       </view>
     </view>
@@ -95,11 +99,12 @@
       <view class='form-group'>
         <label class='label-beautify'>
           <view>商品数量</view>
-          <input name="item_number" type='number' placeholder='请合理设置勿超卖'></input>
+          <input name="fig_Number" value='{{submitForm.fig_Number}}' type='number' placeholder='请合理设置勿超卖'></input>
         </label>
-        <label class='label-beautify'>
+        <label class='label-beautify flex-column textarea'>
           <view>活动介绍</view>
-          <view class='simulate-input text-flow' catchtap='goToTextarea'>商品介绍最多800字</view>
+          <!-- <view class='simulate-input text-flow' catchtap='goToTextarea'>商品介绍最多800字</view> -->
+          <textarea value='{{submitForm.fig_Content}}' name="fig_Content" placeholder='商品介绍最多800字' maxlength='800'></textarea>
         </label>
       </view>
     </view>
@@ -108,14 +113,14 @@
       <view class='form-title'>活动图片</view>
       <view class='form-group'>
         <view class='form-imgs flex-row'>
-          <block wx:if="{{tempImgs.length}}">
-            <block wx:for="{{tempImgs}}" wx:key="*this" wx:for-item="img">
-              <image class='form-pre-img' mode='aspectFit' src='{{img}}'>
+          <block wx:if="{{submitForm.fig_ImgPath.length}}">
+            <block wx:for="{{submitForm.fig_ImgPath}}" wx:key="*this" wx:for-item="img">
+              <image class='form-pre-img' mode='aspectFit' src='{{"http://139.199.207.181/" + img}}'>
                 <icon class='close-btn' type='clear' size='20' color='#f9be0a' data-img='{{img}}' catchtap='deleteImg'></icon>
               </image>
             </block>
           </block>
-          <block wx:if="{{tempImgs.length >= 9}}">
+          <block wx:if="{{submitForm.fig_ImgPath.length >= 9}}">
           </block>
           <block wx:else>
             <image class='plus-icon' mode='aspectFit' src='/images/icon/plus.png' catchtap='chooseImg'></image>
@@ -130,6 +135,6 @@
         <view class='form-rule'>活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则</view>
       </view>
     </view>
-    <button form-type='submit' type='button' class='submit-btn' hover-class='submit-hover' bindtap='scan'>确认创建</button>
+    <button form-type='submit' type='button' class='submit-btn' hover-class='submit-hover'>确认创建</button>
   </form>
 </view>

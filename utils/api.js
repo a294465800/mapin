@@ -1,4 +1,5 @@
 const host = 'http://139.199.207.181/Web/'
+const host_upload = 'http://139.199.207.181/'
 
 //请求 promise 封装
 const _http = {
@@ -115,7 +116,42 @@ let api = {
           showCancel: false
         })
       })
-  }
+  },
+
+  //创建活动提交
+  postCreateActivity(data, callback) {
+    _http.post(host + 'GroupCreateSave.aspx', data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      }).catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  },
+
+  //图片上传
+  uploadImg: function (imgs, n, cb, arr) {
+    if (imgs[n]) {
+      wx.uploadFile({
+        url: host_upload + 'UploadFiles.aspx',
+        filePath: imgs[n],
+        name: 'fileImages',
+        success: res => {
+          const tmp = JSON.parse(res.data)
+          arr.push(tmp.filePath)
+          return this.uploadImg(imgs, n + 1, cb, arr)
+        },
+        fail: err => {
+          this.errorFnc()
+        }
+      })
+    } else {
+      typeof cb === 'function' && cb(arr)
+    }
+  },
 }
 
 module.exports = { api }

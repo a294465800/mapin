@@ -5,6 +5,18 @@
   padding-bottom: 60rpx;
 }
 
+.textarea {
+  align-items: flex-start;
+}
+
+.textarea textarea {
+  width: 100%;
+  height: 150px;
+  font-size: 15px;
+  box-sizing: border-box;
+  padding: 10rpx;
+}
+
 /* 表单 */
 
 .form-title {

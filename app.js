@@ -4,12 +4,17 @@ App({
 
   globalData: {
     host: 'http://139.199.207.181/Web/',
-    OpenID: wx.getStorageSync('OpenID') || ''
+    OpenID: wx.getStorageSync('OpenID') || '',
+    userInfo: null,
   },
   //全局 api
   _api: _api.api,
 
   onLaunch() {
+    const userInfo = wx.getStorageSync('userInfo')
+    if (userInfo) {
+      this.globalData.userInfo = JSON.parse(userInfo)
+    }
   },
 
   //获取登录权限
