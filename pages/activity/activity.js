@@ -48,7 +48,6 @@ Page({
 
   onLoad() {
     app._api.getAllActivity('', res => {
-      console.log(res)
       this.setData({
         lists: res.data.TeamList,
         loading: false

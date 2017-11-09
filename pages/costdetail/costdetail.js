@@ -10,6 +10,18 @@ Page({
       '奖品数量有限，先到先得',
       '团购成功后，前往商家出兑换'
     ],
+
+    commodity: null
+  },
+
+  onLoad(options) {
+    const RecordID = options.RecordID
+    app._api.getActivityResult({ RecordID }, res => {
+      console.log(res)
+      this.setData({
+        commodity: res.data
+      })
+    })
   },
 
   //分享

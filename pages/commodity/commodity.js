@@ -7,29 +7,15 @@ Page({
     imgUrls: [],
     loading: true,
     currentPrice: 0,
+    currentGroup: 0,
+    joinGroup: 0,
+    showDetail: false,
 
     //头像循环
     avatarTmpArr: ['', '', ''],
     typeIndex: 1,
-    // currentType: 1,
 
     //模拟数据
-
-    //正在拼团
-    groupings: [
-      {
-        id: 1,
-        avatars: ['http://img.171u.com/image/1605/1608552241288.jpeg', 'http://p2.wmpic.me/article/2015/04/15/1429062874_HiUlpSXT.jpeg'],
-        left_people: 1,
-        left_time: '23:11:05',
-      },
-      {
-        id: 2,
-        avatars: ['http://p2.wmpic.me/article/2015/04/15/1429062874_HiUlpSXT.jpeg'],
-        left_people: 4,
-        left_time: '16:44:23',
-      }
-    ],
 
     //活动规则
     rules: [
@@ -48,7 +34,8 @@ Page({
       this.setData({
         commodity: res.data,
         loading: false,
-        currentPrice: res.data.fig_Price3
+        currentPrice: res.data.fig_Price1,
+        currentGroup: res.data.fig_Number1
       })
     })
   },
@@ -69,12 +56,6 @@ Page({
     })
   },
 
-  //参团
-  // groupRightNow(e) {
-  //   const id = e.currentTarget.dataset.id
-  //   console.log(id)
-  // },
-
   //查看所有拼团
   goForAllGroups() { },
 
@@ -86,15 +67,71 @@ Page({
     })
   },
 
+  //参团信息显示
+  showDetail() {
+    this.setData({
+      showDetail: true
+    })
+  },
+
+  //参团信息隐藏
+  hideDetail() {
+    this.setData({
+      showDetail: false
+    })
+  },
+
+  //显示储存开团信息
+  showSaveDetail(e) {
+    const index = e.currentTarget.dataset.join_group
+    this.setData({
+      showDetail: true,
+      joinGroup: index
+    })
+  },
+
   //参团
   joinActivity(e) {
+    console.log(e)
     const type = e.currentTarget.dataset.type
+    let postData = {
+      RecordIDShop: this.data.commodity.RecordIDShop,
+      type: type,
+      fight_Type: this.data.typeIndex,
+      OpenID: app.globalData.OpenID,
+      RecordMainID: this.data.commodity.RecordMainID
+    }
+    let text = ''
+    if (type == '1') {
+      text = `你即将创建${this.data.currentGroup}人团，价格为${this.data.currentPrice}元，团长优惠${this.data.commodity.fig_OuterMoney}元，确定付款吗？`
+    }
+    else if (type == '2') {
+      const currentGroup = this.data.commodity.OnGroups[this.data.joinGroup]
+      postData.RecordSubID = currentGroup.RecordSubID
+      text = `你即将参加${this.data.currentGroup}人团，价格为${this.data.currentPrice}元，确定付款吗？`
+    }
     wx.showModal({
       title: '提示',
-      content: '',
-    })
-    app._api.joinActivity(data, res => {
-
+      content: text,
+      success: ok => {
+        if (ok.confirm) {
+          app._api.joinActivity(postData, res => {
+            const RecordID = res.data.RecordID
+            wx.showToast({
+              title: '成功',
+              complete: () => {
+                wx.navigateTo({
+                  url: '/pages/costdetail/costdetail?RecordID=' + RecordID,
+                })
+              }
+            })
+          })
+        } else {
+          wx.showToast({
+            title: '已取消',
+          })
+        }
+      }
     })
   }
 })

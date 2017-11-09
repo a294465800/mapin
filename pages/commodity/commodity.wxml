@@ -84,8 +84,8 @@
             <view class='commodity-ing-item-info flex-row'>
               <view class='commodity-ing-item-avatars'>
                 <block wx:for="{{avatarTmpArr}}" wx:for-item="tmpArr" wx:for-index="tmpArrIndex">
-                  <block wx:if="{{ingItem.Imgpath && ingItem.Imgpath[tmpArrIndex]  && (tmpArrIndex <= 1)}}">
-                    <image class='commodity-ing-item-avatar' mode='aspectFit' src='{{ingItem.Imgpath[tmpArrIndex]}}'></image>
+                  <block wx:if="{{ingItem.avatarUrl && ingItem.avatarUrl[tmpArrIndex]  && (tmpArrIndex <= 1)}}">
+                    <image class='commodity-ing-item-avatar' mode='aspectFit' src='{{ingItem.avatarUrl[tmpArrIndex]}}'></image>
                   </block>
                   <block wx:else>
                     <image class='commodity-ing-item-avatar' mode='aspectFit' src='/images/icon/query.png'></image>
@@ -94,7 +94,7 @@
               </view>
               <view class='commodity-ing-item-left'>{{ingItem.man}},{{ingItem.time}}</view>
             </view>
-            <view class='commodity-ing-item-btn' hover-class='commodity-ing-item-btn-hover' hover-stay-time='150' catchtap='joinActivity' data-type='2' data-id='{{ingItem.RecordSubID}}'>立即参团</view>
+            <view class='commodity-ing-item-btn' hover-class='commodity-ing-item-btn-hover' hover-stay-time='150' data-type='2' data-join_group='{{ingIndex}}' catchtap='showSaveDetail'>立即参团</view>
           </view>
         </view>
         <view class='commodity-ing-btn' catchtap='goForAllGroups'>
@@ -126,7 +126,7 @@
     <view class='commodity-detail-wrap'>
       <view class='commodity-item-title flex-row'>
         <image class='group-icons' mode='aspectFit' src='/images/icon/group_details.png'></image>
-        <view>商品详情{{commodity.OnGroups[0].man}}</view>
+        <view>商品详情</view>
       </view>
       <view class='commodity-detail-content'>
         <view class='commodity-detail-content-title'>{{commodity.fig_Content}}</view>
@@ -162,3 +162,33 @@
     <!--/购买  -->
   </view>
 </block>
+
+<view class='join-group-wrap {{showDetail?"active":""}}' catchtap='hideDetail'>
+  <!--订单信息  -->
+  <view class='cost-detail-wrap'>
+    <i class='close-icon-btn' catchtap="hideDetail">X</i>
+    <view class='cost-detail-content flex-row' catchtap='showDetail'>
+      <image class='cost-detail-content-img' mode='aspectFit' src='{{commodity.fig_ImgPath.length?commodity.fig_ImgPath[0]:"/images/icon/no-img.png"}}'></image>
+      <view class=' cost-detail-info flex-column '>
+        <view class='cost-detail-info-title multi-two-text-flow '>{{commodity.fig_Name}}</view>
+        <!-- <view class='cost-detail-info-middle flex-row '>
+          <view class='cost-detail-info-middle-num flex-row '>
+            <image class='people-icon ' mode='aspectFit ' src='/images/icon/people.png '></image>
+            <view>{{commodity.fig_Number1}}人•{{commodity.fig_Number2}}人•{{commodity.fig_Number3}}人</view>
+          </view>
+          <view>已团：{{commodity.fig_GroupMans}}人</view>
+        </view> -->
+        <view class='cost-detail-info-foot flex-row '>
+          <view class='cost-detail-info-price '>￥{{commodity.OnGroups[joinGroup].price}}</view>
+          <view class='cost-detail-info-group-num '>{{commodity.OnGroups[joinGroup].fig_AttendTypeNum}}人团</view>
+        </view>
+      </view>
+    </view>
+    <view class='cost-detail-time '>------ {{commodity.OnGroups[joinGroup].man}}，{{commodity.OnGroups[joinGroup].time}} ------</view>
+    <view class='cost-detail-imgs flex-row '>
+      <image wx:for="{{commodity.OnGroups[joinGroup].avatarUrl}}" class='cost-detail-img ' mode='aspectFit ' src='{{item}} '></image>
+    </view>
+    <button data-type='2' catchtap='joinActivity' type='button ' class='cost-detail-btn ' hover-class='cost-detail-btn-hover '>确定参团</button>
+  </view>
+  <!--/订单信息  -->
+</view>

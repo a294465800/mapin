@@ -33,6 +33,11 @@ view {
 
 /* flex 通用 */
 
+.flex-wrap {
+  flex: 1;
+  position: relative;
+}
+
 .flex-row {
   display: flex;
   flex-direction: row;

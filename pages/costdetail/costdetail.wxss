@@ -2,7 +2,12 @@
 
 .container {
   background-color: #eee;
-  padding-bottom: 180rpx;
+  padding-bottom: 30rpx;
+}
+
+.scroll {
+  width: 100%;
+  height: 100%;
 }
 
 /* 开头信息部分 */
@@ -88,6 +93,7 @@
 
 .commodity-exchange-wrap {
   background-color: #fff;
+  margin-bottom: 30rpx;
 }
 
 .commodity-item-title {
@@ -120,12 +126,12 @@
   width: 94%;
   background-color: #f9be0a;
   color: #fff;
-  font-size: 16pt;
-  position: fixed;
+  font-size: 18px;
+  /* position: fixed;
   left: 0;
   right: 0;
   margin: auto;
-  bottom: 30rpx;
+  bottom: 30rpx; */
 }
 
 .cost-detail-btn>image {

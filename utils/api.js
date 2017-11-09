@@ -226,7 +226,22 @@ let api = {
           showCancel: false
         })
       })
-  }
+  },
+
+  //活动成功的结果
+  getActivityResult(data, callback) {
+    _http.get(`${host}GroupTeamResult.aspx`, data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      })
+      .catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  },
 }
 
 module.exports = { api }
