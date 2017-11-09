@@ -125,6 +125,7 @@
 
 .commodity-ing-item-info {
   align-items: center;
+  flex: 1;
 }
 
 .commodity-ing-item-avatar {
@@ -148,11 +149,12 @@
 .commodity-ing-item-left {
   font-size: 24rpx;
   color: #555;
+  flex: 1;
 }
 
 .commodity-ing-item-btn {
   font-size: 32rpx;
-  padding: 20rpx 30rpx;
+  padding: 20rpx;
   border-radius: 5px;
   color: #fff;
   background-color: #f9be0a;

@@ -1,134 +1,164 @@
 <!--pages/commodity/commodity.wxml-->
-<view class='container'>
-
-  <!--轮播  -->
-  <swiper indicator-dots autoplay interval="5000" duration="1000" indicator-color='#fff' indicator-active-color='#f9be0a' class='swiper-img-wrap'>
-    <swiper-item wx:for="{{imgUrls}}">
-      <image catchtap='preImg' data-img='{{item}}' mode='aspectFill' src="{{item}}" class="slide-image" width="355" height="150" />
-    </swiper-item>
-  </swiper>
-  <!--/轮播  -->
-
-  <!--商品主要信息  -->
-  <view class='commodity-detail-info'>
-    <view class='flex-row'>
-      <view class='commodity-detail-info-title'>这是一件大衣</view>
-      <view class='commodity-detail-info-sell'>已团：1542次</view>
-    </view>
-    <view class='flex-row'>
-      <view class='commodity-detail-indo-price flex-row'>
-        <view class='commodity-detail-info-discount-price'>￥511️起</view>
-        <view class='commodity-detail-info-origin-price'>￥589</view>
-      </view>
-      <view class='commodity-detail-group-number'>成团人数：3人•5人•8人</view>
-    </view>
+<block wx:if="{{loading}}">
+  <view class='loading-wrap flex-column flex-center'>
+    <image class='loading-gif' mode='aspectFit' src='/images/icon/loading.gif'></image>
   </view>
-  <!--/商品主要信息  -->
+</block>
+<block wx:else>
+  <view class='container'>
 
-  <!--开团选择  -->
-  <view class='commodity-open-group'>
-    <view class='commodity-item-title flex-row'>
-      <image class='group-icons' mode='aspectFit' src='/images/icon/group_open.png'></image>
-      <view>开团</view>
+    <!--轮播  -->
+    <block wx:if="{{commodity.fig_ImgPath.length}}">
+      <swiper indicator-dots autoplay interval="5000" duration="1000" indicator-color='#fff' indicator-active-color='#f9be0a' class='swiper-img-wrap'>
+        <swiper-item wx:for="{{commodity.fig_ImgPath}}" wx:if="{{index < 3}}">
+          <image catchtap='preImg' data-img='{{item}}' mode='aspectFill' src="{{item}}" class="slide-image" width="355" height="150" />
+        </swiper-item>
+      </swiper>
+    </block>
+    <!--/轮播  -->
+
+    <!--商品主要信息  -->
+    <view class='commodity-detail-info'>
+      <view class='flex-row'>
+        <view class='commodity-detail-info-title'>{{commodity.fig_Name}}</view>
+        <view class='commodity-detail-info-sell'>已团：{{commodity.fig_GroupMans}}</view>
+      </view>
+      <view class='flex-row'>
+        <view class='commodity-detail-indo-price flex-row'>
+          <view class='commodity-detail-info-discount-price'>￥{{commodity.fig_Price3}}起</view>
+          <view class='commodity-detail-info-origin-price'>￥{{commodity.fig_Price}}</view>
+        </view>
+        <view class='commodity-detail-group-number'>成团人数：{{commodity.fig_Number1}}人•{{commodity.fig_Number2}}人•{{commodity.fig_Number3}}人</view>
+      </view>
     </view>
-    <view class='commodity-open-types'>
-      <view class='commodity-open-types-item flex-row {{index == currentType?"active":""}}' wx:for="{{groupTypes}}" wx:for-item="typeItem" wx:key="id" catchtap='changeGroupType' data-index='{{index}}' data-id='{{typeItem.id}}'>
+    <!--/商品主要信息  -->
+
+    <!--开团选择  -->
+    <view class='commodity-open-group'>
+      <view class='commodity-item-title flex-row'>
+        <image class='group-icons' mode='aspectFit' src='/images/icon/group_open.png'></image>
+        <view>开团</view>
+      </view>
+      <view class='commodity-open-types'>
+        <!-- <view class='commodity-open-types-item flex-row {{index == currentType?"active":""}}' wx:for="{{groupTypes}}" wx:for-item="typeItem" wx:key="id" catchtap='changeGroupType' data-index='{{index}}' data-id='{{typeItem.id}}'>
         <view class='commodity-open-types-item-number flex-row'>
           <icon type='success' color='{{index == currentType?"#f28300":"#ddd"}}' size='20'></icon>
           <view>{{typeItem.number}}人团</view>
         </view>
         <view class='commodity-open-types-item-price'>￥{{typeItem.price}}</view>
-      </view>
-    </view>
-  </view>
-  <!--/开团选择  -->
-
-  <!--正在开团  -->
-  <view class='commodity-ing-wrap'>
-    <view class='commodity-item-title flex-row'>
-      <image class='group-icons' mode='aspectFit' src='/images/icon/group_ing.png'></image>
-      <view>正在拼团</view>
-    </view>
-    <block wx:if="{{groupings.length}}">
-      <view class='commodity-ing-lists'>
-        <view class='commodity-ing-item flex-row' wx:for="{{groupings}}" wx:for-item="ingItem" wx:key="id">
-          <view class='commodity-ing-item-info flex-row'>
-            <view class='commodity-ing-item-avatars'>
-              <block wx:for="{{avatarTmpArr}}" wx:for-item="tmpArr" wx:for-index="tmpArrIndex">
-                <block wx:if="{{ingItem.avatars[tmpArrIndex]  && (tmpArrIndex <= 1)}}">
-                  <image class='commodity-ing-item-avatar' mode='aspectFit' src='{{ingItem.avatars[tmpArrIndex]}}'></image>
-                </block>
-                <block wx:else>
-                  <image class='commodity-ing-item-avatar' mode='aspectFit' src='/images/icon/query.png'></image>
-                </block>
-              </block>
-            </view>
-            <view class='commodity-ing-item-left'>还差{{ingItem.left_people}}人，剩余 {{ingItem.left_time}}</view>
+      </view> -->
+        <view class='commodity-open-types-item flex-row {{typeIndex == 1?"active":""}}' catchtap='changeGroupType' data-price='{{commodity.fig_Price1}}' data-index='1' data-group_number='{{commodity.fig_Number1}}'>
+          <view class='commodity-open-types-item-number flex-row'>
+            <icon type='success' color='{{typeIndex == 1?"#f28300":"#ddd"}}' size='20'></icon>
+            <view>{{commodity.fig_Number1}}人团</view>
           </view>
-          <view class='commodity-ing-item-btn' hover-class='commodity-ing-item-btn-hover' hover-stay-time='150' catchtap='groupRightNow' data-id='{{ingItem.id}}'>立即参团</view>
+          <view class='commodity-open-types-item-price'>￥{{commodity.fig_Price1}}</view>
+        </view>
+        <view class='commodity-open-types-item flex-row {{typeIndex == 2?"active":""}}' catchtap='changeGroupType' data-price='{{commodity.fig_Price2}}' data-index='2' data-group_number='{{commodity.fig_Number2}}'>
+          <view class='commodity-open-types-item-number flex-row'>
+            <icon type='success' color='{{typeIndex == 2?"#f28300":"#ddd"}}' size='20'></icon>
+            <view>{{commodity.fig_Number2}}人团</view>
+          </view>
+          <view class='commodity-open-types-item-price'>￥{{commodity.fig_Price2}}</view>
+        </view>
+        <view class='commodity-open-types-item flex-row {{typeIndex == 3?"active":""}}' catchtap='changeGroupType' data-price='{{commodity.fig_Price3}}' data-index='3' data-group_number='{{commodity.fig_Number3}}'>
+          <view class='commodity-open-types-item-number flex-row'>
+            <icon type='success' color='{{typeIndex == 3?"#f28300":"#ddd"}}' size='20'></icon>
+            <view>{{commodity.fig_Number3}}人团</view>
+          </view>
+          <view class='commodity-open-types-item-price'>￥{{commodity.fig_Price3}}</view>
         </view>
       </view>
-      <view class='commodity-ing-btn' catchtap='goForAllGroups'>
-        <view>查看全部 ></view>
+    </view>
+    <!--/开团选择  -->
+
+    <!--正在开团  -->
+    <view class='commodity-ing-wrap'>
+      <view class='commodity-item-title flex-row'>
+        <image class='group-icons' mode='aspectFit' src='/images/icon/group_ing.png'></image>
+        <view>正在拼团</view>
       </view>
-    </block>
-    <block wx:else>
-      <view class='tips'>暂无拼团</view>
-    </block>
-  </view>
-  <!--/正在开团  -->
+      <block wx:if="{{commodity.OnGroups.length}}">
+        <view class='commodity-ing-lists'>
+          <view class='commodity-ing-item flex-row' wx:for="{{commodity.OnGroups}}" wx:for-item="ingItem" wx:for-index="ingIndex">
+            <view class='commodity-ing-item-info flex-row'>
+              <view class='commodity-ing-item-avatars'>
+                <block wx:for="{{avatarTmpArr}}" wx:for-item="tmpArr" wx:for-index="tmpArrIndex">
+                  <block wx:if="{{ingItem.Imgpath && ingItem.Imgpath[tmpArrIndex]  && (tmpArrIndex <= 1)}}">
+                    <image class='commodity-ing-item-avatar' mode='aspectFit' src='{{ingItem.Imgpath[tmpArrIndex]}}'></image>
+                  </block>
+                  <block wx:else>
+                    <image class='commodity-ing-item-avatar' mode='aspectFit' src='/images/icon/query.png'></image>
+                  </block>
+                </block>
+              </view>
+              <view class='commodity-ing-item-left'>{{ingItem.man}},{{ingItem.time}}</view>
+            </view>
+            <view class='commodity-ing-item-btn' hover-class='commodity-ing-item-btn-hover' hover-stay-time='150' catchtap='joinActivity' data-type='2' data-id='{{ingItem.RecordSubID}}'>立即参团</view>
+          </view>
+        </view>
+        <view class='commodity-ing-btn' catchtap='goForAllGroups'>
+          <view>查看全部 ></view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class='tips'>暂无拼团</view>
+      </block>
+    </view>
+    <!--/正在开团  -->
 
-  <!--兑换信息  -->
-  <view class='commodity-exchange-wrap'>
-    <view class='commodity-item-title flex-row'>
-      <image class='group-icons' mode='aspectFit' src='/images/icon/group_info.png'></image>
-      <view>兑换信息</view>
-    </view>
-    <view class='commodity-exchange-info'>
-      <view class='commodity-exchange-info-item'>商家名称：绿苑精品</view>
-      <view class='commodity-exchange-info-item'>兑奖时间：2017.10.22 - 2017-10-30</view>
-      <view class='commodity-exchange-info-item'>兑奖地址：广州市番禺XXX地址XXX号XXX路</view>
-      <view class='commodity-exchange-info-item'>服务电话：020-185124816</view>
-    </view>
-  </view>
-  <!--/兑换信息  -->
-
-  <!--商品详情  -->
-  <view class='commodity-detail-wrap'>
-    <view class='commodity-item-title flex-row'>
-      <image class='group-icons' mode='aspectFit' src='/images/icon/group_details.png'></image>
-      <view>商品详情</view>
-    </view>
-    <view class='commodity-detail-content'>
-      <view class='commodity-detail-content-title'>{{commodityDetails.title}}</view>
-      <view class='commodity-detail-content-imgs'>
-        <image class='commodity-detail-content-img' mode='aspectFill' src='{{item}}' wx:for="{{commodityDetails.imgs}}" wx:key="*this"></image>
+    <!--兑换信息  -->
+    <view class='commodity-exchange-wrap'>
+      <view class='commodity-item-title flex-row'>
+        <image class='group-icons' mode='aspectFit' src='/images/icon/group_info.png'></image>
+        <view>兑换信息</view>
+      </view>
+      <view class='commodity-exchange-info'>
+        <view class='commodity-exchange-info-item'>商家名称：{{commodity.fig_ShopName}}</view>
+        <view class='commodity-exchange-info-item'>兑奖时间：{{commodity.fig_StartDate}} - {{commodity.fig_EndDate}}</view>
+        <view class='commodity-exchange-info-item'>兑奖地址：{{commodity.fig_Address}}</view>
+        <view class='commodity-exchange-info-item'>服务电话：{{commodity.fig_Tel}}</view>
       </view>
     </view>
-  </view>
-  <!--/商品详情  -->
+    <!--/兑换信息  -->
 
-  <!--活动规则  -->
-  <view class='commodity-exchange-wrap'>
-    <view class='commodity-item-title flex-row'>
-      <image class='group-icons' mode='aspectFit' src='/images/icon/group_rules.png'></image>
-      <view>活动规则</view>
-    </view>
-    <view class='commodity-exchange-info'>
-      <view class='commodity-exchange-info-item' wx:for="{{rules}}" wx:for-item="rule">{{index + 1 + '. ' + rule}}</view>
-    </view>
-  </view>
-  <!--/活动规则  -->
-
-  <!--购买  -->
-  <view class='commodity-buy-wrap flex-row'>
-    <view class='commodity-buy-info'>
-      <view class='commodity-buy-price'>合计：
-        <text>￥98</text>
+    <!--商品详情  -->
+    <view class='commodity-detail-wrap'>
+      <view class='commodity-item-title flex-row'>
+        <image class='group-icons' mode='aspectFit' src='/images/icon/group_details.png'></image>
+        <view>商品详情{{commodity.OnGroups[0].man}}</view>
       </view>
-      <view class='commodity-buy-tips'>团长额外优惠￥60</view>
+      <view class='commodity-detail-content'>
+        <view class='commodity-detail-content-title'>{{commodity.fig_Content}}</view>
+        <view class='commodity-detail-content-imgs'>
+          <image class='commodity-detail-content-img' mode='aspectFill' src='{{item}}' wx:for="{{commodity.fig_ImgPath}}" wx:key="*this"></image>
+        </view>
+      </view>
     </view>
-    <view class='commodity-buy-btn flex-row flex-center'>立即开团</view>
+    <!--/商品详情  -->
+
+    <!--活动规则  -->
+    <view class='commodity-exchange-wrap'>
+      <view class='commodity-item-title flex-row'>
+        <image class='group-icons' mode='aspectFit' src='/images/icon/group_rules.png'></image>
+        <view>活动规则</view>
+      </view>
+      <view class='commodity-exchange-info'>
+        <view class='commodity-exchange-info-item' wx:for="{{rules}}" wx:for-item="rule">{{index + 1 + '. ' + rule}}</view>
+      </view>
+    </view>
+    <!--/活动规则  -->
+
+    <!--购买  -->
+    <view class='commodity-buy-wrap flex-row'>
+      <view class='commodity-buy-info'>
+        <view class='commodity-buy-price'>合计：
+          <text>￥{{currentPrice}}</text>
+        </view>
+        <view class='commodity-buy-tips'>团长额外优惠￥{{commodity.fig_OuterMoney}}</view>
+      </view>
+      <view class='commodity-buy-btn flex-row flex-center' catchtap='joinActivity' data-type='1'>立即开团</view>
+    </view>
+    <!--/购买  -->
   </view>
-  <!--/购买  -->
-</view>
+</block>

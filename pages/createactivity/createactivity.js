@@ -5,6 +5,7 @@ Page({
 
   data: {
     payAll: true,
+    RecordMainID: '',
     submitForm: {
       // RecordID: '',
       fig_Name: '',
@@ -29,6 +30,20 @@ Page({
     },
 
     tempImgs: []
+  },
+
+  onLoad(options) {
+    const RecordMainID = options.id
+    if (RecordMainID) {
+      app._api.editActivity({
+        RecordMainID
+      }, res => {
+        this.setData({
+          RecordMainID,
+          submitForm: res.data
+        })
+      })
+    }
   },
 
   //获取开始时间
@@ -119,17 +134,19 @@ Page({
     const formObj = e.detail.value
     let subObj = Object.assign(this.data.submitForm, formObj, { RecordIDShop: app.globalData.userInfo.RecordID })
     // console.log(app.globalData.userInfo)
-    for (let it in subObj) {
-      if (it === 'fig_prepay' && subObj.fig_IFAllPay === 'Y') {
-        continue
-      } else {
-        if (!subObj[it]) {
-          wx.showModal({
-            title: '提示',
-            content: '信息不能为空',
-            showCancel: false
-          })
-          return false
+    if (!this.data.RecordMainID) {
+      for (let it in subObj) {
+        if (it === 'fig_prepay' && subObj.fig_IFAllPay === 'Y') {
+          continue
+        } else {
+          if (!subObj[it]) {
+            wx.showModal({
+              title: '提示',
+              content: '信息不能为空',
+              showCancel: false
+            })
+            return false
+          }
         }
       }
     }

@@ -109,7 +109,8 @@ let api = {
     _http.post(host + 'UserSave.aspx', data)
       .then(res => {
         typeof callback === 'function' && callback(res)
-      }).catch(err => {
+      })
+      .catch(err => {
         wx.showModal({
           title: '提示',
           content: err.data,
@@ -152,6 +153,80 @@ let api = {
       typeof cb === 'function' && cb(arr)
     }
   },
+
+  //活动管理列表
+  getActivityList(data, callback) {
+    _http.get(`${host}GroupCreateGetAll.aspx`, data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      })
+      .catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  },
+
+  //活动管理列表编辑
+  editActivity(data, callback) {
+    _http.get(`${host}GroupCreateGet.aspx`, data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      })
+      .catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  },
+
+  //消费者获取所有活动
+  getAllActivity(data, callback) {
+    _http.get(`${host}GroupTeamGetAll.aspx`, data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      })
+      .catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  },
+
+  //消费者获取单个活动
+  getActivity(data, callback) {
+    _http.get(`${host}GroupTeamGet.aspx`, data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      })
+      .catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  },
+
+  //开团、参团
+  joinActivity(data, callback) {
+    _http.post(host + 'GroupTeamSave.aspx', data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      }).catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  }
 }
 
 module.exports = { api }

@@ -16,38 +16,45 @@
   <!--/制作按钮  -->
 
   <!--最新拼团列表  -->
-  <view class='activity-list'>
-    <block wx:if="{{lists.length}}">
-      <view class='tips'>---- 最新拼团 ----</view>
-      <view class='activity-sort flex-row'>
-        <view class='{{currentSort == sort.id?"active":""}}' wx:for="{{sorts}}" wx:for-item="sort" wx:key="id" catchtap='sortFnc' data-id='{{sort.id}}'>{{sort.name}}</view>
-      </view>
-      <view class='activity-list-item' wx:for="{{lists}}" wx:for-item="listItem" wx:key="id">
-        <view class='activity-list-item-wrap flex-row'>
-          <image class='activity-list-item-img' mode='aspectFit' src='{{listItem.url}}'></image>
-          <view class='activity-list-item-content'>
-            <view class='activity-list-item-title text-flow'>{{listItem.title}}</view>
-            <view class='activity-list-item-info flex-row'>
-              <view class='activity-list-item-tuan flex-row flex-center'>
-                <image class='people-icon' mode='aspectFit' src='/images/icon/people.png'></image> 2人•3人
+  <block wx:if="{{loading}}">
+    <view class='loading-wrap flex-column flex-center'>
+      <image class='loading-gif' mode='aspectFit' src='/images/icon/loading.gif'></image>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='activity-list'>
+      <block wx:if="{{lists.length}}">
+        <view class='tips'>---- 最新拼团 ----</view>
+        <view class='activity-sort flex-row'>
+          <view class='{{currentSort == sort.id?"active":""}}' wx:for="{{sorts}}" wx:for-item="sort" wx:key="id" catchtap='sortFnc' data-id='{{sort.id}}'>{{sort.name}}</view>
+        </view>
+        <view class='activity-list-item' wx:for="{{lists}}" wx:for-item="listItem" wx:key="id">
+          <view class='activity-list-item-wrap flex-row'>
+            <image class='activity-list-item-img' mode='aspectFit' src='{{listItem.fig_ImgPath[0] || "/images/icon/no-img.png"}}'></image>
+            <view class='activity-list-item-content'>
+              <view class='activity-list-item-title text-flow'>{{listItem.fig_Name}}</view>
+              <view class='activity-list-item-info flex-row'>
+                <view class='activity-list-item-tuan flex-row flex-center'>
+                  <image class='people-icon' mode='aspectFit' src='/images/icon/people.png'></image> {{listItem.fig_Number1}}人•{{listItem.fig_Number2}}人•{{listItem.fig_Number3}}人
+                </view>
+                <view class='activity-list-item-sell'>已团：{{listItem.fig_GroupMans}}</view>
               </view>
-              <view class='activity-list-item-sell'>已团：{{listItem.sell}}</view>
-            </view>
-            <view class='activity-list-item-buy flex-row'>
-              <view class='activity-list-item-price flex-row'>
-                <view class='activity-list-item-origin-price'>￥{{listItem.price}}起</view>
-                <view class='activity-list-item-old-price'>￥{{listItem.old_price}}</view>
+              <view class='activity-list-item-buy flex-row'>
+                <view class='activity-list-item-price flex-row'>
+                  <view class='activity-list-item-origin-price'>￥{{listItem.fig_Price3}}起</view>
+                  <view class='activity-list-item-old-price'>￥{{listItem.fig_Price}}</view>
+                </view>
+                <view class='activity-list-item-btn' data-id='{{listItem.RecordMainID}}' bindtap='goToBuy' hover-class='activity-list-item-btn-hover' hover-stay-time='150'>去拼团</view>
               </view>
-              <view class='activity-list-item-btn' bindtap='goToBuy' hover-class='activity-list-item-btn-hover' hover-stay-time='150'>去拼团</view>
             </view>
           </view>
+          <view class='activity-list-item-timeRange'>{{listItem.fig_StartDate}} - {{listItem.fig_EndDate}}</view>
         </view>
-        <view class='activity-list-item-timeRange'>{{listItem.time_range}}</view>
-      </view>
-    </block>
-    <block wx:else>
-      <view class='tips'>暂无活动</view>
-    </block>
-  </view>
+      </block>
+      <block wx:else>
+        <view class='tips'>暂无活动</view>
+      </block>
+    </view>
+  </block>
   <!--/最新拼团列表  -->
 </view>

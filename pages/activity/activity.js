@@ -3,6 +3,7 @@ const app = getApp()
 Page({
 
   data: {
+    loading: true,
     imgUrls: [
       'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
       'http://d.5857.com/hh_170601/001.jpg',
@@ -45,10 +46,21 @@ Page({
     ]
   },
 
+  onLoad() {
+    app._api.getAllActivity('', res => {
+      console.log(res)
+      this.setData({
+        lists: res.data.TeamList,
+        loading: false
+      })
+    })
+  },
+
   //购买
-  goToBuy() {
+  goToBuy(e) {
+    const RecordMainID = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/commodity/commodity',
+      url: '/pages/commodity/commodity?RecordMainId=' + RecordMainID,
     })
   },
 
@@ -56,7 +68,14 @@ Page({
   sortFnc(e) {
     const id = e.currentTarget.dataset.id
     this.setData({
-      currentSort: id
+      loading: true
+    })
+    app._api.getAllActivity({ orderType: id }, res => {
+      this.setData({
+        lists: res.data.TeamList,
+        currentSort: id,
+        loading: false
+      })
     })
   },
 

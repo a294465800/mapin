@@ -1,4 +1,17 @@
 <!--pages/createactivity/createactivity.wxml-->
+<!--wxml-->
+<!-- <wxs module="m1">
+  var ifImgUrl = function(img) {
+    var url = 'http://139.199.207.181/'
+    if (url.indexOf(img)) {
+      return img
+    }
+    return url + img
+  }
+
+  module.exports.ifImgUrl = ifImgUrl;
+</wxs> -->
+
 <view class='container'>
   <form report-submit bindsubmit='createSubmit'>
     <view class='form-item'>
@@ -36,7 +49,7 @@
       <view class='form-group'>
         <label class='label-beautify'>
           <view>商品原价</view>
-          <input name="fit_Price" value='{{submitForm.fit_Price}}' type='digit' placeholder='商品原价（元）'></input>
+          <input name="fig_Price" value='{{submitForm.fig_Price}}' type='digit' placeholder='商品原价（元）'></input>
         </label>
         <label class='label-beautify'>
           <view>全额支付</view>
@@ -50,7 +63,7 @@
         </label>
         <label class='label-beautify'>
           <view>团长优惠</view>
-          <input name="prime_count" type='digit' placeholder='不填默认为零（元）'></input>
+          <input name="fig_OuterMoney" value='{{submitForm.fig_OuterMoney}}' type='digit' placeholder='不填默认为零（元）'></input>
         </label>
         <label class='label-beautify'>
           <view>人数</view>
@@ -99,7 +112,7 @@
       <view class='form-group'>
         <label class='label-beautify'>
           <view>商品数量</view>
-          <input name="fig_Number" value='{{submitForm.fig_Number}}' type='number' placeholder='请合理设置勿超卖'></input>
+          <input name="fig_Sum" value='{{submitForm.fig_Sum}}' type='number' placeholder='请合理设置勿超卖'></input>
         </label>
         <label class='label-beautify flex-column textarea'>
           <view>活动介绍</view>

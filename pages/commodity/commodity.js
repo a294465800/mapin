@@ -4,34 +4,16 @@ const app = getApp()
 Page({
 
   data: {
-    imgUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://d.5857.com/hh_170601/001.jpg',
-      'http://img.zcool.cn/community/03320dd554c75c700000158fce17209.jpg'
-    ],
+    imgUrls: [],
+    loading: true,
+    currentPrice: 0,
 
     //头像循环
     avatarTmpArr: ['', '', ''],
+    typeIndex: 1,
+    // currentType: 1,
 
     //模拟数据
-    //开团类型
-    groupTypes: [
-      {
-        id: 1,
-        number: 3,
-        price: 178
-      },
-      {
-        id: 2,
-        number: 5,
-        price: 169
-      },
-      {
-        id: 2,
-        number: 8,
-        price: 155
-      }
-    ],
 
     //正在拼团
     groupings: [
@@ -49,12 +31,6 @@ Page({
       }
     ],
 
-    //商品详情
-    commodityDetails: {
-      title: '2017秋冬新版韩版女大衣 长款打底针织衫加厚 纯色半高领秋装质量保证 舒适面料 精细做工 柔软透气',
-      imgs: ['http://img.ssfun.com/bdimg/50771504237321.png', 'http://img.ssfun.com/bdimg/68131504237319.png', 'http://img.ssfun.com/bdimg/68131504237319.png']
-    },
-
     //活动规则
     rules: [
       '点击参团即可开始参与活动',
@@ -63,30 +39,41 @@ Page({
       '团购成功后，前往商家出兑换'
     ],
 
-    currentType: 0,
+    commodity: null,
+
   },
 
-  onLoad() {
-
+  onLoad(options) {
+    app._api.getActivity({ RecordMainId: options.RecordMainId }, res => {
+      this.setData({
+        commodity: res.data,
+        loading: false,
+        currentPrice: res.data.fig_Price3
+      })
+    })
   },
 
   //当前开团类型
   changeGroupType(e) {
     const index = e.currentTarget.dataset.index
-    const id = e.currentTarget.dataset.id
-    if (index === this.data.currentType) {
+    const price = e.currentTarget.dataset.price
+    const group = e.currentTarget.dataset.group_number
+    // const id = e.currentTarget.dataset.id
+    if (index === this.data.typeIndex) {
       return false
     }
     this.setData({
-      currentType: index
+      typeIndex: index,
+      currentPrice: price,
+      currentGroup: group
     })
   },
 
   //参团
-  groupRightNow(e) {
-    const id = e.currentTarget.dataset.id
-    console.log(id)
-  },
+  // groupRightNow(e) {
+  //   const id = e.currentTarget.dataset.id
+  //   console.log(id)
+  // },
 
   //查看所有拼团
   goForAllGroups() { },
@@ -96,6 +83,18 @@ Page({
     wx.previewImage({
       current,
       urls: this.data.imgUrls,
+    })
+  },
+
+  //参团
+  joinActivity(e) {
+    const type = e.currentTarget.dataset.type
+    wx.showModal({
+      title: '提示',
+      content: '',
+    })
+    app._api.joinActivity(data, res => {
+
     })
   }
 })
