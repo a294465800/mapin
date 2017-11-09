@@ -242,6 +242,21 @@ let api = {
         })
       })
   },
+
+  //获取更多团信息
+  getMoreGroups(data, callback) {
+    _http.get(`${host}GroupTeamGetMore.aspx`, data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      })
+      .catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  },
 }
 
 module.exports = { api }

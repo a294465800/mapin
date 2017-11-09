@@ -258,9 +258,10 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.4);
-  z-index: 4;
+  z-index: 10;
   display: none;
 }
+
 .join-group-wrap.active {
   display: flex;
 }
@@ -369,4 +370,36 @@
 
 .cost-detail-btn-hover {
   background-color: #e8b20d;
+}
+
+/* 更多团显示 */
+
+.more-group-wrap {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 4;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.more-group-wrap.active {
+  display: flex;
+}
+
+.more-groups {
+  width: 100%;
+  background-color: #fff;
+}
+
+.more-tips {
+  font-size: 13px;
+  color: #666;
+  padding: 20rpx 30rpx;
+  position: relative;
 }

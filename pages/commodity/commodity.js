@@ -8,14 +8,15 @@ Page({
     loading: true,
     currentPrice: 0,
     currentGroup: 0,
-    joinGroup: 0,
+    joinGroup: '',
     showDetail: false,
+    showMoreGroup: false,
 
     //头像循环
     avatarTmpArr: ['', '', ''],
     typeIndex: 1,
 
-    //模拟数据
+    moreGroups: [],
 
     //活动规则
     rules: [
@@ -56,8 +57,23 @@ Page({
     })
   },
 
-  //查看所有拼团
-  goForAllGroups() { },
+  //查看更多拼团
+  showMoreGroup() {
+    const RecordMainID = this.data.commodity.RecordMainID
+    app._api.getMoreGroups({ RecordMainID }, res => {
+      this.setData({
+        showMoreGroup: true,
+        moreGroups: res.data.OnGroups
+      })
+    })
+  },
+
+  //隐藏更多拼团
+  hideMoreGroup() {
+    this.setData({
+      showMoreGroup: false
+    })
+  },
 
   preImg(e) {
     const current = e.currentTarget.dataset.img
@@ -84,9 +100,11 @@ Page({
   //显示储存开团信息
   showSaveDetail(e) {
     const index = e.currentTarget.dataset.join_group
+    const mode = e.currentTarget.dataset.mode
     this.setData({
       showDetail: true,
-      joinGroup: index
+      joinGroup: index,
+      currentMode: mode
     })
   },
 
