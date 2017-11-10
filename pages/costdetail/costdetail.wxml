@@ -23,7 +23,12 @@
               </view>
             </view>
           </view>
-          <view class='cost-detail-time'>------ 还差{{commodity.LeftMan}}人，结束时间{{fig_EndDate}} ------</view>
+          <block wx:if="{{commodity.fig_IFOKFlag == 'N'}}">
+            <view class='cost-detail-time'>------ 还差{{commodity.LeftMan}}人，结束时间{{commodity.fig_EndDate}} ------</view>
+          </block>
+          <block wx:else>
+            <view class='cost-detail-time'>------ 该团已成功！ ------</view>
+          </block>
           <view class='cost-detail-imgs flex-row'>
             <image wx:for="{{commodity.haveAttend}}" class='cost-detail-img' mode='aspectFit' src='{{item}}'></image>
           </view>
@@ -60,9 +65,11 @@
     </view>
   </view>
 
-  <button open-type='share' type='button' class='cost-detail-btn flex-row flex-center' hover-class='cost-detail-btn-hover'>
-    <image class='share-icon' mode='aspectFit' src='/images/icon/share.png'></image>
-    <view>分享给朋友</view>
-  </button>
+  <block wx:if="{{commodity.fig_IFOKFlag == 'N'}}">
+    <button open-type='share' type='button' class='cost-detail-btn flex-row flex-center' hover-class='cost-detail-btn-hover'>
+      <image class='share-icon' mode='aspectFit' src='/images/icon/share.png'></image>
+      <view>分享给朋友</view>
+    </button>
+  </block>
 
 </view>

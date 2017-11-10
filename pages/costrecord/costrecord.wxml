@@ -1,13 +1,49 @@
 <!--pages/costrecord/costrecord.wxml-->
-<view class='container'>
-  <!--导航  -->
-  <view class='nav-bar flex-row'>
-    <view class='nav-item {{nav.id == currentNav?"active":""}}' catchtap='switchNav' data-id='{{nav.id}}' wx:for="{{navs}}" wx:for-item="nav" wx:key="id">{{nav.name}}</view>
+<block wx:if="{{loading}}">
+  <view class='loading-wrap flex-column flex-center'>
+    <image class='loading-gif' mode='aspectFit' src='/images/icon/loading.gif'></image>
   </view>
-  <!--/导航  -->
+</block>
+<block wx:else>
+  <view class='container'>
+    <view class='record-list-wrap'>
+      <view class='record-item' wx:for="{{lists}}" wx:for-item="listItem" wx:key="id">
+        <view class='record-item-head flex-row'>
+          <view class='flex-row'>
+            <image class='shop-icon' mode='aspectFit' src='/images/icon/shop.png'></image>
+            <view class='record-item-head-shop'>{{listItem.fig_ShopName}}</view>
+          </view>
+          <view class='record-item-head-info'>{{stateText[listItem.fig_IFOKFlag]}}</view>
+        </view>
+        <view class='record-item-content flex-row'>
+          <image class='record-item-content-img' mode='aspectFit' src='{{listItem.url}}'></image>
+          <view class='flex-column'>
+            <view class='record-item-content-title multi-two-text-flow'>{{listItem.fig_Name}}</view>
+            <view class='record-item-content-info flex-row'>
+              <view class='record-item-content-type flex-row'>
+                <image class='people-icon' mode='aspectFit' src='/images/icon/people.png'></image>
+                <view class='record-item-content-type-text'>3人</view>
+              </view>
+              <view class='record-item-content-price'>￥{{listItem.fig_price}}</view>
+            </view>
+          </view>
+        </view>
+        <view class='record-item-foot flex-row'>
+          <view class='record-item-foot-time'>{{listItem.fig_StartDate}} - {{listItem.fig_EndDate}}</view>
+          <view class='record-item-foot-btn success' hover-class='record-item-foot-btn-hover-success' hover-stay-time='150' catchtap='checkCostDetail' data-recordid='{{listItem.RecordID}}'>查看订单</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+<!--导航  -->
+<!-- <view class='nav-bar flex-row'>
+    <view class='nav-item {{nav.id == currentNav?"active":""}}' catchtap='switchNav' data-id='{{nav.id}}' wx:for="{{navs}}" wx:for-item="nav" wx:key="id">{{nav.name}}</view>
+  </view> -->
+<!--/导航  -->
 
-  <!--拼团成功  -->
-  <view class='record-list-wrap' wx:if="{{currentNav == navs[0].id}}">
+<!--拼团成功  -->
+<!-- <view class='record-list-wrap' wx:if="{{currentNav == navs[0].id}}">
     <view class='record-item' wx:for="{{successLists}}" wx:for-item="listItem" wx:key="id">
       <view class='record-item-head flex-row'>
         <view class='flex-row'>
@@ -34,11 +70,11 @@
         <view class='record-item-foot-btn success' hover-class='record-item-foot-btn-hover-success' hover-stay-time='150' catchtap='checkCostDetail'>查看订单</view>
       </view>
     </view>
-  </view>
-  <!--/拼团成功  -->
+  </view> -->
+<!--/拼团成功  -->
 
-  <!--拼团中  -->
-  <view class='record-list-wrap' wx:else>
+<!--拼团中  -->
+<!-- <view class='record-list-wrap' wx:else>
     <view class='record-item' wx:for="{{ingLists}}" wx:for-item="listItem" wx:key="id">
       <view class='record-item-head flex-row'>
         <view class='flex-row'>
@@ -65,6 +101,5 @@
         <view class='record-item-foot-btn' hover-class='record-item-foot-btn-hover' hover-stay-time='150'>取消订单</view>
       </view>
     </view>
-  </view>
-  <!--/拼团中  -->
-</view>
+  </view> -->
+<!--/拼团中  -->

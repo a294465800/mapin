@@ -11,6 +11,9 @@ Page({
     ],
 
     currentSort: 1,
+    page: 1,
+    flag: false,
+    close: false,
 
     //排序
     sorts: [
@@ -66,14 +69,16 @@ Page({
   //排序
   sortFnc(e) {
     const id = e.currentTarget.dataset.id
-    this.setData({
-      loading: true
+    wx.showLoading({
+      title: '加载中',
     })
     app._api.getAllActivity({ orderType: id }, res => {
+      wx.hideLoading()
       this.setData({
         lists: res.data.TeamList,
         currentSort: id,
-        loading: false
+        page: 1,
+        close: false,
       })
     })
   },
@@ -82,6 +87,39 @@ Page({
   createActivity() {
     wx.navigateTo({
       url: '/pages/rules/rules',
+    })
+  },
+
+  //触底刷新
+  onReachBottom() {
+    const flag = this.data.flag
+    const close = this.data.close
+    const page = this.data.page
+    const currentSort = this.data.currentSort
+    if (flag || close) {
+      return false
+    }
+    this.setData({
+      flag: true
+    })
+    wx.showLoading({
+      title: '加载中',
+    })
+    app._api.getAllActivity({ orderType: currentSort, page: page + 1 }, res => {
+      wx.hideLoading()
+      if (res.data.TeamList.length) {
+        this.setData({
+          lists: [...this.data.lists, ...res.data.TeamList],
+          page: page + 1,
+          flag: false,
+        })
+      } else {
+        this.setData({
+          page: page + 1,
+          flag: false,
+          close: true
+        })
+      }
     })
   }
 

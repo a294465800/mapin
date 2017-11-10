@@ -271,6 +271,21 @@ let api = {
           showCancel: false
         })
       })
+  },
+
+  //消费记录
+  getCostRecords(data, callback) {
+    _http.get(`${host}GroupConsumeList`, data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      })
+      .catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
   }
 }
 
