@@ -90,8 +90,8 @@ view {
 }
 
 .tel-icon-big {
-  width: 30px;
-  height: 28px;
+  width: 38rpx;
+  height: 38rpx;
 }
 
 .located-icon {

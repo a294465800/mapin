@@ -86,7 +86,7 @@
 }
 
 .activity-list-item-btn {
-  font-size: 30rpx;
+  font-size: 28rpx;
   color: #fff;
   background-color: #f9be0a;
   padding: 14rpx 20rpx;
@@ -201,9 +201,11 @@
 
 .activity-list-item-plus-btn {
   border: 1px solid #333;
-  padding: 10rpx 30rpx;
+  text-align: center;
+  flex: 1;
   border-radius: 4px;
   margin-left: 30rpx;
+  padding: 10rpx 0;
 }
 
 .activity-list-item-plus-btn-hover {

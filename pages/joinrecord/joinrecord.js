@@ -6,39 +6,58 @@ Page({
 
     statuText: ['已核销', '已成团'],
     showBox: false,
+    loading: true,
     email: '',
+    RecordMainID: '',
+    user_Tel: '',
+
+    page: 1,
+    flag: false,
+    close: false,
 
     //模拟数据
-    lists: [
-      {
-        id: 1,
-        name: '方先生',
-        status: 1,
-        tel: 14231321244,
-        order: 1,
-      },
-      {
-        id: 2,
-        name: '刘先生',
-        status: 0,
-        tel: 13651521456,
-        order: 2,
-      },
-      {
-        id: 3,
-        name: '陈先生',
-        status: 0,
-        tel: 14231321244,
-        order: 4,
-      },
-      {
-        id: 4,
-        name: '孙先生',
-        status: 1,
-        tel: 18415311544,
-        order: 5,
+    lists: []
+  },
+
+  onLoad(options) {
+    const RecordMainID = options.id
+    app._api.getJoinRecord({ RecordMainID }, res => {
+      this.setData({
+        lists: res.data.AttendOK,
+        loading: false,
+        RecordMainID: RecordMainID
+      })
+    })
+  },
+
+  //触底刷新
+  getMore() {
+    const flag = this.data.flag
+    const page = this.data.page
+    const close = this.data.close
+    const RecordMainID = this.data.RecordMainID
+    const user_Tel = this.data.user_Tel
+    if (flag || close) {
+      return false
+    }
+    this.setData({
+      flag: true
+    })
+    app._api.getJoinRecord({ RecordMainID, user_Tel, page: page + 1 }, res => {
+      if (res.data.length) {
+        this.setData({
+          lists: [...this.data.lists, ...res.data.AttendOK],
+          flag: true,
+          page: page + 1
+        })
+      } else {
+        this.setData({
+          flag: true,
+          close: true,
+          page: page + 1
+        })
       }
-    ]
+    })
   },
 
   //查看详情
@@ -67,6 +86,19 @@ Page({
     const input = e.detail.value
     this.setData({
       email: input
+    })
+  },
+
+  //电话查询
+  search(e) {
+    const user_Tel = e.detail.value.user_Tel
+    const RecordMainID = this.data.RecordMainID
+    app._api.getJoinRecord({ RecordMainID, user_Tel }, res => {
+      this.setData({
+        lists: res.data.AttendOK,
+        loading: false,
+        user_Tel
+      })
     })
   },
 

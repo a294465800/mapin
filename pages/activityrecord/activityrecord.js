@@ -51,7 +51,7 @@ Page({
   getJoinRecord(e) {
     const id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/joinrecord/joinrecord',
+      url: '/pages/joinrecord/joinrecord?id=' + id,
     })
   }
 })

@@ -257,6 +257,21 @@ let api = {
         })
       })
   },
+
+  //获取报名记录
+  getJoinRecord(data, callback) {
+    _http.get(`${host}GroupAtendOK.aspx`, data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      })
+      .catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  }
 }
 
 module.exports = { api }
