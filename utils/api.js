@@ -89,7 +89,7 @@ let api = {
     }).then(res => {
       wx.setStorage({
         key: 'userInfo',
-        data: res.data,
+        data: JSON.stringify(res.data),
       })
       typeof callback === 'function' && callback(res.data)
     }).catch(err => {

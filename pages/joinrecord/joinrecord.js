@@ -61,7 +61,7 @@ Page({
   },
 
   //查看详情
-  getMore() {
+  getMoreInfo() {
     wx.navigateTo({
       url: '/pages/joinsinglerecord/joinsinglerecord',
     })
