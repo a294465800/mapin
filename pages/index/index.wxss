@@ -22,3 +22,9 @@
   font-size: 11pt;
   margin-top: 20rpx;
 }
+
+.canvas {
+  width: 640px;
+  height: 1138px;
+  /* display: none; */
+}
