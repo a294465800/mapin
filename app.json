@@ -1,14 +1,14 @@
 {
   "pages": [
+    "pages/activity/activity",
     "pages/index/index",
+    "pages/material/material",
     "pages/myinfo/myinfo",
     "pages/joinrecord/joinrecord",
     "pages/joinsinglerecord/joinsinglerecord",
     "pages/activityrecord/activityrecord",
-    "pages/material/material",
     "pages/mine/mine",
     "pages/costdetail/costdetail",
-    "pages/activity/activity",
     "pages/commodity/commodity",
     "pages/createactivity/createactivity",
     "pages/rules/rules",

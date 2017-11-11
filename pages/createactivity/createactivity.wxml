@@ -97,8 +97,12 @@
       <view class='form-title'>兑换信息</view>
       <view class='form-group'>
         <label class='label-beautify' catchtap='getShopAddress'>
+          <view>商家坐标</view>
+          <view class='simulate-input text-flow'>{{submitForm.fig_latitude?submitForm.fig_latitude + ',' + submitForm.fig_longitude : '商家坐标'}}</view>
+        </label>
+        <label class='label-beautify'>
           <view>商家地址</view>
-          <view class='simulate-input text-flow'>{{submitForm.fig_Address || '商家地址'}}</view>
+          <textarea auto-height name="fig_Address" value='{{submitForm.fig_Address}}' placeholder='商家地址'></textarea>
         </label>
         <label class='label-beautify'>
           <view>服务电话</view>
@@ -145,7 +149,9 @@
     <view class='form-item'>
       <view class='form-title'>活动规则</view>
       <view class='form-group'>
-        <view class='form-rule'>活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则</view>
+        <view class='form-rule'>
+          <view class='form-rule-item' wx:for="{{rules}}" wx:for-item="rule">{{index + 1 + '. ' + rule}}</view>
+        </view>
       </view>
     </view>
     <button form-type='submit' type='button' class='submit-btn' hover-class='submit-hover'>确认创建</button>

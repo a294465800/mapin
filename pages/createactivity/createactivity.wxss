@@ -66,7 +66,11 @@
 
 .form-rule {
   padding: 30rpx 0;
-  font-size: 16px;
+  font-size: 15px;
+}
+
+.form-rule-item {
+  margin-bottom: 20px;
 }
 
 .submit-btn {

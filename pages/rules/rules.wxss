@@ -7,7 +7,7 @@
   justify-content: space-between;
 }
 
-/* 富文本 */
+/* 文本 */
 
 .rules-wrap {
   flex: 1;
@@ -16,6 +16,39 @@
 
 .scroll {
   height: 100%;
+}
+
+.rules-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.rules-content {
+  padding: 30rpx;
+}
+
+.rules-subtitle {
+  font-size: 16px;
+  text-indent: 2em;
+  margin-bottom: 20px;
+}
+
+.rules-item-title {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.rules-item-content {
+  text-indent: 2em;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.rules-foot {
+  text-align: right;
+  color: #e8b20d;
+  font-size: 14px;
 }
 
 /* 按钮 */

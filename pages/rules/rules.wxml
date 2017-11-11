@@ -5,7 +5,34 @@
   <view class='rules-wrap'>
     <view class='flex-bug'>
       <scroll-view class='scroll' scroll-y>
-        <rich-text nodes="{{nodes}}"></rich-text>
+        <!-- <rich-view nodes="{{nodes}}"></rich-view> -->
+        <view class='rules-title'>蚁拼活动发布细则</view>
+        <view class='rules-content'>
+          <view class='rules-subtitle'>
+为了响应该微信构建和谐网络的号召，以及保障用户的利益，如发现以下行为，一经发现将立即下架活动，严重者直接封锁帐号不予以复议。
+</view>
+          <view class='rules-item-title'>
+一. 不允许诱导分享：</view>
+          <view class='rules-item-content'>
+不得以文字或者图片诱导用户分享，如出现分享好友得多少红包，转发让好友帮忙、求转发等类似字眼。
+</view>
+          <view class='rules-item-title'>
+二. 不允许诱导关注公众号或加微信好友</view>
+          <view class='rules-item-content'>
+不准以任何形式诱导用户关注公众号或者加微信好友，如扫一扫再参加活动、关注公众号送红包等。
+</view>
+          <view class='rules-item-title'>
+三. 不得发布虚假活动</view>
+          <view class='rules-item-content'>
+不允许发布虚假活动、不属实活动、强制消费、服务不到位，一经核实将下架活动并封号处理，被保留提交相关法律机构的权限，并由商家承担由此带来的影响。</view>
+          <view class='rules-item-title'>
+四. 不得发布错误的联系方式</view>
+          <view class='rules-item-content'>
+必须确保预留的商家联系方式是正确的，且保持畅通，否则一经核实，下架活动处理。
+请仔细阅读，因违规造成的损失，蚁拼概不负责，平台保留相关解释权及提交给相关部门处理权。
+        </view>
+          <view class='rules-foot'>蚁拼运营团队</view>
+        </view>
       </scroll-view>
     </view>
   </view>

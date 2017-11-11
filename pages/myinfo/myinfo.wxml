@@ -21,9 +21,25 @@
             </picker>
           </label>
           <label class='label-beautify'>
+            <view>手机号码</view>
+            <block wx:if="{{userForm.user_Tel}}">
+              <view>{{userForm.user_Tel}}</view>
+            </block>
+            <block wx:else>
+              <input type='number' value='{{userForm.user_Tel}}' maxlength='11' name="user_Tel" placeholder='请输入手机号码' bindinput="phoneNumber"></input>
+              <button class='sms-btn' size='small' disabled='{{!smsOk}}' catchtap='getSms'>{{smsText}}</button>
+            </block>
+          </label>
+          <block wx:if="{{!userForm.user_Tel}}">
+            <label class='label-beautify'>
+              <view>验证码</view>
+              <input type='number' maxlength='6' name="verifyNumber" placeholder='请输入验证码'></input>
+            </label>
+          </block>
+          <!-- <label class='label-beautify'>
             <view>电话</view>
             <input name="user_Tel" value='{{userForm.user_Tel}}' type='number' placeholder='请输入用户电话'></input>
-          </label>
+          </label> -->
           <block wx:if="{{userForm.user_Type && userForm.user_Type == 'B'}}">
             <label class='label-beautify'>
               <view>地址</view>
@@ -46,7 +62,11 @@
           </block>
         </view>
       </view>
-      <button form-type='submit' type='primary'>保存</button>
+      <button form-type='submit' class='qr-btn' hover-class='qr-hover'>保存</button>
+      <view class='tips'>注册遇到问题？请咨询：
+        <text catchtap='call' data-phone='020-32166695'>020-32166695</text>，微信：
+        <text>huangkk2211</text>
+      </view>
     </form>
   </view>
 </block>

@@ -7,6 +7,8 @@ Page({
 
     //加载判断
     loading: true,
+    smsOk: false,
+    smsText: '获取验证码',
 
     //用户信息表
     userForm: {
@@ -17,7 +19,8 @@ Page({
       user_Name: '',
       user_Sex: 0,
       user_Company: '',
-      user_Post: ''
+      user_Post: '',
+      verifyNumber: ''
     }
   },
   onLoad(options) {
@@ -45,6 +48,43 @@ Page({
         })
       })
     }
+  },
+  // 手机号码
+  phoneNumber(e) {
+    const re = /^1\d{10}$/
+    if (!re.test(e.detail.value)) {
+      this.setData({
+        smsOk: false,
+        number: e.detail.value
+      })
+    } else {
+      this.setData({
+        smsOk: true,
+        number: e.detail.value
+      })
+    }
+  },
+
+  //获取验证码
+  getSms(e) {
+    let time = 60
+    app._api.postSms({ user_Tel: this.data.number }, res => {
+      let timer = setInterval(() => {
+        if (time <= 0) {
+          clearInterval(timer)
+          this.setData({
+            smsText: '获取验证码',
+            smsOk: true
+          })
+        } else {
+          time--
+          this.setData({
+            smsText: time + '秒后重新获取',
+            smsOk: false
+          })
+        }
+      }, 1000)
+    })
   },
 
   //微信地图，选择地址
@@ -87,6 +127,14 @@ Page({
         })
       }, 300)
     })
-  }
+  },
+
+  //打电话
+  call(e) {
+    const phone = e.currentTarget.dataset.phone
+    wx.makePhoneCall({
+      phoneNumber: phone,
+    })
+  },
 
 })

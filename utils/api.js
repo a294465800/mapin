@@ -104,6 +104,21 @@ let api = {
     })
   },
 
+  //获取验证码
+  postSms(data, callback) {
+    _http.post(host + 'UserSMS.aspx', data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      })
+      .catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  },
+
   //提交用户信息
   postUserAPI(data, callback) {
     _http.post(host + 'UserSave.aspx', data)

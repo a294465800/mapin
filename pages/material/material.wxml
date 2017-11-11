@@ -32,5 +32,8 @@
     </view>
     <button form-type='submit' type='button' class='qr-btn' hover-class='qr-hover'>保存</button>
   </form>
-  <view class='tips'>注册遇到问题？请咨询：<text catchtap='call'>020-54142184</text>，微信：<text>SHININGJACK</text></view>
+  <view class='tips'>注册遇到问题？请咨询：
+    <text catchtap='call'>020-54142184</text>，微信：
+    <text>SHININGJACK</text>
+  </view>
 </view>

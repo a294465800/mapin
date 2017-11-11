@@ -181,7 +181,7 @@
 }
 
 .commodity-exchange-info-item {
-  margin-bottom: 20rpx;
+  margin-bottom: 30rpx;
 }
 
 .commodity-exchange-info-item:last-child {

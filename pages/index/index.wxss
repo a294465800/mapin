@@ -24,7 +24,13 @@
 }
 
 .canvas {
-  width: 640px;
-  height: 1138px;
+  width: 1080px;
+  height: 1748px;
   /* display: none; */
+}
+
+.canvas-wrap {
+  width: 0;
+  height: 0;
+   overflow: hidden; 
 }
