@@ -50,6 +50,7 @@
           </view>
           <view class='activity-list-item-timeRange'>{{listItem.fig_StartDate}} - {{listItem.fig_EndDate}}</view>
         </view>
+        <view class='tips' hidden='{{!close}}'>已经没有了~</view>
       </block>
       <block wx:else>
         <view class='tips'>暂无活动</view>

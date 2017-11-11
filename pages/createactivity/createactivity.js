@@ -11,7 +11,6 @@ Page({
       fig_Name: '',
       fig_StartDate: date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate(),
       fig_endDate: '',
-      fit_Price: '',
       fig_Number1: '',
       fig_Price1: '',
       fig_Number2: '',
@@ -22,7 +21,7 @@ Page({
       fig_latitude: '',
       fig_longitude: '',
       fig_Tel: '',
-      fig_Number: '',
+      // fig_Number: '',
       fig_IFSameAction: 'Y',
       fig_IFAllPay: 'Y',
       fig_prepay: '',
@@ -133,7 +132,7 @@ Page({
   createSubmit(e) {
     const formObj = e.detail.value
     let subObj = Object.assign(this.data.submitForm, formObj, { RecordIDShop: app.globalData.userInfo.RecordID })
-    // console.log(app.globalData.userInfo)
+    console.log(subObj)
     if (!this.data.RecordMainID) {
       for (let it in subObj) {
         if (it === 'fig_prepay' && subObj.fig_IFAllPay === 'Y') {

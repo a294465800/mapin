@@ -7,6 +7,8 @@ Page({
     loading: true,
 
     statusText: ['出售中', '已下线'],
+    page: 1,
+    close: false,
 
     //接口数据
     lists: []
@@ -20,6 +22,36 @@ Page({
         lists: res.data.ActionList,
         loading: false
       })
+    })
+  },
+
+  //触底加载
+  onReachBottom() {
+    const page = this.data.page
+    const close = this.data.close
+    if (close) {
+      return false
+    }
+    wx.showLoading({
+      title: '加载中',
+    })
+    app._api.getActivityList({
+      RecordIDShop: app.globalData.userInfo.RecordID,
+      page: page + 1
+    }, res => {
+      wx.hideLoading()
+      if (res.data.length) {
+        this.setData({
+          lists: [...this.data.lists, ...res.data.ActionList],
+          page: page + 1,
+          close: true
+        })
+      } else {
+        this.setData({
+          page: page + 1,
+          close: true
+        })
+      }
     })
   },
 

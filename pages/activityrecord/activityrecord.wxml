@@ -68,6 +68,7 @@
           </view>
         </view>
       </view>
+      <view class='tips' hidden='{{!close}}'>已经没有了~</view>
     </view>
   </block>
   <block wx:else>
@@ -81,4 +82,4 @@
   </block>
 </block>
 
-<canvas canvas-id='post' class='canvas'></canvas>
+<!-- <canvas canvas-id='post' class='canvas'></canvas> -->
