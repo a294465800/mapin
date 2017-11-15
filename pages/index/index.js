@@ -30,7 +30,8 @@ Page({
     })
 
     ctx.drawImage('https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iOS/iphone6-ios9-delete-app-x.jpg', 0, 0, 1080, 1748)
-    ctx.drawImage('http://img.sc115.com/uploads1/sc/jpgs/1511/apic23847_sc115.com.jpg', 0, 580, 1080, 1168)
+    // ctx.drawImage('http://img.sc115.com/uploads1/sc/jpgs/1511/apic23847_sc115.com.jpg', 0, 580, 1080, 1168)
+    ctx.drawImage('/images/mapinbg.jpg', 0, 580, 1080, 1168)
     ctx.drawImage('http://himg2.huanqiu.com/attachment2010/2012/0829/20120829035225927.jpg', 330, 800, 420, 420)
     ctx.setFillStyle('black')
     ctx.setFontSize(50)

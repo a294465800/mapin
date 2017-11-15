@@ -43,6 +43,20 @@ Page({
     })
   },
 
+  //页面分享
+  onShareAppMessage(res) {
+    return {
+      title: this.data.commodity.fig_Name,
+      path: '/pages/commodity/commodity?RecordMainId=' + this.data.commodity.RecordMainID,
+      success(res) {
+        // 转发成功
+      },
+      fail(res) {
+        // 转发失败
+      }
+    }
+  },
+
   //当前开团类型
   changeGroupType(e) {
     const index = e.currentTarget.dataset.index

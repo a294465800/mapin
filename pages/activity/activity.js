@@ -39,6 +39,20 @@ Page({
     })
   },
 
+  //页面分享
+  onShareAppMessage(res) {
+    return {
+      title: '拼团活动',
+      path: '/paegs/shop/shop',
+      success(res) {
+        // 转发成功
+      },
+      fail(res) {
+        // 转发失败
+      }
+    }
+  },
+
   //购买
   goToBuy(e) {
     const RecordMainID = e.currentTarget.dataset.id
