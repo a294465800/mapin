@@ -3,6 +3,7 @@
 .container {
   background-color: #eee;
   padding-bottom: 30rpx;
+  height: 100vh;
 }
 
 .scroll {
@@ -21,13 +22,13 @@
 
 .cost-detail-content-img {
   width: 200rpx;
-  height: 200rpx;
+  height: 400rpx;
   margin-right: 20rpx;
 }
 
 .cost-detail-info {
   flex: 1;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .cost-detail-content {
@@ -36,7 +37,7 @@
 }
 
 .cost-detail-info-title {
-  font-size: 16px;
+  font-size: 18px;
   color: #333;
   max-width: 460rpx;
 }
@@ -57,21 +58,22 @@
 
 .cost-detail-info-foot {
   justify-content: space-between;
+  margin-top: 30px;
 }
 
 .cost-detail-info-price {
-  font-size: 17px;
+  font-size: 18px;
   color: #f72548;
   text-shadow: 0 0 1px #ccc;
 }
 
 .cost-detail-info-group-num {
-  font-size: 13px;
+  font-size: 15px;
   color: #f9be0a;
 }
 
 .cost-detail-time {
-  font-size: 13px;
+  font-size: 14px;
   color: #999;
   text-align: center;
   padding-top: 20rpx;
@@ -83,8 +85,8 @@
 }
 
 .cost-detail-img {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   margin: 0 10rpx;
 }

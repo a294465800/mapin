@@ -13,28 +13,25 @@ Page({
       '若人为因素刷单等恶意参与, 本机构有权解除团员参与资格。'
     ],
 
-    commodity: null
+    commodity: null,
+    RecordID: ''
   },
 
   onLoad(options) {
     const RecordID = options.RecordID
     app._api.getActivityResult({ RecordID }, res => {
-      console.log(res)
       this.setData({
-        commodity: res.data
+        commodity: res.data,
+        RecordID
       })
     })
   },
 
   //分享
   onShareAppMessage(res) {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(res.target)
-    }
     return {
       title: '快来加入我的拼团',
-      path: '/pages/index/index',
+      path: `/pages/commodity/commodity?type=share&RecordID=${this.data.RecordID}&RecordMainID=${this.data.commodity.RecordMainID}`,
       success(res) {
         // 转发成功
       },

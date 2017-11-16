@@ -42,8 +42,8 @@ Page({
   //页面分享
   onShareAppMessage(res) {
     return {
-      title: '拼团活动',
-      path: '/paegs/shop/shop',
+      title: '蚂蚁拼团',
+      path: '/pages/shop/shop',
       success(res) {
         // 转发成功
       },
@@ -57,7 +57,7 @@ Page({
   goToBuy(e) {
     const RecordMainID = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/commodity/commodity?RecordMainId=' + RecordMainID,
+      url: '/pages/commodity/commodity?RecordMainID=' + RecordMainID,
     })
   },
 

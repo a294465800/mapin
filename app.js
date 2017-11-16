@@ -33,10 +33,12 @@ App({
     } else {
       wx.login({
         success: (login) => {
+          console.log(login)
           wx.hideLoading()
           wx.getUserInfo({
             withCredentials: true,
             success: res => {
+              console.log(res)
               this._api.openIDApi(login, res, callback)
             },
             fail: (error) => {

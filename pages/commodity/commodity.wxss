@@ -17,7 +17,7 @@
 }
 
 .commodity-detail-info, .commodity-open-group, .commodity-ing-wrap,
-.commodity-exchange-wrap, .commodity-detail-wrap {
+.commodity-exchange-wrap, .commodity-detail-wrap, .commodity-share-wrap {
   margin-bottom: 30rpx;
   background-color: #fff;
 }
@@ -246,6 +246,13 @@
   color: #fff;
 }
 
+.commodity-share-buy-btn {
+  width: 300rpx;
+  background-color: #f9be0a;
+  font-size: 16pt;
+  color: #fff;
+}
+
 /* 参团样式 */
 
 .join-group-wrap {
@@ -402,4 +409,9 @@
   color: #666;
   padding: 20rpx 30rpx;
   position: relative;
+}
+
+/* 额外分享 */
+.commodity-share-info {
+  padding: 20rpx;
 }

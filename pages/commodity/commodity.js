@@ -29,11 +29,26 @@ Page({
     ],
 
     commodity: null,
+    fromShare: false,
+    shareInfo: null,
 
   },
 
   onLoad(options) {
-    app._api.getActivity({ RecordMainId: options.RecordMainId }, res => {
+    const share = options.type
+    console.log(options)
+    if (share === undefined) {
+    } else {
+      this.setData({
+        fromShare: true
+      })
+      app._api.getActivityResult({ RecordID: options.RecordID }, res => {
+        this.setData({
+          shareInfo: res.data,
+        })
+      })
+    }
+    app._api.getActivity({ RecordMainID: options.RecordMainID }, res => {
       this.setData({
         commodity: res.data,
         loading: false,
@@ -47,7 +62,7 @@ Page({
   onShareAppMessage(res) {
     return {
       title: this.data.commodity.fig_Name,
-      path: '/pages/commodity/commodity?RecordMainId=' + this.data.commodity.RecordMainID,
+      path: '/pages/commodity/commodity?RecordMainID=' + this.data.commodity.RecordMainID,
       success(res) {
         // 转发成功
       },
@@ -126,7 +141,6 @@ Page({
 
   //参团
   joinActivity(e) {
-    console.log(e)
     const type = e.currentTarget.dataset.type
     let postData = {
       RecordIDShop: this.data.commodity.RecordIDShop,
@@ -144,6 +158,41 @@ Page({
       postData.RecordSubID = currentGroup.RecordSubID
       text = `你即将参加${this.data.currentGroup}人团，价格为${this.data.currentPrice}元，确定付款吗？`
     }
+    wx.showModal({
+      title: '提示',
+      content: text,
+      success: ok => {
+        if (ok.confirm) {
+          app._api.joinActivity(postData, res => {
+            const RecordID = res.data.RecordID
+            wx.showToast({
+              title: '成功',
+              complete: () => {
+                wx.navigateTo({
+                  url: '/pages/costdetail/costdetail?RecordID=' + RecordID,
+                })
+              }
+            })
+          })
+        } else {
+          wx.showToast({
+            title: '已取消',
+          })
+        }
+      }
+    })
+  },
+
+  joinShareActivity(e) {
+    let postData = {
+      RecordIDShop: this.data.shareInfo.RecordIDShop,
+      type: 2,
+      OpenID: app.globalData.OpenID,
+      RecordMainID: this.data.shareInfo.RecordMainID,
+      RecordSubID: this.data.shareInfo.RecordSubID
+    }
+    const text = `你即将参加${this.data.shareInfo.fig_TypeNum}人团，价格为${this.data.shareInfo.fig_Price}元，确定付款吗？`
+
     wx.showModal({
       title: '提示',
       content: text,
