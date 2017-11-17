@@ -143,3 +143,15 @@
 .cost-detail-btn-hover {
   background-color: #e8b20d;
 }
+
+/* 查看活动海报 */
+
+.get-post {
+  text-align: right;
+  padding: 30rpx 0;
+}
+
+.get-post-text {
+  color: #3ba6de;
+  font-size: 15px;
+}

@@ -11,7 +11,8 @@ Page({
     close: false,
 
     //接口数据
-    lists: []
+    lists: [],
+    currentPost: ''
   },
 
   onLoad() {
@@ -88,37 +89,27 @@ Page({
   },
 
   //活动海报
-  getPost() {
-    console.log(1)
-    const ctx = wx.createCanvasContext('post')
+  getPost(e) {
+    wx.showLoading({
+      title: '海报生成中',
+    })
+    const RecordMainID = e.currentTarget.dataset.recordmainid
+    app._api.getShopPost({ RecordMainID }, res => {
+      console.log(res)
+      this.setData({
+        currentPost: res.data.PoserUrl
+      })
+      wx.hideLoading()
+      wx.previewImage({
+        urls: [res.data.PoserUrl],
+      })
+    })
+  },
 
-    console.log(2)
-    wx.downloadFile({
-      url: 'http://gb.cri.cn/mmsource/images/2015/12/24/nf151224012.jpg',
-      success: res => {
-        console.log('download', res)
-        ctx.drawImage(res.tempFilePath, 0, 0, 375, 150)
-        ctx.draw()
-
-        setTimeout(() => {
-          wx.canvasToTempFilePath({
-            canvasId: 'post',
-            success: (rs) => {
-              console.log(rs)
-              app._api.uploadImg([rs.tempFilePath], 0, res => {
-                console.log(res)
-                const path = 'http://139.199.207.181/' + res
-                wx.previewImage({
-                  urls: [path],
-                })
-              }, [])
-            }
-          })
-        }, 300)
-      },
-      fail: err => {
-        console.log(err)
-      }
+  //立即创建
+  creatActivity() {
+    wx.navigateTo({
+      url: '/pages/rules/rules',
     })
   }
 })

@@ -165,6 +165,7 @@ let api = {
         }
       })
     } else {
+      wx.hideLoading()
       typeof cb === 'function' && cb(arr)
     }
   },
@@ -295,6 +296,38 @@ let api = {
         typeof callback === 'function' && callback(res)
       })
       .catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  },
+
+  //获取商家海报
+  getShopPost(data, callback) {
+    _http.get(`${host}CreatePosterShop.aspx`, data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      })
+      .catch(err => {
+        wx.hideLoading()
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  },
+
+  //获取团长海报
+  getOrderPost(data, callback) {
+    _http.get(`${host}CreatePosterGroup.aspx`, data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      })
+      .catch(err => {
+        wx.hideLoading()
         wx.showModal({
           title: '提示',
           content: err.data,

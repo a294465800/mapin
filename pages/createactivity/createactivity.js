@@ -103,13 +103,16 @@ Page({
   chooseImg() {
     const that = this
     const oldImgs = that.data.submitForm.fig_ImgPath
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     wx.chooseImage({
       count: 9,
       sizeType: 'compressed',
       success(res) {
         app._api.uploadImg(res.tempFilePaths, 0, newimgs => {
-          // console.log(newimgs)
-          // let tmp = oldImgs.concat(newimgs)
+          wx.hideLoading()
           if (newimgs.length <= 9) {
             that.setData({
               'submitForm.fig_ImgPath': newimgs
@@ -140,7 +143,6 @@ Page({
   createSubmit(e) {
     const formObj = e.detail.value
     let subObj = Object.assign(this.data.submitForm, formObj, { RecordIDShop: app.globalData.userInfo.RecordID })
-    console.log(subObj)
     if (!this.data.RecordMainID) {
       for (let it in subObj) {
         if (it === 'fig_prepay' && subObj.fig_IFAllPay === 'Y') {
@@ -160,6 +162,11 @@ Page({
     app._api.postCreateActivity(subObj, (res) => {
       wx.showToast({
         title: '创建成功',
+        complete: rs => {
+          wx.switchTab({
+            url: '/pages/mine/mine',
+          })
+        }
       })
     })
   }

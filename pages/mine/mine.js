@@ -79,9 +79,9 @@ Page({
   },
 
   //登录验证
-  isLogin(callback) {
-    if (this.userInfo) {
-      typeof callback === 'function' && callback()
+  isLogin() {
+    if (this.data.userInfo) {
+      return true
     }
     wx.showToast({
       title: '请先登录',
@@ -91,27 +91,21 @@ Page({
 
   //跳转充值
   goToChargeMode() {
-    // this.isLogin(() => {
-    //   wx.navigateTo({
-    //     url: '/pages/recharge/recharge'
-    //   })
-    // })
-    wx.navigateTo({
-      url: '/pages/recharge/recharge'
-    })
+    if (this.isLogin()) {
+      wx.navigateTo({
+        url: '/pages/recharge/recharge'
+      })
+    }
   },
 
 
   //子帐号跳转
   geToSubControl() {
-    // this.isLogin(() => {
-    //   wx.navigateTo({
-    //     url: '/pages/subaccount/subaccount',
-    //   })
-    // })
-    wx.navigateTo({
-      url: '/pages/subaccount/subaccount',
-    })
+    if (this.isLogin()) {
+      wx.navigateTo({
+        url: '/pages/subaccount/subaccount',
+      })
+    }
   },
 
   //帮助跳转
@@ -130,38 +124,29 @@ Page({
 
   //资金提现
   geToMoneyControl() {
-    // this.isLogin(() => {
-    //   wx.navigateTo({
-    //     url: '/pages/cash/cash',
-    //   })
-    // })
-    wx.navigateTo({
-      url: '/pages/cash/cash',
-    })
+    if (this.isLogin()) {
+      wx.navigateTo({
+        url: '/pages/cash/cash',
+      })
+    }
   },
 
   //活动管理
   geToActivityControl() {
-    // this.isLogin(() => {
-    //   wx.navigateTo({
-    //     url: '/pages/activityrecord/activityrecord',
-    //   })
-    // })
-    wx.navigateTo({
-      url: '/pages/activityrecord/activityrecord',
-    })
+    if (this.isLogin()) {
+      wx.navigateTo({
+        url: '/pages/activityrecord/activityrecord',
+      })
+    }
   },
 
   //消费记录
   geToRecordControl() {
-    // this.isLogin(() => {
-    //   wx.navigateTo({
-    //     url: '/pages/costrecord/costrecord',
-    //   })
-    // })
-    wx.navigateTo({
-      url: '/pages/costrecord/costrecord',
-    })
+    if (this.isLogin()) {
+      wx.navigateTo({
+        url: '/pages/costrecord/costrecord',
+      })
+    }
   },
 
   //个人信息跳转

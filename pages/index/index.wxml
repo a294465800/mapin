@@ -1,11 +1,6 @@
 <!--index.wxml-->
-<!-- <view class="container flex-column flex-center"> -->
-<view class='container'>
+<view class="container flex-column flex-center">
   <image class='qr-img' mode='aspectFit' src='/images/icon/qrcode.png'></image>
-  <!-- <button type='button' class='qr-btn' hover-class='qr-hover' bindtap='scan'>扫一扫</button> -->
-  <!-- <view class='qr-text'>点击扫一扫，扫描顾客的活动码</view>  -->
-  <view catchtap='test'>测试</view>
-  <view class='canvas-wrap'>
-    <canvas canvas-id='post' class='canvas' hidden='{{hide}}'></canvas>
-  </view>
+  <button type='button' class='qr-btn' hover-class='qr-hover' bindtap='scan'>扫一扫</button>
+  <view class='qr-text'>点击扫一扫，扫描顾客的活动码</view>
 </view>

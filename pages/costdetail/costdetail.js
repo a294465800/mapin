@@ -14,7 +14,7 @@ Page({
     ],
 
     commodity: null,
-    RecordID: ''
+    RecordID: '',
   },
 
   onLoad(options) {
@@ -39,5 +39,19 @@ Page({
         // 转发失败
       }
     }
+  },
+
+  //获取海报
+  getPost() {
+    wx.showLoading({
+      title: '海报生成中',
+    })
+    const RecordSubID = this.data.commodity.RecordSubID
+    app._api.getOrderPost({ RecordSubID }, res => {
+      wx.hideLoading()
+      wx.previewImage({
+        urls: [res.data.PoserUrl],
+      })
+    })
   }
 })
