@@ -35,8 +35,8 @@ Page({
   },
 
   onLoad(options) {
-    const share = options.type
     console.log(options)
+    const share = options.type
     if (share === undefined) {
     } else {
       this.setData({

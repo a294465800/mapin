@@ -1,4 +1,12 @@
 <!--pages/activity/activity.wxml-->
+<wxs module="m1">
+  function number(num) {
+    return parseInt(num)
+  }
+
+  module.exports.number = number;
+</wxs>
+
 <view class='container'>
   <!--轮播  -->
   <swiper indicator-dots autoplay interval="5000" duration="1000" indicator-color='#fff' indicator-active-color='#f9be0a' class='swiper-img-wrap'>
@@ -15,19 +23,19 @@
   </view>
   <!--/制作按钮  -->
 
+  <view class='activity-sort flex-row'>
+    <view class='{{currentSort == sort.id?"active":""}}' wx:for="{{sorts}}" wx:for-item="sort" wx:key="id" catchtap='sortFnc' data-id='{{sort.id}}'>{{sort.name}}</view>
+  </view>
   <!--最新拼团列表  -->
-  <block wx:if="{{loading}}">
-    <view class='loading-wrap flex-column flex-center'>
-      <image class='loading-gif' mode='aspectFit' src='/images/icon/loading.gif'></image>
-    </view>
-  </block>
-  <block wx:else>
-    <view class='activity-list'>
+  <view class='activity-list'>
+    <block wx:if="{{loading}}">
+      <view class='loading-wrap flex-column flex-center'>
+        <image class='loading-gif' mode='aspectFit' src='/images/icon/loading.gif'></image>
+      </view>
+    </block>
+    <block wx:else>
       <block wx:if="{{lists.length}}">
         <view class='tips'>---- 最新拼团 ----</view>
-        <view class='activity-sort flex-row'>
-          <view class='{{currentSort == sort.id?"active":""}}' wx:for="{{sorts}}" wx:for-item="sort" wx:key="id" catchtap='sortFnc' data-id='{{sort.id}}'>{{sort.name}}</view>
-        </view>
         <view class='activity-list-item' wx:for="{{lists}}" wx:for-item="listItem" wx:key="id">
           <view class='activity-list-item-wrap flex-row'>
             <image class='activity-list-item-img' mode='aspectFit' src='{{listItem.fig_ImgPath[0] || "/images/icon/no-img.png"}}'></image>
@@ -49,13 +57,14 @@
             </view>
           </view>
           <view class='activity-list-item-timeRange'>{{listItem.fig_StartDate}} - {{listItem.fig_EndDate}}</view>
+          <view class='activity-list-item-distance' wx:if="{{currentSort == 2}}">{{m1.number(listItem.distance)}} 米</view>
         </view>
         <view class='tips' hidden='{{!close}}'>已经没有了~</view>
       </block>
       <block wx:else>
         <view class='tips'>暂无活动</view>
       </block>
-    </view>
-  </block>
+    </block>
+  </view>
   <!--/最新拼团列表  -->
 </view>

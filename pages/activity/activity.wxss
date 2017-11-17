@@ -75,6 +75,7 @@ view.activity-btn-example {
   width: 100%;
   margin-bottom: 30rpx;
   border-top: 1px solid #eee;
+  position: relative;
 }
 
 .activity-list-item:last-of-type {
@@ -148,4 +149,12 @@ view.activity-btn-example {
   font-size: 13px;
   color: #f9be0a;
   margin-top: 20rpx;
+}
+
+.activity-list-item-distance {
+  font-size: 14px;
+  color: #f9be0a;
+  position: absolute;
+  right: 20rpx;
+  bottom: 20rpx;
 }

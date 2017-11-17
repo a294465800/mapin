@@ -1,5 +1,9 @@
 // pages/activity/activity.js
 const app = getApp()
+const QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
+const demo = new QQMapWX({
+  key: 'EUNBZ-MIEKW-LPMR7-ODGYY-IKEIH-Y3B4O'
+});
 Page({
 
   data: {
@@ -64,18 +68,59 @@ Page({
   //排序
   sortFnc(e) {
     const id = e.currentTarget.dataset.id
+    let getData = {
+      orderType: id
+    }
     wx.showLoading({
       title: '加载中',
     })
-    app._api.getAllActivity({ orderType: id }, res => {
-      wx.hideLoading()
-      this.setData({
-        lists: res.data.TeamList,
-        currentSort: id,
-        page: 1,
-        close: false,
+
+    if (id === 2) {
+      app.getSelfLocation(res => {
+        demo.reverseGeocoder({
+          location: {
+            latitude: res.latitude,
+            longitude: res.longitude
+          },
+          success: (rs) => {
+            const cityData = rs.result.address_component
+            getData.fig_Latitude = res.latitude
+            getData.fig_Longitude = res.longitude
+            getData.fig_region = cityData.province + cityData.city + cityData.district
+            getData.TmpUserID = app.globalData.uuid
+            app._api.getAllActivity(getData, res => {
+              wx.hideLoading()
+              this.setData({
+                lists: res.data.TeamList,
+                currentSort: id,
+                page: 1,
+                close: false
+              })
+            })
+          },
+        })
+      }, false, () => {
+        wx.showToast({
+          title: '获取失败'
+        })
+        this.setData({
+          lists: [],
+          currentSort: id,
+          page: 1,
+          close: false
+        })
       })
-    })
+    } else {
+      app._api.getAllActivity(getData, res => {
+        wx.hideLoading()
+        this.setData({
+          lists: res.data.TeamList,
+          currentSort: id,
+          page: 1,
+          close: false
+        })
+      })
+    }
   },
 
   //创建活动

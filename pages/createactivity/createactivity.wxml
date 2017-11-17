@@ -98,7 +98,7 @@
       <view class='form-group'>
         <label class='label-beautify' catchtap='getShopAddress'>
           <view>商家坐标</view>
-          <view class='simulate-input text-flow'>{{submitForm.fig_latitude?submitForm.fig_latitude + ',' + submitForm.fig_longitude : '商家坐标'}}</view>
+          <view class='simulate-input text-flow'>{{submitForm.fig_latitude?submitForm.fig_latitude + ',' + submitForm.fig_longitude : '点击获取商家坐标'}}</view>
         </label>
         <label class='label-beautify'>
           <view>商家地址</view>

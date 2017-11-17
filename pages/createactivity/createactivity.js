@@ -1,5 +1,9 @@
 // pages/createactivity/createactivity.js
 const app = getApp()
+const QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
+const demo = new QQMapWX({
+  key: 'EUNBZ-MIEKW-LPMR7-ODGYY-IKEIH-Y3B4O'
+});
 const date = new Date()
 Page({
 
@@ -91,10 +95,20 @@ Page({
   getShopAddress() {
     const that = this
     app.getLocation((res) => {
-      that.setData({
-        'submitForm.fig_latitude': res.latitude,
-        'submitForm.fig_longitude': res.longitude,
-        // 'submitForm.fig_Address': res.address,
+      demo.reverseGeocoder({
+        location: {
+          latitude: res.latitude,
+          longitude: res.longitude
+        },
+        success: (rs) => {
+          console.log(rs)
+          const cityData = rs.result.address_component
+          this.setData({
+            'submitForm.fig_latitude': res.latitude,
+            'submitForm.fig_longitude': res.longitude,
+            'submitForm.fig_region': cityData.province + cityData.city + cityData.district
+          })
+        },
       })
     })
   },

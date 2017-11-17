@@ -1,5 +1,7 @@
-const host = 'http://139.199.207.181/Web/'
-const host_upload = 'http://139.199.207.181/'
+// const host = 'http://139.199.207.181/Web/'
+// const host_upload = 'http://139.199.207.181/'
+const host_upload = 'https://www.imagine-yipin.com/'
+const host = 'https://www.imagine-yipin.com/Web/'
 
 //请求 promise 封装
 const _http = {
