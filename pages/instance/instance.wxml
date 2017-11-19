@@ -1,2 +1,2 @@
 <!--pages/instance/instance.wxml-->
-<!-- <image src='/images/instance.jpg'></image> -->
+ <image class='instance' mode='widthFix' src='http://139.199.207.181/images/example2.jpg'></image> 

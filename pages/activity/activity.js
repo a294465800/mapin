@@ -9,9 +9,9 @@ Page({
   data: {
     loading: true,
     imgUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://d.5857.com/hh_170601/001.jpg',
-      'http://img.zcool.cn/community/03320dd554c75c700000158fce17209.jpg'
+      'http://139.199.207.181/images/11.jpg',
+      'http://139.199.207.181/images/22.jpg',
+      'http://139.199.207.181/images/33.jpg'
     ],
 
     currentSort: 1,
@@ -55,6 +55,13 @@ Page({
         // 转发失败
       }
     }
+  },
+
+  //示例
+  goToInstance() {
+    wx.navigateTo({
+      url: '/pages/instance/instance',
+    })
   },
 
   //购买

@@ -1,1 +1,5 @@
 /* pages/instance/instance.wxss */
+
+.instance {
+  width: 100%;
+}

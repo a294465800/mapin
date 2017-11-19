@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/helptext/helptext",
     "pages/index/index",
+    "pages/helptext/helptext",
     "pages/instance/instance",
     "pages/activity/activity",
     "pages/material/material",
