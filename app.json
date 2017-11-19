@@ -1,7 +1,9 @@
 {
   "pages": [
-    "pages/activity/activity",
+    "pages/helptext/helptext",
     "pages/index/index",
+    "pages/instance/instance",
+    "pages/activity/activity",
     "pages/material/material",
     "pages/myinfo/myinfo",
     "pages/joinrecord/joinrecord",
@@ -16,7 +18,6 @@
     "pages/cashrecord/cashrecord",
     "pages/cash/cash",
     "pages/contact/contact",
-    "pages/helptext/helptext",
     "pages/help/help",
     "pages/subaccount/subaccount",
     "pages/recharge/recharge"

@@ -8,14 +8,9 @@ Page({
     kefus: [
       {
         id: 1,
-        name: 'SHINING1',
+        name: 'huangkk2211',
         qrcode: 'https://upload.wikimedia.org/wikipedia/commons/0/09/%28%E8%AE%A8%E8%AE%BA-2%29%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E7%BE%A4%E4%BA%8C%E7%BB%B4%E7%A0%81.png'
       },
-      {
-        id: 2,
-        name: 'JACK',
-        qrcode: 'https://upload.wikimedia.org/wikipedia/commons/0/09/%28%E8%AE%A8%E8%AE%BA-2%29%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E7%BE%A4%E4%BA%8C%E7%BB%B4%E7%A0%81.png'
-      }
     ]
   },
 

@@ -1,1 +1,5 @@
 /* pages/helptext/helptext.wxss */
+
+.container {
+  padding: 15px;
+}

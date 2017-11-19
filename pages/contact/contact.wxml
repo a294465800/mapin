@@ -4,20 +4,20 @@
     <view class='contact-item flex-row'>
       <view class='contact-text flex-row'>
         <view class='contact-title'>公司名称</view>
-        <view class='contact-name'>上海港南商贸有限公司</view>
+        <view class='contact-name'>广州享象科技有限公司</view>
       </view>
     </view>
     <view class='contact-item flex-row' catchtap='call' hover-class='hover-class' hover-stay-time='150'>
       <view class='contact-text flex-row'>
         <view class='contact-title'>服务热线</view>
-        <view class='contact-name'>020-56153515</view>
+        <view class='contact-name'>020-32166695</view>
       </view>
       <image class='tel-icon' mode='aspectFit' src='/images/icon/tel.png'></image>
     </view>
     <view class='contact-item flex-row' catchtap='locate' hover-class='hover-class' hover-stay-time='150'>
       <view class='contact-text flex-row'>
         <view class='contact-title'>公司地址</view>
-        <view class='contact-name'>上海市徐汇区漕宝路120号内40号楼</view>
+        <view class='contact-name'>广州市增城区新塘镇荔新十二路96号10幢110号</view>
       </view>
       <image class='located-icon' mode='aspectFit' src='/images/icon/located.png'></image>
     </view>
