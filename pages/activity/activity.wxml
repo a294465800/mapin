@@ -1,7 +1,7 @@
 <!--pages/activity/activity.wxml-->
 <wxs module="m1">
   function number(num) {
-    return parseInt(num)
+    return parseFloat(num).toFixed(1)
   }
 
   module.exports.number = number;
@@ -57,7 +57,7 @@
             </view>
           </view>
           <view class='activity-list-item-timeRange'>{{listItem.fig_StartDate}} - {{listItem.fig_EndDate}}</view>
-          <view class='activity-list-item-distance' wx:if="{{currentSort == 2}}">{{m1.number(listItem.distance)}} 米</view>
+          <view class='activity-list-item-distance' wx:if="{{currentSort == 2}}">{{m1.number(listItem.distance)}} km</view>
         </view>
         <view class='tips' hidden='{{!close}}'>已经没有了~</view>
       </block>

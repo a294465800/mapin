@@ -47,7 +47,7 @@ Page({
   onShareAppMessage(res) {
     return {
       title: '蚂蚁拼团',
-      path: '/pages/shop/shop',
+      path: '/pages/activity/activity',
       success(res) {
         // 转发成功
       },
@@ -66,6 +66,18 @@ Page({
 
   //购买
   goToBuy(e) {
+    if (!app.globalData.userInfo) {
+      wx.showModal({
+        title: '提示',
+        content: '请先登录',
+        success: ok => {
+          if (ok.confirm) {
+            app.getUserInfo()
+          }
+        }
+      })
+      return false
+    }
     const RecordMainID = e.currentTarget.dataset.id
     wx.navigateTo({
       url: '/pages/commodity/commodity?RecordMainID=' + RecordMainID,

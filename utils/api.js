@@ -209,6 +209,7 @@ let api = {
         typeof callback === 'function' && callback(res)
       })
       .catch(err => {
+        wx.hideLoading()
         wx.showModal({
           title: '提示',
           content: err.data,

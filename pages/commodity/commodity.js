@@ -31,11 +31,11 @@ Page({
     commodity: null,
     fromShare: false,
     shareInfo: null,
+    RecordMainID: ''
 
   },
 
   onLoad(options) {
-    console.log(options)
     const share = options.type
     if (share === undefined) {
     } else {
@@ -53,9 +53,22 @@ Page({
         commodity: res.data,
         loading: false,
         currentPrice: res.data.fig_Price1,
-        currentGroup: res.data.fig_Number1
+        currentGroup: res.data.fig_Number1,
+        RecordMainID: options.RecordMainID
       })
     })
+  },
+
+  onShow() {
+    if (this.data.commodity) {
+      app._api.getActivity({ RecordMainID: this.data.RecordMainID }, res => {
+        this.setData({
+          commodity: res.data,
+          currentPrice: res.data.fig_Price1,
+          currentGroup: res.data.fig_Number1
+        })
+      })
+    }
   },
 
   //页面分享
