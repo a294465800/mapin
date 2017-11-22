@@ -3,7 +3,8 @@ const _api = require('/utils/api.js')
 App({
 
   globalData: {
-    host: 'http://139.199.207.181/Web/',
+    // host: 'http://139.199.207.181/Web/',
+    host: 'https://www.imagine-yipin.com/Web/',
     OpenID: wx.getStorageSync('OpenID') || '',
     userInfo: null,
     uuid: ''
@@ -31,6 +32,7 @@ App({
         if (setting.authSetting['scope.userInfo']) {
           this.getUserInfo(userInfo => {
             this.globalData.userInfo = userInfo
+            console.log(1111, wx.getStorageSync('userInfo'))
           })
         }
       }
@@ -53,12 +55,10 @@ App({
     } else {
       wx.login({
         success: (login) => {
-          console.log(login)
           wx.hideLoading()
           wx.getUserInfo({
             withCredentials: true,
             success: res => {
-              console.log(res)
               this._api.openIDApi(login, res, callback)
             },
             fail: (error) => {
@@ -134,14 +134,12 @@ App({
         wx.openSetting({
           success(setting) {
             if (setting.authSetting['scope.userLocation']) {
-              // that.getSelfLocation(callback, true)
               wx.getLocation({
                 success: (res) => {
                   typeof callback === 'function' && callback(res)
                 },
               })
             } else {
-              console.log(false)
               typeof callbackerr === 'function' && callbackerr()
             }
           }

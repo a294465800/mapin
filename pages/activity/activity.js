@@ -66,7 +66,7 @@ Page({
 
   //购买
   goToBuy(e) {
-    if (!app.globalData.userInfo) {
+    if (!wx.getStorageSync('userInfo')) {
       wx.showModal({
         title: '提示',
         content: '请先登录',
@@ -105,7 +105,7 @@ Page({
             const cityData = rs.result.address_component
             getData.fig_Latitude = res.latitude
             getData.fig_Longitude = res.longitude
-            getData.fig_region = cityData.province + cityData.city + cityData.district
+            getData.fig_region = cityData.city + "," + cityData.district
             getData.TmpUserID = app.globalData.uuid
             app._api.getAllActivity(getData, res => {
               wx.hideLoading()

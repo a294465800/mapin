@@ -22,7 +22,7 @@
             <view class='record-item-content-info flex-row'>
               <view class='record-item-content-type flex-row'>
                 <image class='people-icon' mode='aspectFit' src='/images/icon/people.png'></image>
-                <view class='record-item-content-type-text'>3人</view>
+                <view class='record-item-content-type-text'>{{listItem.fig_TypeNum}}人</view>
               </view>
               <view class='record-item-content-price'>￥{{listItem.fig_price}}</view>
             </view>

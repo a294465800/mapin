@@ -337,6 +337,21 @@ let api = {
           showCancel: false
         })
       })
+  },
+
+  //点击、分享
+  addShareAndClick(data, callback) {
+    _http.get(`${host}GroupClickShare.aspx`, data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      })
+      .catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
   }
 }
 

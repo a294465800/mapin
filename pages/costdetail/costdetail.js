@@ -3,6 +3,7 @@ const app = getApp()
 Page({
 
   data: {
+    loading: true,
     //活动规则
     rules: [
       '点击我要开团或单独开团，可以发起一个新的团。点击我要参与或未满团推荐的团即可参与好友或其他已发起的团。',
@@ -22,18 +23,22 @@ Page({
     app._api.getActivityResult({ RecordID }, res => {
       this.setData({
         commodity: res.data,
-        RecordID
+        RecordID,
+        loading: false
       })
     })
   },
 
   //分享
   onShareAppMessage(res) {
+    const that = this
     return {
       title: '快来加入我的拼团',
       path: `/pages/commodity/commodity?type=share&RecordID=${this.data.RecordID}&RecordMainID=${this.data.commodity.RecordMainID}`,
       success(res) {
-        // 转发成功
+        app._api.addShareAndClick({ fig_type: 2, RecordMainID: that.data.commodity.RecordMainID }, res => {
+          console.log(222)
+        })
       },
       fail(res) {
         // 转发失败

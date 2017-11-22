@@ -48,20 +48,20 @@ Page({
         })
       })
     }
-    console.log(1)
-    app._api.getActivity({ RecordMainID: options.RecordMainID }, res => {
-      this.setData({
-        commodity: res.data,
-        loading: false,
-        currentPrice: res.data.fig_Price1,
-        currentGroup: res.data.fig_Number1,
-        RecordMainID: options.RecordMainID
+    app._api.addShareAndClick({ fig_type: 1, RecordMainID: options.RecordMainID }, rs => {
+      app._api.getActivity({ RecordMainID: options.RecordMainID }, res => {
+        this.setData({
+          commodity: res.data,
+          loading: false,
+          currentPrice: res.data.fig_Price1,
+          currentGroup: res.data.fig_Number1,
+          RecordMainID: options.RecordMainID
+        })
       })
     })
   },
 
   onShow() {
-    console.log(1)
     if (this.data.commodity) {
       app._api.getActivity({ RecordMainID: this.data.RecordMainID }, res => {
         this.setData({
@@ -75,11 +75,13 @@ Page({
 
   //页面分享
   onShareAppMessage(res) {
+    const that = this
     return {
       title: this.data.commodity.fig_Name,
       path: '/pages/commodity/commodity?RecordMainID=' + this.data.commodity.RecordMainID,
       success(res) {
         // 转发成功
+        app._api.addShareAndClick({ fig_type: 2, RecordMainID: that.data.commodity.RecordMainID })
       },
       fail(res) {
         // 转发失败
@@ -177,7 +179,7 @@ Page({
     else if (type == '2') {
       const currentGroup = this.data.currentSubGroup
       postData.RecordSubID = currentGroup.RecordSubID
-      text = `你即将参加${this.data.currentGroup}人团，价格为${this.data.currentPrice}元，确定付款吗？`
+      text = `你即将参加${currentGroup.fig_AttendTypeNum}人团，价格为${currentGroup.price}元，确定付款吗？`
     }
     wx.showModal({
       title: '提示',
@@ -204,10 +206,12 @@ Page({
     })
   },
 
+  //分享参团
   joinShareActivity(e) {
     let postData = {
       RecordIDShop: this.data.shareInfo.RecordIDShop,
       type: 2,
+      fight_Type: this.data.shareInfo.fight_Type,
       OpenID: app.globalData.OpenID,
       RecordMainID: this.data.shareInfo.RecordMainID,
       RecordSubID: this.data.shareInfo.RecordSubID

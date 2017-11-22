@@ -31,8 +31,8 @@
         <view class='commodity-detail-group-number'>成团人数：{{commodity.fig_Number1}}人•{{commodity.fig_Number2}}人•{{commodity.fig_Number3}}人</view>
       </view>
       <view class='commodity-scan flex-row'>
-        <view>浏览：0次</view>
-        <view>分享：0次</view>
+        <view>浏览：{{commodity.fig_ClickNum}}次</view>
+        <view>分享：{{commodity.fig_ShareNum}}次</view>
       </view>
     </view>
     <!--/商品主要信息  -->

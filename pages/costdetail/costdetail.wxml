@@ -1,78 +1,85 @@
 <!--pages/costdetail/costdetail.wxml-->
-<view class='container flex-column'>
-  <view class='flex-wrap'>
-    <view class='flex-bug'>
-      <scroll-view class='scroll' scroll-y>
+<block wx:if="{{loading}}">
+  <view class='loading-wrap flex-column flex-center'>
+    <image class='loading-gif' mode='aspectFit' src='/images/icon/loading.gif'></image>
+  </view>
+</block>
+<block wx:else>
+  <view class='container flex-column'>
+    <view class='flex-wrap'>
+      <view class='flex-bug'>
+        <scroll-view class='scroll' scroll-y>
 
-        <!--订单信息  -->
-        <view class='cost-detail-wrap'>
-          <view class='cost-detail-content flex-row'>
-            <image class='cost-detail-content-img' mode='aspectFit' src='{{commodity.fig_ImgPath.length?commodity.fig_ImgPath[0]:"/images/icon/no-img.png"}}'></image>
-            <view class='cost-detail-info flex-column'>
-              <view class='cost-detail-info-title multi-two-text-flow'>{{commodity.fig_Name}}</view>
-              <!-- <view class='cost-detail-info-middle flex-row'>
+          <!--订单信息  -->
+          <view class='cost-detail-wrap'>
+            <view class='cost-detail-content flex-row'>
+              <image class='cost-detail-content-img' mode='aspectFit' src='{{commodity.fig_ImgPath.length?commodity.fig_ImgPath[0]:"/images/icon/no-img.png"}}'></image>
+              <view class='cost-detail-info flex-column'>
+                <view class='cost-detail-info-title multi-two-text-flow'>{{commodity.fig_Name}}</view>
+                <!-- <view class='cost-detail-info-middle flex-row'>
           <view class='cost-detail-info-middle-num flex-row'>
             <image class='people-icon' mode='aspectFit' src='/images/icon/people.png'></image>
             <view>3人•5人•8人</view>
           </view>
           <view>已团：124人</view>
         </view> -->
-              <view class='cost-detail-info-foot flex-row'>
-                <view class='cost-detail-info-price'>￥{{commodity.fig_Price}}</view>
-                <view class='cost-detail-info-group-num'>{{commodity.fig_TypeNum}}人团</view>
-              </view>
-              <view class='get-post'>
-                <text class='get-post-text' catchtap='getPost'>查看活动海报</text>
+                <view class='cost-detail-info-foot flex-row'>
+                  <view class='cost-detail-info-price'>￥{{commodity.fig_Price}}</view>
+                  <view class='cost-detail-info-group-num'>{{commodity.fig_TypeNum}}人团</view>
+                </view>
+                <view class='get-post'>
+                  <text class='get-post-text' catchtap='getPost'>查看活动海报</text>
+                </view>
               </view>
             </view>
+            <block wx:if="{{commodity.fig_IFOKFlag == 'N'}}">
+              <view class='cost-detail-time'>------ 还差{{commodity.LeftMan}}人，结束时间{{commodity.fig_EndDate}} ------</view>
+            </block>
+            <block wx:else>
+              <view class='cost-detail-time'>------ 该团已成功！ ------</view>
+            </block>
+            <view class='cost-detail-imgs flex-row'>
+              <image wx:for="{{commodity.haveAttend}}" class='cost-detail-img' mode='aspectFit' src='{{item}}'></image>
+            </view>
           </view>
-          <block wx:if="{{commodity.fig_IFOKFlag == 'N'}}">
-            <view class='cost-detail-time'>------ 还差{{commodity.LeftMan}}人，结束时间{{commodity.fig_EndDate}} ------</view>
-          </block>
-          <block wx:else>
-            <view class='cost-detail-time'>------ 该团已成功！ ------</view>
-          </block>
-          <view class='cost-detail-imgs flex-row'>
-            <image wx:for="{{commodity.haveAttend}}" class='cost-detail-img' mode='aspectFit' src='{{item}}'></image>
-          </view>
-        </view>
-        <!--/订单信息  -->
+          <!--/订单信息  -->
 
-        <!--兑换信息  -->
-        <view class='commodity-exchange-wrap'>
-          <view class='commodity-item-title flex-row'>
-            <image class='group-icons' mode='aspectFit' src='/images/icon/group_info.png'></image>
-            <view>兑换信息</view>
+          <!--兑换信息  -->
+          <view class='commodity-exchange-wrap'>
+            <view class='commodity-item-title flex-row'>
+              <image class='group-icons' mode='aspectFit' src='/images/icon/group_info.png'></image>
+              <view>兑换信息</view>
+            </view>
+            <view class='commodity-exchange-info'>
+              <view class='commodity-exchange-info-item'>商家名称：{{commodity.fig_ShopName}}</view>
+              <view class='commodity-exchange-info-item'>兑奖时间：{{commodity.fig_StartDate}} - {{commodity.fig_EndDate}}</view>
+              <view class='commodity-exchange-info-item'>兑奖地址：{{commodity.fig_Address}}</view>
+              <view class='commodity-exchange-info-item'>服务电话：{{commodity.fig_Tel}}</view>
+            </view>
           </view>
-          <view class='commodity-exchange-info'>
-            <view class='commodity-exchange-info-item'>商家名称：{{commodity.fig_ShopName}}</view>
-            <view class='commodity-exchange-info-item'>兑奖时间：{{commodity.fig_StartDate}} - {{commodity.fig_EndDate}}</view>
-            <view class='commodity-exchange-info-item'>兑奖地址：{{commodity.fig_Address}}</view>
-            <view class='commodity-exchange-info-item'>服务电话：{{commodity.fig_Tel}}</view>
-          </view>
-        </view>
-        <!--/兑换信息  -->
+          <!--/兑换信息  -->
 
-        <!--活动规则  -->
-        <view class='commodity-exchange-wrap'>
-          <view class='commodity-item-title flex-row'>
-            <image class='group-icons' mode='aspectFit' src='/images/icon/group_rules.png'></image>
-            <view>活动规则</view>
+          <!--活动规则  -->
+          <view class='commodity-exchange-wrap'>
+            <view class='commodity-item-title flex-row'>
+              <image class='group-icons' mode='aspectFit' src='/images/icon/group_rules.png'></image>
+              <view>活动规则</view>
+            </view>
+            <view class='commodity-exchange-info'>
+              <view class='commodity-exchange-info-item' wx:for="{{rules}}" wx:for-item="rule">{{index + 1 + '. ' + rule}}</view>
+            </view>
           </view>
-          <view class='commodity-exchange-info'>
-            <view class='commodity-exchange-info-item' wx:for="{{rules}}" wx:for-item="rule">{{index + 1 + '. ' + rule}}</view>
-          </view>
-        </view>
-        <!--/活动规则  -->
-      </scroll-view>
+          <!--/活动规则  -->
+        </scroll-view>
+      </view>
     </view>
+
+    <block wx:if="{{commodity.fig_IFOKFlag == 'N'}}">
+      <button open-type='share' type='button' class='cost-detail-btn flex-row flex-center' hover-class='cost-detail-btn-hover'>
+        <image class='share-icon' mode='aspectFit' src='/images/icon/share.png'></image>
+        <view>分享给朋友</view>
+      </button>
+    </block>
+
   </view>
-
-  <block wx:if="{{commodity.fig_IFOKFlag == 'N'}}">
-    <button open-type='share' type='button' class='cost-detail-btn flex-row flex-center' hover-class='cost-detail-btn-hover'>
-      <image class='share-icon' mode='aspectFit' src='/images/icon/share.png'></image>
-      <view>分享给朋友</view>
-    </button>
-  </block>
-
-</view>
+</block>
