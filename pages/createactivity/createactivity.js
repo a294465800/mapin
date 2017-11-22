@@ -57,6 +57,10 @@ Page({
     }
   },
 
+  getNumberOne() { },
+  getNumberTwo() { },
+  getNumberThree(){},
+
   //获取开始时间
   getStartTime(e) {
     const fig_StartDate = e.detail.value

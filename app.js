@@ -26,6 +26,15 @@ App({
 
     const uuid = guid()
     this.globalData.uuid = uuid
+    wx.getSetting({
+      success: setting => {
+        if (setting.authSetting['scope.userInfo']) {
+          this.getUserInfo(userInfo => {
+            this.globalData.userInfo = userInfo
+          })
+        }
+      }
+    })
   },
 
   //获取登录权限

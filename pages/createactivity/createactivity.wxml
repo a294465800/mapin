@@ -67,7 +67,7 @@
         </label>
         <label class='label-beautify'>
           <view>人数</view>
-          <input name="fig_Number1" value='{{submitForm.fig_Number1}}' type='number' placeholder='1号团人数设定'></input>
+          <input name="fig_Number1" value='{{submitForm.fig_Number1}}' type='number' placeholder='1号团人数设定' bindblur='getNumberOne'></input>
         </label>
         <label class='label-beautify'>
           <view>商品价格</view>
@@ -75,11 +75,11 @@
         </label>
         <label class='label-beautify'>
           <view>人数</view>
-          <input name="fig_Number2" value='{{submitForm.fig_Number2}}' type='number' placeholder='2号团人数设定'></input>
+          <input name="fig_Number2" value='{{submitForm.fig_Number2}}' type='number' placeholder='2号团人数设定' bindblur='getNumberTwo'></input>
         </label>
         <label class='label-beautify'>
           <view>商品价格</view>
-          <input name="fig_Price2" value='{{submitForm.fig_Price2}}' type='digit' placeholder='每件商品价格（元）'></input>
+          <input name="fig_Price2" value='{{submitForm.fig_Price2}}' type='digit' placeholder='每件商品价格（元）' bindblur='getNumberThree'></input>
         </label>
         <label class='label-beautify'>
           <view>人数</view>

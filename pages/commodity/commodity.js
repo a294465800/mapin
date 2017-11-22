@@ -48,6 +48,7 @@ Page({
         })
       })
     }
+    console.log(1)
     app._api.getActivity({ RecordMainID: options.RecordMainID }, res => {
       this.setData({
         commodity: res.data,
@@ -60,6 +61,7 @@ Page({
   },
 
   onShow() {
+    console.log(1)
     if (this.data.commodity) {
       app._api.getActivity({ RecordMainID: this.data.RecordMainID }, res => {
         this.setData({
@@ -145,10 +147,16 @@ Page({
   showSaveDetail(e) {
     const index = e.currentTarget.dataset.join_group
     const mode = e.currentTarget.dataset.mode
+    let currentSubGroup = {}
+    if (mode == '1') {
+      currentSubGroup = this.data.commodity.OnGroups[index]
+    } else if (mode == '2') {
+      currentSubGroup = this.data.moreGroups[index]
+    }
     this.setData({
       showDetail: true,
       joinGroup: index,
-      currentMode: mode
+      currentSubGroup: currentSubGroup
     })
   },
 
@@ -167,7 +175,7 @@ Page({
       text = `你即将创建${this.data.currentGroup}人团，价格为${this.data.currentPrice}元，团长优惠${this.data.commodity.fig_OuterMoney}元，确定付款吗？`
     }
     else if (type == '2') {
-      const currentGroup = this.data.commodity.OnGroups[this.data.joinGroup]
+      const currentGroup = this.data.currentSubGroup
       postData.RecordSubID = currentGroup.RecordSubID
       text = `你即将参加${this.data.currentGroup}人团，价格为${this.data.currentPrice}元，确定付款吗？`
     }

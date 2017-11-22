@@ -26,13 +26,14 @@ Page({
   onLoad(options) {
     const that = this
     //初次注册
-    let userInfoStr = options.wxUserInfo || ''
+    let userInfoStr = wx.getStorageSync('userInfo') || ''
     if (userInfoStr) {
       const userInfo = JSON.parse(userInfoStr)
       this.setData({
-        'userForm.user_Name': userInfo.nickName,
-        'userForm.user_Sex': userInfo.gender,
-        'userForm.avatarUrl': userInfo.avatarUrl,
+        // 'userForm.user_Name': userInfo.user_Name,
+        // 'userForm.user_Sex': userInfo.user_Sex,
+        // 'userForm.avatarUrl': userInfo.avatarUrl,
+        userForm: userInfo,
         loading: false
       })
       app.globalData.OpenID = wx.getStorageSync('OpenID')
