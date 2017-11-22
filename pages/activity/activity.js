@@ -144,9 +144,26 @@ Page({
 
   //创建活动
   createActivity() {
-    wx.navigateTo({
-      url: '/pages/rules/rules',
-    })
+    if (!wx.getStorageSync('userInfo')) {
+      wx.showModal({
+        title: '提示',
+        content: '请先登录',
+        success: ok => {
+          if (ok.confirm) {
+            app.getUserInfo(res => {
+              wx.navigateTo({
+                url: '/pages/rules/rules',
+              })
+            })
+          }
+        }
+      })
+    } else {
+
+      wx.navigateTo({
+        url: '/pages/rules/rules',
+      })
+    }
   },
 
   //触底刷新

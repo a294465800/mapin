@@ -79,11 +79,11 @@
         </label>
         <label class='label-beautify'>
           <view>商品价格</view>
-          <input name="fig_Price2" value='{{submitForm.fig_Price2}}' type='digit' placeholder='每件商品价格（元）' bindblur='getNumberThree'></input>
+          <input name="fig_Price2" value='{{submitForm.fig_Price2}}' type='digit' placeholder='每件商品价格（元）'></input>
         </label>
         <label class='label-beautify'>
           <view>人数</view>
-          <input name="fig_Number3" value='{{submitForm.fig_Number3}}' type='number' placeholder='3号团人数设定'></input>
+          <input name="fig_Number3" value='{{submitForm.fig_Number3}}' type='number' placeholder='3号团人数设定' bindblur='getNumberThree'></input>
         </label>
         <label class='label-beautify'>
           <view>商品价格</view>

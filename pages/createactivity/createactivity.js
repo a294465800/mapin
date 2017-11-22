@@ -40,7 +40,11 @@ Page({
       '若人为因素刷单等恶意参与, 本机构有权解除团员参与资格。'
     ],
 
-    tempImgs: []
+    tempImgs: [],
+
+    num1: '',
+    num2: '',
+    num3: '',
   },
 
   onLoad(options) {
@@ -57,9 +61,60 @@ Page({
     }
   },
 
-  getNumberOne() { },
-  getNumberTwo() { },
-  getNumberThree(){},
+  getNumberOne(e) {
+    const num = Number(e.detail.value)
+    if (num < 1) {
+      wx.showToast({
+        title: '人数不能为 0',
+      })
+      return false
+    }
+    if (num < this.data.num2 || !this.data.num2) {
+      this.setData({
+        num1: num
+      })
+    } else {
+      wx.showToast({
+        title: '人数应递增',
+      })
+    }
+  },
+  getNumberTwo(e) {
+    const num = Number(e.detail.value)
+    if (num < 1) {
+      wx.showToast({
+        title: '人数不能为 0',
+      })
+      return false
+    }
+    if (num > this.data.num1) {
+      this.setData({
+        num2: num
+      })
+    } else {
+      wx.showToast({
+        title: '人数应递增',
+      })
+    }
+  },
+  getNumberThree(e) {
+    const num = Number(e.detail.value)
+    if (num < 1) {
+      wx.showToast({
+        title: '人数不能为 0',
+      })
+      return false
+    }
+    if (num > this.data.num2) {
+      this.setData({
+        num3: num
+      })
+    } else {
+      wx.showToast({
+        title: '人数应递增',
+      })
+    }
+  },
 
   //获取开始时间
   getStartTime(e) {
