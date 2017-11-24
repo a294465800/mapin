@@ -8,19 +8,19 @@
     <view class='join-info-content-wrap flex-column'>
       <view class='join-info-content-item flex-row'>
         <view class='join-info-content-item-title'>报名序号</view>
-        <view class='join-info-content-item-value'>1</view>
+        <view class='join-info-content-item-value'>{{info.Order}}</view>
       </view>
       <view class='join-info-content-item flex-row'>
         <view class='join-info-content-item-title'>用户姓名</view>
-        <view class='join-info-content-item-value'>曾先生</view>
+        <view class='join-info-content-item-value'>{{info.user_Name}}</view>
       </view>
       <view class='join-info-content-item flex-row'>
         <view class='join-info-content-item-title'>用户手机</view>
-        <view class='join-info-content-item-value yellow'>18451313125</view>
+        <view class='join-info-content-item-value yellow'>{{info.user_Tel}}</view>
       </view>
       <view class='join-info-content-item flex-row'>
         <view class='join-info-content-item-title'>报名时间</view>
-        <view class='join-info-content-item-value'>2017-10-21 15:30</view>
+        <view class='join-info-content-item-value'>{{info.fig_PayDate}}</view>
       </view>
     </view>
   </view>
@@ -34,19 +34,19 @@
     <view class='join-info-content-wrap flex-column'>
       <view class='join-info-content-item flex-row'>
         <view class='join-info-content-item-title'>支付核销</view>
-        <view class='join-info-content-item-value yellow'>已核销</view>
+        <view class='join-info-content-item-value yellow'>{{info.fig_IFCheck == 'Y'?'已核销':'未核销'}}</view>
       </view>
       <view class='join-info-content-item flex-row'>
         <view class='join-info-content-item-title'>是否团长</view>
-        <view class='join-info-content-item-value'>否</view>
+        <view class='join-info-content-item-value'>{{info.fig_IFGroupLeader == 'Y'?'是':'否'}}</view>
       </view>
       <view class='join-info-content-item flex-row'>
         <view class='join-info-content-item-title'>付款金额</view>
-        <view class='join-info-content-item-value yellow'>10元</view>
+        <view class='join-info-content-item-value yellow'>{{info.fig_PayMoney}}元</view>
       </view>
       <view class='join-info-content-item flex-row'>
         <view class='join-info-content-item-title'>到店支付</view>
-        <view class='join-info-content-item-value yellow'>0元</view>
+        <view class='join-info-content-item-value yellow'>{{info.fig_PayShop}}元</view>
       </view>
     </view>
   </view>

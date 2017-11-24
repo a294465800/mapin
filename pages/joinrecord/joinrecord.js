@@ -63,14 +63,14 @@ Page({
   //查看详情
   getMoreInfo(e) {
     const dataset = e.currentTarget.dataset
-    const getData = {
-      order: dataset.order
-    }
-    // app._api.getJoinDetail(data, res => {
-
+    // const getData = {
+    //   order: dataset.order,
+    //   RecordID: dataset.id
+    // }
+    // app._api.getJoinDetail(getData, res => {
     // })
     wx.navigateTo({
-      url: '/pages/joinsinglerecord/joinsinglerecord',
+      url: `/pages/joinsinglerecord/joinsinglerecord?order=${dataset.order}&id=${dataset.id}`,
     })
   },
 

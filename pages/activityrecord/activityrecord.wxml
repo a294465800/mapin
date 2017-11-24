@@ -42,7 +42,7 @@
             <view>活动海报：
               <text class='activity-list-item-plus-post-check' data-RecordMainID='{{listItem.RecordMainID}}' catchtap='getPost'>点击查看</text>
             </view>
-            <view class='activity-list-item-btn' hover-class='activity-list-item-btn-hover'>保存</view>
+            <view class='activity-list-item-btn' hover-class='activity-list-item-btn-hover' data-RecordMainID='{{listItem.RecordMainID}}' catchtap='getPost'>保存</view>
           </view>
           <view class='activity-list-item-plus-data flex-row'>
             <view class='activity-list-item-plus-data-item'>

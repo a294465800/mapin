@@ -30,7 +30,7 @@
                   <view class='join-item-content-info-text'>报名序号：{{listItem.Order}}</view>
                 </view>
                 <view class='join-item-content-btn flex-row' hover-class='join-item-content-btn-hover' hover-stay-time='150'>
-                  <view catchtap='getMoreInfo' data-order='{{listItem.order}}'>查看详情</view>
+                  <view catchtap='getMoreInfo' data-order='{{listItem.Order}}' data-id='{{listItem.RecordID}}'>查看详情</view>
                   <image class='arrow-icon' mode='aspectFit' src='/images/icon/arrow_yellow.png'></image>
                 </view>
               </view>
