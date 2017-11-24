@@ -307,6 +307,21 @@ let api = {
       })
   },
 
+  //获取名单详情
+  getJoinDetail(data, callback) {
+    _http.get(`${host}GroupAtendOKDetail.aspx`, data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      })
+      .catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  },
+
   //消费记录
   getCostRecords(data, callback) {
     _http.get(`${host}GroupConsumeList`, data)

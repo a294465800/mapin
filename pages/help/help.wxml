@@ -1,6 +1,6 @@
 <!--pages/help/help.wxml-->
 <view class='container'>
-  <view class='help-item flex-row' wx:for="{{helps}}" wx:for-item="helpItem" wx:key="id" data-id='{{helpItem.id}}' catchtap='goToHelp'>
+  <view class='help-item flex-row' wx:for="{{helps}}" wx:for-item="helpItem" wx:key="id" data-title='{{helpItem.title}}' data-id='{{helpItem.id}}' catchtap='goToHelp'>
     <view>{{helpItem.title}}</view>
     <image class='arrow-icon' mode='aspectFit' src='/images/icon/arrow.png'></image>
   </view>

@@ -24,9 +24,9 @@ Page({
   //帮助跳转
   goToHelp(e) {
     const id = e.currentTarget.dataset.id
-    console.log(id)
+    const title = e.currentTarget.dataset.title
     wx.navigateTo({
-      url: '/pages/helptext/helptext',
+      url: `/pages/helptext/helptext?id=${id}&title=${title}`,
     })
   }
 

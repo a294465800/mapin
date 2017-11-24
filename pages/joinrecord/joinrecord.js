@@ -61,7 +61,14 @@ Page({
   },
 
   //查看详情
-  getMoreInfo() {
+  getMoreInfo(e) {
+    const dataset = e.currentTarget.dataset
+    const getData = {
+      order: dataset.order
+    }
+    // app._api.getJoinDetail(data, res => {
+
+    // })
     wx.navigateTo({
       url: '/pages/joinsinglerecord/joinsinglerecord',
     })
