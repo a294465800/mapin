@@ -187,6 +187,21 @@ let api = {
       })
   },
 
+  //处理商家活动
+  handleActivity(data, callback) {
+    _http.get(`${host}GroupDeal.aspx`, data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      })
+      .catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  },
+
   //活动管理列表编辑
   editActivity(data, callback) {
     _http.get(`${host}GroupCreateGet.aspx`, data)
@@ -352,7 +367,8 @@ let api = {
           showCancel: false
         })
       })
-  }
+  },
+
 }
 
 module.exports = { api }

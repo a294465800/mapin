@@ -181,7 +181,10 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    app._api.getAllActivity({ orderType: currentSort, page: page + 1 }, res => {
+    app._api.getAllActivity({
+      orderType: currentSort, page: page + 1,
+      TmpUserID: app.globalData.uuid
+    }, res => {
       wx.hideLoading()
       if (res.data.TeamList.length) {
         this.setData({

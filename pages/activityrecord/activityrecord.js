@@ -80,6 +80,54 @@ Page({
     })
   },
 
+  //下线
+  offlineActivity(e) {
+    const dataset = e.currentTarget.dataset
+    const index = dataset.index
+    const getData = {
+      RecordMainID: dataset.id,
+      DealType: 1
+    }
+    wx.showModal({
+      title: '提示',
+      content: '确认下线该活动吗？',
+      success: ok => {
+        if (ok.confirm) {
+          app._api.handleActivity(getData, res => {
+            this.setData({
+              [`lists[${index}]state`]: 1
+            })
+          })
+        }
+      }
+    })
+  },
+
+  //删除
+  deleteActivity(e) {
+    const dataset = e.currentTarget.dataset
+    const index = dataset.index
+    let lists = this.data.lists
+    const getData = {
+      RecordMainID: dataset.id,
+      DealType: 2
+    }
+    wx.showModal({
+      title: '提示',
+      content: '确认删除该活动吗？',
+      success: ok => {
+        if (ok.confirm) {
+          app._api.handleActivity(getData, res => {
+            lists.splice(index, 1)
+            this.setData({
+              lists: lists
+            })
+          })
+        }
+      }
+    })
+  },
+
   //名单跳转
   getJoinRecord(e) {
     const id = e.currentTarget.dataset.id

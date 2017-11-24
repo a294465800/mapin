@@ -13,6 +13,7 @@
   width: 100%;
   margin-bottom: 30rpx;
   border-top: 1px solid #eee;
+  position: relative;
 }
 
 .activity-list-item-title-wrap {
@@ -215,6 +216,19 @@
 
 /* 额外 */
 
-.canvas {
-  width: 100%;
+.activity-status {
+  position: absolute;
+  right: 15rpx;
+  top: 30rpx;
+  font-size: 28rpx;
+  color: #fff;
+  background-color: #67c23a;
+  padding: 8rpx 10rpx;
+  transform: rotate(40deg);
+  z-index: 1;
+}
+
+.activity-status.no {
+  background-color: #f2533f;
+  color: #fff;
 }
