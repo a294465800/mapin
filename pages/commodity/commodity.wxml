@@ -38,7 +38,7 @@
     <!--/商品主要信息  -->
 
     <!--开团选择  -->
-    <view class='commodity-open-group' hidden='{{fromShare}}'>
+    <view class='commodity-open-group'>
       <view class='commodity-item-title flex-row'>
         <image class='group-icons' mode='aspectFit' src='/images/icon/group_open.png'></image>
         <view>开团</view>
@@ -97,7 +97,7 @@
     <!--/分享进，当前开团信息  -->
 
     <!--正在开团  -->
-    <view class='commodity-ing-wrap'>
+    <view class='commodity-ing-wrap' hidden='{{fromShare}}'>
       <view class='commodity-item-title flex-row'>
         <image class='group-icons' mode='aspectFit' src='/images/icon/group_ing.png'></image>
         <view>正在拼团</view>
@@ -177,12 +177,15 @@
     <view class='commodity-buy-wrap flex-row'>
       <view class='commodity-buy-info'>
         <view class='commodity-buy-price'>合计：
-          <text>￥{{fromShare?shareInfo.fig_Price:currentPrice}}</text>
+          <text>￥{{fromShare && !openFlag?shareInfo.fig_Price:currentPrice}}</text>
         </view>
         <view class='commodity-buy-tips'>团长额外优惠￥{{commodity.fig_OuterMoney}}</view>
       </view>
       <view hidden='{{fromShare}}' class='commodity-buy-btn flex-row flex-center' catchtap='joinActivity' data-type='1'>立即开团</view>
-      <view hidden='{{!fromShare}}' class='commodity-share-buy-btn flex-row flex-center' catchtap='joinShareActivity' data-type='2'>立即参团</view>
+      <view hidden='{{!fromShare}}' class='commodity-share-buy-btn flex-row flex-center'>
+        <view class='commodity-sub-buy-btn flex-row flex-center' catchtap='joinActivity' data-type='1'>立即开团</view>
+        <view class='commodity-sub-share-buy-btn flex-row flex-center' catchtap='joinShareActivity' data-type='2'>立即参团</view>
+      </view>
     </view>
     <!--/购买  -->
   </view>

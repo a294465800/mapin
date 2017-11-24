@@ -247,10 +247,30 @@
 }
 
 .commodity-share-buy-btn {
-  width: 300rpx;
+  width: 400rpx;
+  font-size: 17px;
+}
+
+.commodity-sub-share-buy-btn {
   background-color: #f9be0a;
-  font-size: 16pt;
   color: #fff;
+  flex: 1;
+  height: 100%;
+}
+
+.commodity-sub-share-buy-btn:active {
+  background-color: #e8b20d;
+}
+
+.commodity-sub-buy-btn {
+  background-color: #f8726f;
+  color: #fff;
+  flex: 1;
+  height: 100%;
+}
+
+.commodity-sub-buy-btn:active {
+  background-color: #e06764;
 }
 
 /* 参团样式 */

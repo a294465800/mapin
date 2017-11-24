@@ -30,6 +30,7 @@ Page({
 
     commodity: null,
     fromShare: false,
+    openFlag: false,
     shareInfo: null,
     RecordMainID: ''
 
@@ -94,14 +95,14 @@ Page({
     const index = e.currentTarget.dataset.index
     const price = e.currentTarget.dataset.price
     const group = e.currentTarget.dataset.group_number
-    // const id = e.currentTarget.dataset.id
     if (index === this.data.typeIndex) {
       return false
     }
     this.setData({
       typeIndex: index,
       currentPrice: price,
-      currentGroup: group
+      currentGroup: group,
+      openFlag: true
     })
   },
 
