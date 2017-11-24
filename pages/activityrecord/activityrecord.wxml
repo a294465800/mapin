@@ -8,7 +8,7 @@
   <block wx:if="{{lists.length}}">
     <view class='container'>
       <view class='activity-list-item' wx:for="{{lists}}" wx:for-item="listItem" wx:key="id">
-        <view class='activity-status no' wx:if="{{listItem.state}}">已下线</view>
+        <view class='activity-status no' wx:if="{{listItem.fig_IFOnline == 'N'}}">已下线</view>
         <view class='activity-status ok' wx:else>上线中</view>
         <view class='activity-list-item-title-wrap flex-row'>
           <view class='activity-list-item-id'>活动编号： {{listItem.RecordMainID}}</view>
@@ -64,7 +64,7 @@
           </view>
           <view class='activity-list-item-plus-btns flex-row'>
             <view class='activity-list-item-plus-btn' catchtap='goToEditActivity' data-id='{{listItem.RecordMainID}}' hover-class='activity-list-item-plus-btn-hover' hover-stay-time='150'>编辑</view>
-            <view class='activity-list-item-plus-btn' hover-class='activity-list-item-plus-btn-hover' hover-stay-time='150' catchtap='offlineActivity' data-id='{{listItem.RecordMainID}}' data-index='{{index}}'>下线</view>
+            <view class='activity-list-item-plus-btn' hover-class='activity-list-item-plus-btn-hover' hover-stay-time='150' catchtap='offlineActivity' data-id='{{listItem.RecordMainID}}' data-state='{{listItem.fig_IFOnline}}' data-index='{{index}}'>{{listItem.fig_IFOnline == 'N'?'上线':'下线'}}</view>
             <view class='activity-list-item-plus-btn' hover-class='activity-list-item-plus-btn-hover' hover-stay-time='150' catchtap='deleteActivity' data-id='{{listItem.RecordMainID}}' data-index='{{index}}'>删除</view>
             <view class='activity-list-item-plus-btn' hover-class='activity-list-item-plus-btn-hover' hover-stay-time='150' catchtap='getJoinRecord' data-id='{{listItem.RecordMainID}}'>名单</view>
           </view>

@@ -84,18 +84,29 @@ Page({
   offlineActivity(e) {
     const dataset = e.currentTarget.dataset
     const index = dataset.index
+    let state = dataset.state
+    let text = '下线'
+    let DealType = 1
+    if(state === 'N'){
+      text = '上线'
+      DealType = 3
+      state = 'Y'
+    } else {
+      state = 'N'
+    }
     const getData = {
       RecordMainID: dataset.id,
-      DealType: 1
+      DealType
     }
+    console.log(state)
     wx.showModal({
       title: '提示',
-      content: '确认下线该活动吗？',
+      content: `确认${text}该活动吗？`,
       success: ok => {
         if (ok.confirm) {
           app._api.handleActivity(getData, res => {
             this.setData({
-              [`lists[${index}]state`]: 1
+              [`lists[${index}]fig_IFOnline`]: state
             })
           })
         }
