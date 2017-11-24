@@ -13,7 +13,8 @@
             <image class='shop-icon' mode='aspectFit' src='/images/icon/shop.png'></image>
             <view class='record-item-head-shop'>{{listItem.fig_ShopName}}</view>
           </view>
-          <view class='record-item-head-info'>{{stateText[listItem.fig_IFOKFlag]}}</view>
+          <!-- <view class='record-item-head-info'>{{stateText[listItem.fig_IFOKFlag]}}</view> -->
+          <image class='record-item-img' mode='aspectFit' src='{{stateImg[listItem.fig_IFOKFlag]}}'></image>
         </view>
         <view class='record-item-content flex-row'>
           <image mode='scaleToFill' class='record-item-content-img' src='{{listItem.fig_ImgPath[0]}}'></image>

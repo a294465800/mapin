@@ -23,6 +23,11 @@ Page({
       Y: '拼团成功'
     },
 
+    stateImg: {
+      N: '/images/icon/ing.png',
+      Y: '/images/icon/ok.png'
+    },
+
 
     lists: [],
     //模拟数据

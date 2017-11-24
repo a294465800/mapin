@@ -129,3 +129,10 @@
   background-color: #f9be0a;
   color: #fff !important;
 }
+
+/* 额外 */
+.record-item-img {
+  width: 20px;
+  height: 20px;
+  margin-right: 0!important;
+}
