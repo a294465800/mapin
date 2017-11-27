@@ -43,7 +43,9 @@
       </view>
     </view>
 
-    <button type='button' class='qr-btn' hover-class='qr-hover' bindtap='showBox'>名单导出</button>
+    <!-- <button type='button' class='qr-btn' hover-class='qr-hover' bindtap='showBox'>名单导出</button>
+    i
+     -->
   </view>
 
   <!--名单导出  -->

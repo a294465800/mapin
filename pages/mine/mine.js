@@ -54,19 +54,14 @@ Page({
 
   onLoad() {
     const that = this
-    wx.getStorage({
-      key: 'userInfo',
-      success(res) {
-        that.setData({
-          userInfo: JSON.parse(res.data)
-        })
-      },
+    that.setData({
+      userInfo: app.globalData.userInfo
     })
 
   },
 
   onShow() {
-    console.log(app.globalData.OpenID)
+    // console.log(app.globalData.OpenID)
   },
 
   // 登录

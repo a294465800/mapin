@@ -5,6 +5,22 @@ Page({
   data: {
     sexText: ['保密', '男', '女'],
 
+    //行业
+    jobs: [
+      '教育培训',
+      '休闲娱乐',
+      '生活服务',
+      '珠宝饰品',
+      '健身户外',
+      '婚庆摄影',
+      '母婴亲子',
+      '丽人美容',
+      '餐饮行业',
+      '其他',
+    ],
+
+    jobIndex: 0,
+
     //加载判断
     loading: true,
     smsOk: false,
@@ -20,34 +36,38 @@ Page({
       user_Sex: 0,
       user_Company: '',
       user_Post: '',
-      verifyNumber: ''
+      verifyNumber: '',
+      industry: '',
+      avatarUrl: ''
     }
   },
   onLoad(options) {
     const that = this
     //初次注册
     let userInfoStr = wx.getStorageSync('userInfo') || ''
-    if (userInfoStr) {
-      const userInfo = JSON.parse(userInfoStr)
-      this.setData({
-        // 'userForm.user_Name': userInfo.user_Name,
-        // 'userForm.user_Sex': userInfo.user_Sex,
-        // 'userForm.avatarUrl': userInfo.avatarUrl,
-        userForm: userInfo,
-        loading: false
+    if (!userInfoStr) {
+      wx.getUserInfo({
+        success: res => {
+          this.setData({
+            'userForm.avatarUrl': res.userInfo.avatarUrl,
+            'userForm.user_Sex': res.userInfo.gender,
+            loading: false
+          })
+        }
       })
       app.globalData.OpenID = wx.getStorageSync('OpenID')
     } else {
       app._api.getUserAPI(app.globalData.OpenID, null, (res) => {
         this.setData({
           userForm: res,
+          jobIndex: res.industry * 1 - 1,
           loading: false
         })
         wx.setStorage({
           key: 'userInfo',
           data: JSON.stringify(res),
         })
-      })
+      }, false)
     }
   },
   // 手机号码
@@ -88,6 +108,15 @@ Page({
     })
   },
 
+  //行业
+  changeJob(e) {
+    const index = e.detail.value
+    this.setData({
+      jobIndex: index,
+      'userForm.industry': index + 1
+    })
+  },
+
   //微信地图，选择地址
   getLocation() {
     const that = this
@@ -122,6 +151,7 @@ Page({
         key: 'userInfo',
         data: JSON.stringify(postForm),
       })
+      app.globalData.userInfo = postForm
       setTimeout(() => {
         wx.reLaunch({
           url: '/pages/mine/mine',
@@ -137,5 +167,13 @@ Page({
       phoneNumber: phone,
     })
   },
+
+  //选择性别
+  chooseSex(e) {
+    const sex = e.detail.value
+    this.setData({
+      'userForm.user_Sex': sex
+    })
+  }
 
 })

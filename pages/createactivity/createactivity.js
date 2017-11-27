@@ -216,12 +216,22 @@ Page({
   createSubmit(e) {
     const formObj = e.detail.value
     let subObj = Object.assign(this.data.submitForm, formObj, { RecordIDShop: app.globalData.userInfo.RecordID })
+    if (!subObj.fig_endDate) {
+      wx.showModal({
+        title: '提示',
+        content: '活动结束时间不能为同一天',
+        showCancel: false
+      })
+      return false
+    }
+    subObj.fig_OuterMoney = subObj.fig_OuterMoney || 0
     if (!this.data.RecordMainID) {
       for (let it in subObj) {
         if (it === 'fig_prepay' && subObj.fig_IFAllPay === 'Y') {
           continue
         } else {
-          if (!subObj[it]) {
+          if (subObj[it] === '') {
+            console.log(subObj)
             wx.showModal({
               title: '提示',
               content: '信息不能为空',

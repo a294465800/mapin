@@ -31,16 +31,15 @@ App({
       success: setting => {
         if (setting.authSetting['scope.userInfo']) {
           this.getUserInfo(userInfo => {
-            this.globalData.userInfo = userInfo
-            console.log(1111, wx.getStorageSync('userInfo'))
-          })
+            this.globalData.userInfo = userInfo || ''
+          }, true)
         }
       }
     })
   },
 
   //获取登录权限
-  getUserInfo(callback) {
+  getUserInfo(callback, state) {
     const that = this
     wx.showLoading({
       title: '登录中',
@@ -48,7 +47,7 @@ App({
     if (this.globalData.OpenID) {
       wx.getUserInfo({
         success: res => {
-          this._api.getUserAPI(this.globalData.OpenID, res, callback)
+          this._api.getUserAPI(this.globalData.OpenID, res, callback, state)
         }
       })
       wx.hideLoading()

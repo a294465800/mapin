@@ -2,6 +2,7 @@
 // const host_upload = 'http://139.199.207.181/'
 const host_upload = 'https://www.imagine-yipin.com/'
 const host = 'https://www.imagine-yipin.com/Web/'
+let timer = null
 
 //请求 promise 封装
 const _http = {
@@ -85,24 +86,37 @@ let api = {
   },
 
   //获取用户信息
-  getUserAPI(OpenID, wxUserInfo, callback) {
+  getUserAPI(OpenID, wxUserInfo, callback, state) {
     _http.get(host + 'UserGet.aspx', {
       OpenID
     }).then(res => {
+      if (res.data.ErrMsg) {
+        if (state) {
+          typeof callback === 'function' && callback()
+          return false
+        }
+        wx.showToast({
+          title: '请先注册',
+        })
+        timer = setTimeout(() => {
+          wx.navigateTo({
+            url: '/pages/myinfo/myinfo',
+          })
+          clearTimeout(timer)
+        }, 300)
+        return false
+      }
       wx.setStorage({
         key: 'userInfo',
         data: JSON.stringify(res.data),
       })
       typeof callback === 'function' && callback(res.data)
     }).catch(err => {
-      wx.showToast({
-        title: '请先注册',
+      wx.showModal({
+        title: '提示',
+        content: err.data,
+        showCancel: false
       })
-      setTimeout(() => {
-        wx.navigateTo({
-          url: '/pages/myinfo/myinfo?wxUserInfo=' + JSON.stringify(wxUserInfo.userInfo),
-        })
-      }, 300)
     })
   },
 

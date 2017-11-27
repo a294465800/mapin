@@ -41,17 +41,30 @@
             <input name="user_Tel" value='{{userForm.user_Tel}}' type='number' placeholder='请输入用户电话'></input>
           </label> -->
           <block wx:if="{{userForm.user_Type && userForm.user_Type == 'B'}}">
+            <!-- <block wx:if="{{true}}">  -->
             <label class='label-beautify'>
               <view>地址</view>
-              <view class='simulate-input' catchtap='getLocation'>{{userForm.user_Address || '请选择地址'}}</view>
+              <view class='simulate-input' catchtap='getLocation'>
+                <block wx:if="{{userForm.user_Address == ''}}">
+                  <view style='color: #999'>请选择地址</view>
+                </block>
+                <block wx:else>
+                  <view style='color: #333'>{{userForm.user_Address}}</view>
+                </block>
+              </view>
             </label>
             <label class='label-beautify'>
               <view>商家名称</view>
               <input name="user_Company" value='{{userForm.user_Company}}' placeholder='请输入商家名称'></input>
             </label>
             <label class='label-beautify'>
-              <view>职务</view>
-              <input name="user_Post" value='{{userForm.user_Post}}' placeholder='请输入职务'></input>
+              <view>行业</view>
+              <picker bindchange='changeJob' value="{{jobIndex}}" range="{{jobs}}">
+                <block wx:if="{{jobIndex == ''}}">
+                  <view style='color: #999'>请选择行业</view>
+                </block>
+                <block wx:else>{{jobs[jobIndex]}}</block>
+              </picker>
             </label>
           </block>
           <block wx:else>
