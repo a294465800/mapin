@@ -15,32 +15,41 @@
     </form>
 
     <view class='join-list'>
-      <view class='flex-bug'>
-        <scroll-view class='scroll' scroll-y bindscrolltolower="getMore">
-          <block wx:if="{{lists.length}}">
-            <view class='join-item' wx:for="{{lists}}" wx:for-item="listItem" wx:key="id">
-              <view class='join-item-title flex-row'>
-                <view class='join-item-title-name'>{{listItem.user_Name}}</view>
-                <view class='join-item-title-status'>{{listItem.OKtype}}</view>
-                <image class='tel-icon-big' mode='aspectFit' src='/images/icon/tel_big.png'></image>
-              </view>
-              <view class='join-item-content flex-row'>
-                <view class='join-item-content-info flex-column'>
-                  <view class='join-item-content-info-text'>联系电话：{{listItem.user_Tel}}</view>
-                  <view class='join-item-content-info-text'>报名序号：{{listItem.Order}}</view>
-                </view>
-                <view class='join-item-content-btn flex-row' hover-class='join-item-content-btn-hover' hover-stay-time='150'>
-                  <view catchtap='getMoreInfo' data-order='{{listItem.Order}}' data-id='{{listItem.RecordID}}'>查看详情</view>
-                  <image class='arrow-icon' mode='aspectFit' src='/images/icon/arrow_yellow.png'></image>
-                </view>
-              </view>
+      <!-- <view class='flex-bug'> -->
+      <!-- <scroll-view class='scroll' scroll-y bindscrolltolower="getMore">
+        </scroll-view> -->
+
+      <block wx:if="{{lists.length}}">
+        <view class='join-item' wx:for="{{lists}}" wx:for-item="listItem" wx:key="RecordID">
+          <view class='join-item-title flex-row'>
+            <view class='join-item-title-name'>{{listItem.user_Name}}</view>
+            <view class='join-item-title-status'>{{listItem.OKtype}}</view>
+            <image class='tel-icon-big' mode='aspectFit' src='/images/icon/tel_big.png'></image>
+          </view>
+          <view class='join-item-content flex-row'>
+            <view class='join-item-content-info flex-column'>
+              <view class='join-item-content-info-text'>联系电话：{{listItem.user_Tel}}</view>
+              <view class='join-item-content-info-text'>报名序号：{{listItem.Order}}</view>
             </view>
-          </block>
-          <block wx:else>
-            <view class='tips'>暂无数据</view>
-          </block>
-        </scroll-view>
-      </view>
+            <view class='join-item-content-btn flex-row' hover-class='join-item-content-btn-hover' hover-stay-time='150'>
+              <view catchtap='getMoreInfo' data-order='{{listItem.Order}}' data-id='{{listItem.RecordID}}'>查看详情</view>
+              <image class='arrow-icon' mode='aspectFit' src='/images/icon/arrow_yellow.png'></image>
+            </view>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class='tips'>暂无数据</view>
+      </block>
+
+
+
+
+
+
+
+
+      <!-- </view> -->
     </view>
 
     <!-- <button type='button' class='qr-btn' hover-class='qr-hover' bindtap='showBox'>名单导出</button>
@@ -49,7 +58,7 @@
   </view>
 
   <!--名单导出  -->
-  <view class='export-wrap' catchtap='hideBox' hidden='{{!showBox}}'>
+  <!-- <view class='export-wrap' catchtap='hideBox' hidden='{{!showBox}}'>
     <view class='export-item flex-column' catchtap='showBox'>
       <view class='export-item-content flex-column'>
         <view class='export-item-title'>请输入接收数据的邮箱</view>
@@ -60,6 +69,6 @@
         <view hover-class='hover-class' hover-stay-time='150' catchtap='hideBox'>取消</view>
       </view>
     </view>
-  </view>
+  </view> -->
   <!--/名单导出  -->
 </block>

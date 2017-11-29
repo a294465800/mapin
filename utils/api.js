@@ -205,7 +205,15 @@ let api = {
   handleActivity(data, callback) {
     _http.get(`${host}GroupDeal.aspx`, data)
       .then(res => {
-        typeof callback === 'function' && callback(res)
+        if (res.data.ErrMsg) {
+          wx.showModal({
+            title: '提示',
+            content: res.data.ErrMsg,
+            showCancel: false
+          })
+        } else {
+          typeof callback === 'function' && callback(res)
+        }
       })
       .catch(err => {
         wx.showModal({
@@ -313,6 +321,7 @@ let api = {
         typeof callback === 'function' && callback(res)
       })
       .catch(err => {
+        console.log(1)
         wx.showModal({
           title: '提示',
           content: err.data,

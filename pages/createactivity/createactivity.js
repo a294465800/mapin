@@ -14,7 +14,7 @@ Page({
       // RecordID: '',
       fig_Name: '',
       fig_StartDate: date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate(),
-      fig_endDate: '',
+      fig_EndDate: '',
       fig_Number1: '',
       fig_Price1: '',
       fig_Number2: '',
@@ -121,15 +121,15 @@ Page({
     const fig_StartDate = e.detail.value
     this.setData({
       'submitForm.fig_StartDate': fig_StartDate,
-      'submitForm.fig_endDate': fig_StartDate
+      'submitForm.fig_EndDate': fig_StartDate
     })
   },
 
   //获取结束时间
   getEndTime(e) {
-    const fig_endDate = e.detail.value
+    const fig_EndDate = e.detail.value
     this.setData({
-      'submitForm.fig_endDate': fig_endDate
+      'submitForm.fig_EndDate': fig_EndDate
     })
   },
 
@@ -216,7 +216,7 @@ Page({
   createSubmit(e) {
     const formObj = e.detail.value
     let subObj = Object.assign(this.data.submitForm, formObj, { RecordIDShop: app.globalData.userInfo.RecordID })
-    if (!subObj.fig_endDate) {
+    if (!subObj.fig_EndDate) {
       wx.showModal({
         title: '提示',
         content: '活动结束时间不能为同一天',

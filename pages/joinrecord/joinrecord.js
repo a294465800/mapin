@@ -31,7 +31,8 @@ Page({
   },
 
   //触底刷新
-  getMore() {
+  // getMore() {
+  onReachBottom() {
     const flag = this.data.flag
     const page = this.data.page
     const close = this.data.close
@@ -44,7 +45,10 @@ Page({
       flag: true
     })
     app._api.getJoinRecord({ RecordMainID, user_Tel, page: page + 1 }, res => {
-      if (res.data.length) {
+      if(!res.data.AttendOK){
+        return false
+      }
+      if (res.data.AttendOK.RecordIDlength) {
         this.setData({
           lists: [...this.data.lists, ...res.data.AttendOK],
           flag: true,
@@ -63,12 +67,6 @@ Page({
   //查看详情
   getMoreInfo(e) {
     const dataset = e.currentTarget.dataset
-    // const getData = {
-    //   order: dataset.order,
-    //   RecordID: dataset.id
-    // }
-    // app._api.getJoinDetail(getData, res => {
-    // })
     wx.navigateTo({
       url: `/pages/joinsinglerecord/joinsinglerecord?order=${dataset.order}&id=${dataset.id}`,
     })
@@ -110,7 +108,7 @@ Page({
   },
 
   //导出
-  exportList() {
-    console.log(this.data.email)
-  }
+  // exportList() {
+  //   console.log(this.data.email)
+  // }
 })

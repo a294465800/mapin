@@ -59,7 +59,7 @@
             </view>
             <view class='activity-list-item-plus-data-item'>
               <view>成功人数</view>
-              <view class='activity-list-item-plus-data-num'>{{listItem.fig_GroupMans}}</view>
+              <view class='activity-list-item-plus-data-num'>{{listItem.fig_OKNum}}</view>
             </view>
           </view>
           <view class='activity-list-item-plus-btns flex-row'>

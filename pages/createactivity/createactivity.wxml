@@ -30,8 +30,8 @@
         </label>
         <label class='label-beautify'>
           <view>活动结束</view>
-          <picker mode="date" value="{{submitForm.fig_endDate}}" start="{{submitForm.fig_StartDate}}" end="2027-01-01" bindchange="getEndTime">
-            <view class="picker"> {{submitForm.fig_endDate || submitForm.fig_StartDate}}
+          <picker mode="date" value="{{submitForm.fig_EndDate}}" start="{{submitForm.fig_StartDate}}" end="2027-01-01" bindchange="getEndTime">
+            <view class="picker"> {{submitForm.fig_EndDate || submitForm.fig_StartDate}}
             </view>
           </picker>
         </label>
