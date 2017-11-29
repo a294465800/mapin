@@ -25,7 +25,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "蚂拼小程序",
+    "navigationBarTitleText": "蚁拼小程序",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
