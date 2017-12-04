@@ -46,7 +46,9 @@ Page({
 
   //协议
   goToProtocol() {
-    console.log(1)
+    wx.navigateTo({
+      url: '/pages/helptext/helptext?id=4&title=蚁拼服务协议',
+    })
   }
 
 })

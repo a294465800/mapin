@@ -19,7 +19,7 @@
     </view>
 
     <view class='recharge-tips'>提交订单，表示您同意
-      <text bindtap='goToProtocol'>蚂拼服务协议</text>。</view>
+      <text bindtap='goToProtocol'>蚁拼服务协议</text>。</view>
   </view>
   <!--/充值内容  -->
 

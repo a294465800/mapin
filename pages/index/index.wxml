@@ -3,5 +3,4 @@
   <image class='qr-img' mode='aspectFit' src='/images/icon/qrcode.png'></image>
   <button type='button' class='qr-btn' hover-class='qr-hover' bindtap='scan'>扫一扫</button>
   <view class='qr-text'>点击扫一扫，扫描顾客的活动码</view>
-  <button catchtap='pay'>支付测试</button>
 </view>
