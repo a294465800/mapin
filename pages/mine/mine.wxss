@@ -9,17 +9,16 @@
 
 .login-wrap {
   background-color: #fff;
-  padding: 40rpx 30rpx;
+  padding: 26rpx 0;
   align-items: center;
   border-top: 1px solid #ccc;
-  height: 110px;
 }
 
 .login-avatar-img {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  margin-right: 30rpx;
+  margin-bottom: 10rpx;
 }
 
 .login-avatar-name {
@@ -110,7 +109,7 @@ button.operation-part::after {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 0 -6rpx;
+  margin: 0 -6rpx -4rpx;
 }
 
 .new-operation-item {
