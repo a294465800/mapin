@@ -276,6 +276,23 @@ let api = {
       .then(res => {
         typeof callback === 'function' && callback(res)
       }).catch(err => {
+        console.log(err)
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  },
+
+  //支付
+  payRequest(data, callback) {
+    _http.post(`${host_upload}Pay/PayGroup.aspx`, data)
+      .then(res => {
+        console.log(res)
+        typeof callback === 'function' && callback(res.data)
+      })
+      .catch(err => {
         wx.showModal({
           title: '提示',
           content: err.data,

@@ -24,7 +24,7 @@
   <!--/会员期限  -->
 
   <!--操作列表  -->
-  <block wx:for="{{operations}}" wx:for-item="operationItem" wx:key="id">
+  <!-- <block wx:for="{{operations}}" wx:for-item="operationItem" wx:key="id">
     <block wx:if="{{operationItem.id == 7}}">
       <button class='operation-part flex-row' hover-class='hover-class' hover-stay-time='150' open-type='contact'>
         <view class='operation-content flex-row'>
@@ -43,7 +43,51 @@
         <image class='arrow-icon' src='/images/icon/arrow.png' mode='aspectFit'></image>
       </view>
     </block>
-  </block>
+  </block> -->
   <!--/操作列表  -->
+
+  <!-- <block wx:for="{{operations}}" wx:for-item="operationItem" wx:key="id">
+    <block wx:if="{{operationItem.id == 7}}">
+      <button class='operation-part flex-row' hover-class='hover-class' hover-stay-time='150' open-type='contact'>
+        <view class='operation-content flex-row'>
+          <image class='operation-icon' src='/images/icon/kefu.png' mode='aspectFit'></image>
+          <view>咨询客服</view>
+        </view>
+        <image class='arrow-icon' src='/images/icon/arrow.png' mode='aspectFit'></image>
+      </button>
+    </block>
+    <block wx:else>
+      <view class='operation-part flex-row' hover-class='hover-class' hover-stay-time='150' catchtap='{{operationItem.fnc}}'>
+        <view class='operation-content flex-row'>
+          <image class='operation-icon' src='{{operationItem.url}}' mode='aspectFit'></image>
+          <view>{{operationItem.name}}</view>
+        </view>
+        <image class='arrow-icon' src='/images/icon/arrow.png' mode='aspectFit'></image>
+      </view>
+    </block>
+  </block> -->
+
+  <view class='new-operation'>
+    <view class='new-operation-wrap'>
+      <block wx:for="{{operations}}" wx:for-item="operationItem" wx:key="id">
+        <block wx:if="{{operationItem.id == 7}}" open-type='contact'>
+          <button class='new-operation-item'>
+            <view class='new-operation-item-wrap'>
+              <image class='new-operation-icon' src='/images/icon/kefu.png' mode='aspectFit'></image>
+              <view>咨询客服</view>
+            </view>
+          </button>
+        </block>
+        <block wx:else>
+          <view class='new-operation-item' catchtap='{{operationItem.fnc}}'>
+            <view class='new-operation-item-wrap'>
+              <image class='new-operation-icon' src='{{operationItem.url}}' mode='aspectFit'></image>
+              <view>{{operationItem.name}}</view>
+            </view>
+          </view>
+        </block>
+      </block>
+    </view>
+  </view>
 
 </view>

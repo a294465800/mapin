@@ -187,15 +187,40 @@ Page({
       content: text,
       success: ok => {
         if (ok.confirm) {
+          wx.showLoading({
+            title: '加载中',
+          })
           app._api.joinActivity(postData, res => {
             const RecordID = res.data.RecordID
-            wx.showToast({
-              title: '成功',
-              complete: () => {
-                wx.navigateTo({
-                  url: '/pages/costdetail/costdetail?RecordID=' + RecordID,
-                })
-              }
+            app._api.payRequest({ RecordID }, pay => {
+              wx.hideLoading()
+              wx.requestPayment({
+                timeStamp: pay.timeStamp,
+                nonceStr: pay.nonceStr,
+                package: pay.package,
+                signType: pay.signType,
+                paySign: pay.paySign,
+                success: success => {
+                  wx.showToast({
+                    title: '成功',
+                    complete: () => {
+                      wx.navigateTo({
+                        url: '/pages/costdetail/costdetail?RecordID=' + RecordID,
+                      })
+                    }
+                  })
+                },
+                fail: fail => {
+                  wx.showToast({
+                    title: '取消支付',
+                  })
+                },
+                complete: com => {
+                  wx.showToast({
+                    title: '取消支付',
+                  })
+                }
+              })
             })
           })
         } else {
@@ -224,15 +249,40 @@ Page({
       content: text,
       success: ok => {
         if (ok.confirm) {
+          wx.showLoading({
+            title: '加载中',
+          })
           app._api.joinActivity(postData, res => {
             const RecordID = res.data.RecordID
-            wx.showToast({
-              title: '成功',
-              complete: () => {
-                wx.navigateTo({
-                  url: '/pages/costdetail/costdetail?RecordID=' + RecordID,
-                })
-              }
+            app._api.payRequest({ RecordID }, pay => {
+              wx.hideLoading()
+              wx.requestPayment({
+                timeStamp: pay.timeStamp,
+                nonceStr: pay.nonceStr,
+                package: pay.package,
+                signType: pay.signType,
+                paySign: pay.paySign,
+                success: success => {
+                  wx.showToast({
+                    title: '成功',
+                    complete: () => {
+                      wx.navigateTo({
+                        url: '/pages/costdetail/costdetail?RecordID=' + RecordID,
+                      })
+                    }
+                  })
+                },
+                fail: fail => {
+                  wx.showToast({
+                    title: '支付失败',
+                  })
+                },
+                complete: com => {
+                  wx.showToast({
+                    title: '取消支付',
+                  })
+                }
+              })
             })
           })
         } else {

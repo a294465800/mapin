@@ -54,7 +54,7 @@ Page({
       })
       app.globalData.OpenID = wx.getStorageSync('OpenID')
     } else {
-      app._api.getUserAPI(app.globalData.OpenID, null, (res) => {
+      app._api.getUserAPI(wx.getStorageSync('OpenID'), null, (res) => {
         this.setData({
           userForm: res,
           jobIndex: res.industry * 1 - 1,
