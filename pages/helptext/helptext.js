@@ -95,7 +95,6 @@ Page({
     <p style="font-size:15px;text-indent:2em;">8.1 本协议自您在订购本服务时勾选同意本协议内容点确认订购且成功订购之日为本协议生效之日，且该点击确认行为与您加盖公章或签字的行为具有相同法律效力。</p>
     <p style="font-size:15px;text-indent:2em;">8.2 双方约定，一旦由本协议产生争议，广东省广州市增城区人民法院为管辖法院。</p>
     <p style="font-size:15px;text-indent:2em;"> 8.3 本协议最终解释权及修订权归蚁拼所有。</p>
-；
     <p style="font-size:15px;text-indent:2em;"> 8.3 本协议最终解释权及修订权归蚁拼所有。</p>
     <p style="font-size:15px;margin-top:10px;font-weight:700;">本协议自2017年12月3日起执行。</p>
     </div>
