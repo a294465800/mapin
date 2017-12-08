@@ -7,7 +7,7 @@
 <block wx:else>
   <view class='container'>
     <view class='record-list-wrap'>
-      <view class='record-item' wx:for="{{lists}}" wx:for-item="listItem" wx:key="id">
+      <view class='record-item' wx:for="{{lists}}" wx:for-item="listItem" wx:key="id" catchtap='checkCostDetail' data-recordid='{{listItem.RecordID}}'>
         <view class='record-item-head flex-row'>
           <view class='flex-row'>
             <image class='shop-icon' mode='aspectFit' src='/images/icon/shop.png'></image>
@@ -31,7 +31,7 @@
         </view>
         <view class='record-item-foot flex-row'>
           <view class='record-item-foot-time'>{{listItem.fig_StartDate}} - {{listItem.fig_EndDate}}</view>
-          <view class='record-item-foot-btn success' hover-class='record-item-foot-btn-hover-success' hover-stay-time='150' catchtap='checkCostDetail' data-recordid='{{listItem.RecordID}}'>查看订单</view>
+          <view wx:if="{{listItem.fig_IFOKFlag === 'Y'}}" class='record-item-foot-btn success' hover-class='record-item-foot-btn-hover-success' hover-stay-time='150' catchtap='getCodeImg'>核销码</view>
         </view>
       </view>
     </view>
