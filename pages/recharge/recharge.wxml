@@ -7,7 +7,7 @@
     <!--充值内容  -->
     <view class='recharge-content'>
       <view class='recharge-mode flex-row'>
-        <view class='recharge-mode-item {{currentMode == modeItem.id?"active":""}}' wx:for="{{modes}}" wx:for-item="modeItem" wx:key="id" catchtap='chooseMode' data-id='{{modeItem.id}}'>
+        <view class='recharge-mode-item {{currentMode == modeItem.id?"active":""}}' wx:for="{{modes}}" wx:for-item="modeItem" wx:key="id" catchtap='chooseMode' data-id='{{modeItem.id}}' data-index='{{index}}'>
           <view class='recharge-mode-item-title'>{{modeItem.title}}</view>
           <view class='recharge-mode-item-subtitle'>{{modeItem.remark}}</view>
           <view class='recharge-mode-item-price'>￥{{modeItem.price}}</view>
@@ -17,7 +17,7 @@
       <view class='coupon'>
         <label class='label-control'>
           <view>优惠码</view>
-          <input placeholder='可不输入'></input>
+          <input placeholder='可不输入' bindinput='getCoupon'></input>
         </label>
       </view>
 
@@ -27,7 +27,7 @@
     <!--/充值内容  -->
 
     <!--充值按钮  -->
-    <button class='recharge-btn' hover-class='recharge-hover' hover-stay-time='150' type='button'>立即支付</button>
+    <button class='recharge-btn' catchtap='pay' hover-class='recharge-hover' hover-stay-time='150' type='button'>立即支付</button>
     <!--/充值按钮  -->
 
   </view>

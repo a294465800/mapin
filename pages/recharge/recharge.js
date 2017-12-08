@@ -5,7 +5,9 @@ Page({
   data: {
 
     currentMode: 1,
+    currentIndex: 0,
     loading: true,
+    discountCode: '',
 
 
     //收费模式
@@ -57,8 +59,10 @@ Page({
   //选择模式
   chooseMode(e) {
     const id = e.currentTarget.dataset.id
+    const index = e.currentTarget.dataset.index
     this.setData({
-      currentMode: id
+      currentMode: id,
+      currentIndex: index
     })
   },
 
@@ -66,6 +70,51 @@ Page({
   goToProtocol() {
     wx.navigateTo({
       url: '/pages/helptext/helptext?id=4&title=蚁拼服务协议',
+    })
+  },
+
+  //获取 input
+  getCoupon(e) {
+    const value = e.detail.value
+    this.setData({
+      discountCode: value
+    })
+  },
+
+  //支付
+  pay() {
+    const data = this.data.modes[this.data.currentIndex]
+    const userInfo = JSON.parse(wx.getStorageSync('userInfo'))
+    const postData = {
+      rec_Type: data.id,
+      rec_Money: data.price,
+      RecordIDShop: userInfo.RecordID,
+      discountCode: this.data.discountCode
+    }
+    app._api.postRechargeID(postData, res => {
+      app._api.postRechargePay({ RecordID: res.data.RecordID }, resPay => {
+        const payData = resPay.data
+        wx.requestPayment({
+          timeStamp: payData.timeStamp,
+          nonceStr: payData.nonceStr,
+          package: payData.package,
+          signType: payData.signType,
+          paySign: payData.paySign,
+          success: payok => {
+            wx.showToast({
+              title: '支付成功',
+              complete: () => {
+                wx.navigateBack()
+              }
+            })
+          },
+          fail: fail => {
+            wx.showLoading({
+              title: '已取消',
+            })
+          }
+        })
+      })
     })
   }
 

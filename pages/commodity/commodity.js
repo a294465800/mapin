@@ -165,6 +165,8 @@ Page({
 
   //参团
   joinActivity(e) {
+    console.log(this.data.commodity)
+    console.log(app.globalData.OpenID)
     const type = e.currentTarget.dataset.type
     let postData = {
       RecordIDShop: this.data.commodity.RecordIDShop,
@@ -234,6 +236,8 @@ Page({
 
   //分享参团
   joinShareActivity(e) {
+    console.log(this.data.shareInfo)
+    console.log(app.globalData.OpenID)
     let postData = {
       RecordIDShop: this.data.shareInfo.RecordIDShop,
       type: 2,

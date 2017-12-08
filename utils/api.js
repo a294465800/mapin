@@ -437,7 +437,52 @@ let api = {
           showCancel: false
         })
       })
-  }
+  },
+
+  //获取会员充值单号
+  postRechargeID(data, callback) {
+    _http.post(`${host_upload}Pay/MemberRecharge.aspx`, data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      })
+      .catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  },
+
+  //会员充值支付
+  postRechargePay(data, callback) {
+    _http.post(`${host_upload}Pay/PayMemberRecharge.aspx`, data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      })
+      .catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  },
+
+  //子帐号绑定
+  getAuthorize(data, callback) {
+    _http.get(`${host}UserAuthorize.aspx`, data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      })
+      .catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  },
 
   //支付测试
   // payTest(callback) {

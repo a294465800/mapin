@@ -13,6 +13,10 @@ Page({
   scan() {
     wx.scanCode({
       success: res => {
+        const data = res
+        if(res.scanType === "QR_CODE"){
+          console.log(JSON.parse(data.result))
+        }
         console.log(res)
       }
     })
