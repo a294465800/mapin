@@ -31,7 +31,7 @@
         </view>
         <view class='record-item-foot flex-row'>
           <view class='record-item-foot-time'>{{listItem.fig_StartDate}} - {{listItem.fig_EndDate}}</view>
-          <view wx:if="{{listItem.fig_IFOKFlag === 'N'}}" class='record-item-foot-btn success' hover-class='record-item-foot-btn-hover-success' hover-stay-time='150' catchtap='getCodeImg' data-recordid='{{listItem.RecordID}}'>核销码</view>
+          <view wx:if="{{listItem.fig_IFOKFlag === 'Y'}}" class='record-item-foot-btn success' hover-class='record-item-foot-btn-hover-success' hover-stay-time='150' catchtap='getCodeImg' data-recordid='{{listItem.RecordID}}'>核销码</view>
         </view>
       </view>
     </view>

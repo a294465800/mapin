@@ -104,7 +104,9 @@ Page({
             wx.showToast({
               title: '支付成功',
               complete: () => {
-                wx.navigateBack()
+                wx.navigateTo({
+                  url: '/pages/myinfo/myinfo',
+                })
               }
             })
           },

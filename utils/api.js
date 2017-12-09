@@ -514,6 +514,21 @@ let api = {
       })
   },
 
+  //单纯获取用户信息
+  getPureUserInfo(data, callback) {
+    _http.get(`${host}UserGet.aspx`, data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      })
+      .catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  },
+
   //支付测试
   // payTest(callback) {
   //   _http.get(`${host_upload}Pay/PayPre.aspx`)

@@ -16,7 +16,7 @@ Page({
       '其他',
     ],
 
-    jobIndex: 0,
+    jobIndex: 1,
 
     //加载判断
     loading: true,
@@ -57,7 +57,7 @@ Page({
       app._api.getUserAPI(wx.getStorageSync('OpenID'), null, (res) => {
         this.setData({
           userForm: res,
-          jobIndex: res.industry * 1 - 1,
+          jobIndex: res.industry ? (res.industry * 1 - 1) : "",
           loading: false
         })
         wx.setStorage({

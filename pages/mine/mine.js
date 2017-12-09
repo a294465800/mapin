@@ -53,15 +53,20 @@ Page({
   },
 
   onLoad() {
-    const that = this
-    that.setData({
+    this.setData({
       userInfo: app.globalData.userInfo
     })
-
   },
 
   onShow() {
-    // console.log(app.globalData.OpenID)
+    const OpenID = wx.getStorageSync('OpenID')
+    app._api.getPureUserInfo({ OpenID }, res => {
+      this.setData({
+        userInfo: res.data
+      })
+      wx.setStorageSync('userInfo', JSON.stringify(res.data))
+      app.globalData.userInfo = res.data
+    })
   },
 
   // 登录
