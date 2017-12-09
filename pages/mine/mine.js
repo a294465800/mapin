@@ -70,6 +70,7 @@ Page({
       this.setData({
         userInfo
       })
+      app.globalData.userInfo = userInfo
     })
   },
 
@@ -129,9 +130,17 @@ Page({
   //活动管理
   geToActivityControl() {
     if (this.isLogin()) {
-      wx.navigateTo({
-        url: '/pages/activityrecord/activityrecord',
-      })
+      if (this.data.userInfo.user_Type === "B") {
+        wx.navigateTo({
+          url: '/pages/activityrecord/activityrecord',
+        })
+      } else {
+        wx.showModal({
+          title: '提示',
+          content: '请先充值成为会员',
+          showCancel: false
+        })
+      }
     }
   },
 

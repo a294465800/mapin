@@ -63,6 +63,21 @@ Page({
   },
 
   //获取核销码
-  getCodeImg(e) { }
+  getCodeImg(e) {
+    wx.showLoading({
+      title: '核销码生成中',
+    })
+    const RecordID = e.currentTarget.dataset.recordid
+    app._api.getConfirmQRCode({ RecordID }, res => {
+      console.log(res)
+      this.setData({
+        currentPost: res.data.PoserUrl
+      })
+      wx.hideLoading()
+      wx.previewImage({
+        urls: [res.data.PoserUrl],
+      })
+    })
+  }
 
 })

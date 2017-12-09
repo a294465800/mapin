@@ -484,6 +484,21 @@ let api = {
       })
   },
 
+  //获取核销码
+  getConfirmQRCode(data, callback) {
+    _http.get(`${host}CreateCheckCode.aspx`, data)
+      .then(res => {
+        typeof callback === 'function' && callback(res)
+      })
+      .catch(err => {
+        wx.showModal({
+          title: '提示',
+          content: err.data,
+          showCancel: false
+        })
+      })
+  },
+
   //支付测试
   // payTest(callback) {
   //   _http.get(`${host_upload}Pay/PayPre.aspx`)

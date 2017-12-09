@@ -38,7 +38,7 @@ Page({
     app._api.getAllActivity('', res => {
       this.setData({
         lists: res.data.TeamList,
-        loading: false
+        loading: false,
       })
     })
   },
@@ -151,18 +151,37 @@ Page({
         success: ok => {
           if (ok.confirm) {
             app.getUserInfo(res => {
-              wx.navigateTo({
-                url: '/pages/rules/rules',
+              this.setData({
+                userInfo: res
               })
+              app.globalData.userInfo = res
+              if (res.user_Type === "B") {
+                wx.navigateTo({
+                  url: '/pages/rules/rules',
+                })
+              } else {
+                wx.showModal({
+                  title: '提示',
+                  content: '请先充值成为会员',
+                  showCancel: false
+                })
+              }
             })
           }
         }
       })
     } else {
-
-      wx.navigateTo({
-        url: '/pages/rules/rules',
-      })
+      if (app.globalData.userInfo.user_Type === "B") {
+        wx.navigateTo({
+          url: '/pages/rules/rules',
+        })
+      } else {
+        wx.showModal({
+          title: '提示',
+          content: '请先充值成为会员',
+          showCancel: false
+        })
+      }
     }
   },
 
