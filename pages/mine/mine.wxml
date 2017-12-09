@@ -71,7 +71,7 @@
     <view class='new-operation-wrap'>
       <block wx:for="{{operations}}" wx:for-item="operationItem" wx:key="id">
         <block wx:if="{{operationItem.id == 7}}" open-type='contact'>
-          <button class='new-operation-item'>
+          <button class='new-operation-item' open-type='contact'>
             <view class='new-operation-item-wrap'>
               <image class='new-operation-icon' src='/images/icon/kefu.png' mode='aspectFit'></image>
               <view>咨询客服</view>

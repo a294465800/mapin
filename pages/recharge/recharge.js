@@ -109,7 +109,7 @@ Page({
             })
           },
           fail: fail => {
-            wx.showLoading({
+            wx.showToast({
               title: '已取消',
             })
           }

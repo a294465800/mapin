@@ -14,10 +14,14 @@ Page({
     wx.scanCode({
       success: res => {
         const data = res
-        if(res.scanType === "QR_CODE"){
-          console.log(JSON.parse(data.result))
+        if (res.scanType === "QR_CODE") {
+          app._api.postConfirmQRCode({ RecordID: res.result }, res => {
+            wx.showToast({
+              title: '核销成功',
+            })
+          })
+
         }
-        console.log(res)
       }
     })
   },
