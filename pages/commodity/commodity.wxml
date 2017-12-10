@@ -238,7 +238,7 @@
                 </block>
               </block>
             </view>
-            <view class='commodity-ing-item-left'>还差{{ingItem.man}}人</view>
+            <view class='commodity-ing-item-left'>{{ingItem.fig_AttendTypeNum}}人团，还差{{ingItem.man}}人</view>
           </view>
           <view class='commodity-ing-item-btn' hover-class='commodity-ing-item-btn-hover' hover-stay-time='150' data-type='2' data-join_group='{{ingIndex}}' data-mode='2' catchtap='showSaveDetail'>立即参团</view>
         </view>

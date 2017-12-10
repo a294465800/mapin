@@ -29,7 +29,8 @@ Page({
       fig_IFSameAction: 'Y',
       fig_IFAllPay: 'Y',
       fig_prepay: '',
-      fig_ImgPath: []
+      fig_ImgPath: [],
+      ShowCode: ''
     },
     rules: [
       '点击我要开团或单独开团，可以发起一个新的团。点击我要参与或未满团推荐的团即可参与好友或其他已发起的团。',
@@ -55,7 +56,8 @@ Page({
       }, res => {
         this.setData({
           RecordMainID,
-          submitForm: res.data
+          submitForm: res.data,
+          payAll: res.data.fig_IFAllPay === 'Y' ? true : false
         })
       })
     }
@@ -229,7 +231,10 @@ Page({
       for (let it in subObj) {
         if (it === 'fig_prepay' && subObj.fig_IFAllPay === 'Y') {
           continue
-        } else {
+        } else if (it === 'ShowCode') {
+          continue
+        }
+        else {
           if (subObj[it] === '') {
             console.log(subObj)
             wx.showModal({

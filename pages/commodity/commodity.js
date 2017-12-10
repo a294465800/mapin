@@ -236,8 +236,6 @@ Page({
 
   //分享参团
   joinShareActivity(e) {
-    console.log(this.data.shareInfo)
-    console.log(app.globalData.OpenID)
     let postData = {
       RecordIDShop: this.data.shareInfo.RecordIDShop,
       type: 2,

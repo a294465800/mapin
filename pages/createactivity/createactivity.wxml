@@ -38,8 +38,12 @@
         <label class='label-beautify'>
           <view>同店活动</view>
           <view class='switch'>
-            <switch checked bindchange="sameAsShop" />
+            <switch checked="{{submitForm.fig_IFSameAction === 'Y'?true:false}}" bindchange="sameAsShop" />
           </view>
+        </label>
+        <label class='label-beautify'>
+          <view>展示码</view>
+          <input name="ShowCode" value='{{submitForm.ShowCode}}' maxlength='30' placeholder='可在商城展示，需联系客服获取'></input>
         </label>
       </view>
     </view>
@@ -54,7 +58,7 @@
         <label class='label-beautify'>
           <view>全额支付</view>
           <view class='switch'>
-            <switch checked bindchange="payAll" />
+            <switch checked="{{submitForm.fig_IFAllPay === 'Y'?true:false}}" bindchange="payAll" />
           </view>
         </label>
         <label wx:if="{{!payAll}}" class='label-beautify'>

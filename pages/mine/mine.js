@@ -20,6 +20,12 @@ Page({
         fnc: 'geToActivityControl'
       },
       {
+        id: 8,
+        name: '创建活动',
+        url: '/images/icon/created.png',
+        fnc: 'goToCreate'
+      },
+      {
         id: 3,
         name: '资金提现',
         url: '/images/icon/money.png',
@@ -99,6 +105,21 @@ Page({
     }
   },
 
+  goToCreate() {
+    if (this.isLogin()) {
+      if (this.data.userInfo.user_Type === "B") {
+        wx.navigateTo({
+          url: '/pages/rules/rules',
+        })
+      } else {
+        wx.showModal({
+          title: '提示',
+          content: '请先充值成为会员',
+          showCancel: false
+        })
+      }
+    }
+  },
 
   //子帐号跳转
   geToSubControl() {
