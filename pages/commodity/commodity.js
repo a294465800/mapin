@@ -177,12 +177,12 @@ Page({
     }
     let text = ''
     if (type == '1') {
-      text = `你即将创建${this.data.currentGroup}人团，价格为${this.data.currentPrice}元，团长优惠${this.data.commodity.fig_OuterMoney}元，确定付款吗？`
+      text = `你即将创建${this.data.currentGroup}人团，${this.data.commodity.fig_prepay > 0 ? "订金为" + this.data.commodity.fig_prepay : "价格为" + this.data.currentPrice}元，团长优惠${this.data.commodity.fig_OuterMoney}元，确定付款吗？`
     }
     else if (type == '2') {
       const currentGroup = this.data.currentSubGroup
       postData.RecordSubID = currentGroup.RecordSubID
-      text = `你即将参加${currentGroup.fig_AttendTypeNum}人团，价格为${currentGroup.price}元，确定付款吗？`
+      text = `你即将参加${currentGroup.fig_AttendTypeNum}人团，${this.data.commodity.fig_prepay > 0 ? "订金为" + this.data.commodity.fig_prepay : "价格为" + currentGroup.price}元，确定付款吗？`
     }
     wx.showModal({
       title: '提示',
@@ -244,7 +244,7 @@ Page({
       RecordMainID: this.data.shareInfo.RecordMainID,
       RecordSubID: this.data.shareInfo.RecordSubID
     }
-    const text = `你即将参加${this.data.shareInfo.fig_TypeNum}人团，价格为${this.data.shareInfo.fig_Price}元，确定付款吗？`
+    const text = `你即将参加${this.data.shareInfo.fig_TypeNum}人团，${this.data.commodity.fig_prepay > 0 ? "订金为" + this.data.commodity.fig_prepay : "价格为" + this.data.shareInfo.fig_Price}元，确定付款吗？`
 
     wx.showModal({
       title: '提示',

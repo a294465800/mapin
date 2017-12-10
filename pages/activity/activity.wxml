@@ -37,9 +37,9 @@
     <block wx:else>
       <block wx:if="{{lists.length}}">
         <view class='tips'>---- 最新拼团 ----</view>
-        <view class='activity-list-item' wx:for="{{lists}}" wx:for-item="listItem" wx:key="id">
+        <view class='activity-list-item' wx:for="{{lists}}" wx:for-item="listItem" wx:key="id" data-id='{{listItem.RecordMainID}}' bindtap='goToBuy'>
           <view class='activity-list-item-wrap flex-row'>
-            <image class='activity-list-item-img' mode='aspectFit' src='{{listItem.fig_ImgPath[0] || "/images/icon/no-img.png"}}'></image>
+            <image mode='scaleToFill' class='activity-list-item-img' src='{{listItem.fig_ImgPath[0] || "/images/icon/no-img.png"}}'></image>
             <view class='activity-list-item-content'>
               <view class='activity-list-item-title text-flow'>{{listItem.fig_Name}}</view>
               <view class='activity-list-item-info flex-row'>

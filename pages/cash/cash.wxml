@@ -3,18 +3,21 @@
   <view class='cash-content'>
     <view class='cash-wrap flex-row'>
       <view class='cash-item'>
-        <view class='cash-item-money'>￥200</view>
-        <view class='cash-item-desc'>可提现资金</view>
+        <view class='cash-item-pre-money'>￥{{money.HistoryMoney}}</view>
+        <view class='cash-item-desc'>已提现</view>
+        <!-- <view class='cash-item-tips'>（历史提现金额）</view> -->
       </view>
       <view class='cash-item'>
-        <view class='cash-item-pre-money'>￥200</view>
-        <view class='cash-item-desc'>待定资金</view>
-        <view class='cash-item-tips'>（无法今日提现资金）</view>
+        <view class='cash-item-money'>￥{{money.inc_Money}}</view>
+        <view class='cash-item-desc'>可提现金额</view>
       </view>
     </view>
     <view class='cash-record flex-row' catchtap='goToCashRecord'>
       <view>提现记录</view>
       <image class='arrow-icon' mode='aspectFit' src='/images/icon/arrow.png'></image>
+    </view>
+    <view class='recharge-tips'>
+      <text bindtap='goToRule'>微信提现规则</text>
     </view>
   </view>
   <button type='button' class='cash-btn' hover-class='cash-hover' bindtap='scan'>申请提款</button>

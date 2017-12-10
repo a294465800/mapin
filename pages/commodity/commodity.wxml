@@ -25,7 +25,7 @@
       </view>
       <view class='flex-row'>
         <view class='commodity-detail-indo-price flex-row'>
-          <view class='commodity-detail-info-discount-price'>￥{{commodity.fig_Price3}}起</view>
+          <view class='commodity-detail-info-discount-price'>{{commodity.fig_prepay > 0?"订金："+commodity.fig_prepay:"￥"+commodity.fig_Price3+"起"}}</view>
           <view class='commodity-detail-info-origin-price'>￥{{commodity.fig_Price}}</view>
         </view>
         <view class='commodity-detail-group-number'>成团人数：{{commodity.fig_Number1}}人•{{commodity.fig_Number2}}人•{{commodity.fig_Number3}}人</view>
@@ -201,7 +201,7 @@
       <view class=' cost-detail-info flex-column '>
         <view class='cost-detail-info-title multi-two-text-flow '>{{commodity.fig_Name}}</view>
         <view class='cost-detail-info-foot flex-row '>
-          <view class='cost-detail-info-price '>￥{{currentSubGroup.price}}</view>
+          <view class='cost-detail-info-price '>{{commodity.fig_prepay > 0?"订金：￥"+commodity.fig_prepay:"￥"+currentSubGroup.price}}</view>
           <view class='cost-detail-info-group-num '>{{currentSubGroup.fig_AttendTypeNum}}人团</view>
         </view>
       </view>

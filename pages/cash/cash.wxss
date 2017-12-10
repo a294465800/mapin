@@ -62,3 +62,14 @@
 .cash-hover {
   background-color: #e8b20d;
 }
+
+.recharge-tips {
+  font-size: 13px;
+  color: #999;
+  padding: 30rpx;
+  text-align: right;
+}
+
+.recharge-tips>text {
+  color: #f9be0a;
+}
