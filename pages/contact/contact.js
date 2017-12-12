@@ -21,16 +21,6 @@ Page({
     })
     wx.makePhoneCall({
       phoneNumber: '18142883149',
-      fail(fail) {
-        console.log(fail, 'fail')
-      },
-      success(fail) {
-        console.log(fail, 'success')
-      },
-      complete() {
-        console.log('complate')
-        wx.hideLoading()
-      }
     })
   },
 

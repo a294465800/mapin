@@ -55,6 +55,7 @@ let api = {
 
   //出错提示
   errorFnc() {
+    wx.hideLoading()
     wx.showModal({
       title: '提示',
       content: '服务器出错啦',
@@ -276,7 +277,7 @@ let api = {
       .then(res => {
         typeof callback === 'function' && callback(res)
       }).catch(err => {
-        console.log(err)
+        wx.hideLoading()
         wx.showModal({
           title: '提示',
           content: err.data,
@@ -289,10 +290,10 @@ let api = {
   payRequest(data, callback) {
     _http.post(`${host_upload}Pay/PayGroup.aspx`, data)
       .then(res => {
-        console.log(res)
         typeof callback === 'function' && callback(res.data)
       })
       .catch(err => {
+        wx.hideLoading()
         wx.showModal({
           title: '提示',
           content: err.data,
@@ -338,7 +339,6 @@ let api = {
         typeof callback === 'function' && callback(res)
       })
       .catch(err => {
-        console.log(1)
         wx.showModal({
           title: '提示',
           content: err.data,

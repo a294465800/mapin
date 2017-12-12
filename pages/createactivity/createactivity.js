@@ -162,7 +162,6 @@ Page({
           longitude: res.longitude
         },
         success: (rs) => {
-          console.log(rs)
           const cityData = rs.result.address_component
           this.setData({
             'submitForm.fig_latitude': res.latitude,
@@ -236,7 +235,6 @@ Page({
         }
         else {
           if (subObj[it] === '') {
-            console.log(subObj)
             wx.showModal({
               title: '提示',
               content: '信息不能为空',

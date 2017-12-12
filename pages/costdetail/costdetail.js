@@ -36,9 +36,7 @@ Page({
       title: '快来加入我的拼团',
       path: `/pages/commodity/commodity?type=share&RecordID=${this.data.RecordID}&RecordMainID=${this.data.commodity.RecordMainID}`,
       success(res) {
-        app._api.addShareAndClick({ fig_type: 2, RecordMainID: that.data.commodity.RecordMainID }, res => {
-          console.log(222)
-        })
+        app._api.addShareAndClick({ fig_type: 2, RecordMainID: that.data.commodity.RecordMainID })
       },
       fail(res) {
         // 转发失败

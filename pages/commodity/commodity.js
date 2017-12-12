@@ -165,8 +165,6 @@ Page({
 
   //参团
   joinActivity(e) {
-    console.log(this.data.commodity)
-    console.log(app.globalData.OpenID)
     const type = e.currentTarget.dataset.type
     let postData = {
       RecordIDShop: this.data.commodity.RecordIDShop,

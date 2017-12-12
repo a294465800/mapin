@@ -15,14 +15,12 @@ Page({
     flag: false,
     close: false,
 
-    //模拟数据
     lists: []
   },
 
   onLoad(options) {
     const RecordMainID = options.id
     app._api.getJoinRecord({ RecordMainID }, res => {
-      console.log(res)
       this.setData({
         lists: res.data.AttendOK,
         loading: false,
@@ -34,7 +32,6 @@ Page({
   //触底刷新
   // getMore() {
   onReachBottom() {
-    console.log('bottom')
     const flag = this.data.flag
     const page = this.data.page
     const close = this.data.close
@@ -46,9 +43,7 @@ Page({
     this.setData({
       flag: true
     })
-    console.log(page + 1)
     app._api.getJoinRecord({ RecordMainID, user_Tel, page: page + 1 }, res => {
-      console.log(res)
       if (res.data.AttendOK.length) {
         this.setData({
           lists: [...this.data.lists, ...res.data.AttendOK],

@@ -98,7 +98,6 @@ Page({
       RecordMainID: dataset.id,
       DealType
     }
-    console.log(state)
     wx.showModal({
       title: '提示',
       content: `确认${text}该活动吗？`,
@@ -154,7 +153,6 @@ Page({
     })
     const RecordMainID = e.currentTarget.dataset.recordmainid
     app._api.getShopPost({ RecordMainID }, res => {
-      console.log(res)
       this.setData({
         currentPost: res.data.PoserUrl
       })

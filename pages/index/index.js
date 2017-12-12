@@ -11,7 +11,6 @@ Page({
   * 扫描二维码
   */
   scan() {
-    console.log(app.globalData)
     wx.scanCode({
       success: res => {
         const data = res

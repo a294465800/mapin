@@ -35,7 +35,6 @@ Page({
   onLoad() {
     const OpenID = wx.getStorageSync('OpenID')
     app._api.getCostRecords({ OpenID }, res => {
-      console.log(res)
       this.setData({
         lists: res.data.ConsumeList,
         loading: false
@@ -69,7 +68,6 @@ Page({
     })
     const RecordID = e.currentTarget.dataset.recordid
     app._api.getConfirmQRCode({ RecordID }, res => {
-      console.log(res)
       this.setData({
         currentPost: res.data.PoserUrl
       })

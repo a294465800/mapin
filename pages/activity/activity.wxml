@@ -53,7 +53,7 @@
                   <view class='activity-list-item-origin-price'>￥{{listItem.fig_Price3}}起</view>
                   <view class='activity-list-item-old-price'>￥{{listItem.fig_Price}}</view>
                 </view>
-                <view class='activity-list-item-btn' data-id='{{listItem.RecordMainID}}' bindtap='goToBuy' hover-class='activity-list-item-btn-hover' hover-stay-time='150'>去拼团</view>
+                <view class='activity-list-item-btn' hover-class='activity-list-item-btn-hover' hover-stay-time='150'>去拼团</view>
               </view>
             </view>
           </view>

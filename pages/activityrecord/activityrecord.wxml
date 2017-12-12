@@ -15,7 +15,7 @@
           <view class='activity-list-item-status'>{{statusText[listItem.status]}}</view>
         </view>
         <view class='activity-list-item-wrap flex-row'>
-          <image class='activity-list-item-img' mode='aspectFit' src='{{listItem.fig_ImgPath[0]}}'></image>
+          <image mode='scaleToFill' class='activity-list-item-img'  src='{{listItem.fig_ImgPath[0]}}'></image>
           <view class='activity-list-item-content'>
             <view class='activity-list-item-title text-flow'>{{listItem.fig_Name}}</view>
             <view class='activity-list-item-info flex-row'>
