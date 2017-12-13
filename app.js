@@ -78,18 +78,18 @@ App({
   //获取地址，微信地址
   getAddress(callback, flag) {
     const that = this
-    if (flag) {
-      return false
-    }
     wx.chooseAddress({
       success(res) {
         typeof callback === 'function' && callback(res)
       },
       fail(error) {
+        if (flag) {
+          return false
+        }
         wx.openSetting({
           success(res) {
             if (res.authSetting['scope.address']) {
-              that.getAddress(callback)
+              that.getAddress(callback, true)
             }
           }
         })
@@ -100,18 +100,18 @@ App({
   //获取经纬度，微信地图
   getLocation(callback, flag) {
     const that = this
-    if (flag) {
-      return false
-    }
     wx.chooseLocation({
       success(res) {
         typeof callback === 'function' && callback(res)
       },
       fail(error) {
+        if (flag) {
+          return false
+        }
         wx.openSetting({
           success(res) {
             if (res.authSetting['scope.userLocation']) {
-              that.getLocation(callback)
+              that.getLocation(callback, true)
             }
           }
         })
