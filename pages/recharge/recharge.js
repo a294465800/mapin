@@ -8,6 +8,7 @@ Page({
     currentIndex: 0,
     loading: true,
     discountCode: '',
+    userInfo: null,
 
 
     //收费模式
@@ -51,7 +52,8 @@ Page({
         'modes[1].price': data.money2,
         'modes[2].price': data.money3,
         'modes[3].price': data.money4,
-        loading: false
+        loading: false,
+        userInfo: app.globalData.userInfo
       })
     })
   },
@@ -84,7 +86,15 @@ Page({
   //支付
   pay() {
     const data = this.data.modes[this.data.currentIndex]
-    const userInfo = JSON.parse(wx.getStorageSync('userInfo'))
+    const userInfo = this.data.userInfo
+    if (userInfo.IFHaveTry == 'Y' && this.data.currentMode == '1') {
+      wx.showModal({
+        title: '提示',
+        content: '你已经试用过一次了',
+        showCancel: false
+      })
+      return false
+    }
     const postData = {
       rec_Type: data.id,
       rec_Money: data.price,

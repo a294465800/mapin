@@ -110,7 +110,7 @@ Page({
     const index = e.detail.value
     this.setData({
       jobIndex: index,
-      'userForm.industry': index + 1
+      'userForm.industry': index * 1 + 1
     })
   },
 

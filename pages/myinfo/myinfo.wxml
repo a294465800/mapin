@@ -60,7 +60,7 @@
             <label class='label-beautify'>
               <view>行业</view>
               <picker bindchange='changeJob' value="{{jobIndex}}" range="{{jobs}}">
-                <block wx:if="{{jobIndex == ''}}">
+                <block wx:if="{{jobIndex === ''}}">
                   <view style='color: #999'>请选择行业</view>
                 </block>
                 <block wx:else>{{jobs[jobIndex]}}</block>
